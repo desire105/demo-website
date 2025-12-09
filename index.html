@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OH Architecture</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', Helvetica, sans-serif;
+}
+
+:root {
+    --primary-color: #B8947E;
+    --secondary-color: #254224;
+    --dark-color: #1A1A1A;
+    --light-color: #F8F5F2;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --bg-color: #F2F0E4;
+}
+
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    background-color: var(--bg-color);
+}
+
+/* NAVBAR STYLES */
+.navbar {
+    width: 100%;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(242, 240, 228, 0.98);
+    padding: 15px 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled .logo {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .contact-btn {
+    background: var(--primary-color);
+    border: none;
+}
+
+.logo img {
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.slot-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+    height: 26px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.6, 0.01, 0.3, 1);
+}
+
+.nav-text span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 26px;
+    line-height: 26px;
+    transition: color 0.4s ease;
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.nav-item:hover .nav-text {
+    transform: translateY(-26px);
+}
+
+.contact-btn {
+    position: relative;
+    padding: 16px 36px;
+    background: var(--primary-color);
+    color: white !important;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 46px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.contact-btn .nav-text {
+    display: flex;
+    flex-direction: column;
+    height: 56px;
+}
+
+.contact-btn .nav-text span {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 600;
+    height: 56px;
+    line-height: 56px;
+}
+
+.contact-btn:hover .nav-text {
+    transform: translateY(-56px);
+}
+
+.contact-btn:hover {
+    box-shadow: 0 0 20px rgba(184, 148, 126, 0.4);
+    transform: translateY(-2px);
+    background: #a5836d;
+}
+
+/* MOBILE HAMBURGER MENU */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10002;
+    padding: 10px;
+}
+
+.navbar.scrolled .mobile-menu-btn {
+    color: var(--secondary-color);
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(242, 240, 228, 0.98);
+    z-index: 10001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-menu-overlay.active {
+    display: flex;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mobile-menu-items .nav-item {
+    height: 40px;
+}
+
+.mobile-menu-items .nav-text span {
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--secondary-color);
+}
+
+.mobile-contact-btn {
+    padding: 18px 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.mobile-contact-btn:hover {
+    background: #a5836d;
+    transform: translateY(-2px);
+}
+
+/* HERO SECTION */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    transition: opacity 0.8s ease;
+}
+
+.hero.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* FEATURED PROJECT */
+.featured-project {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: opacity 0.8s ease;
+}
+
+.featured-project .divider {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.view-project-btn {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.view-project-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.architecture-style {
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    color: white;
+    max-width: 400px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.9;
+    background: rgba(37, 66, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    transition: opacity 0.8s ease;
+}
+
+/* SCROLL DOWN */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-down::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background-color: white;
+    animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+    0% { height: 40px; opacity: 1; }
+    50% { height: 50px; opacity: 0.7; }
+    100% { height: 40px; opacity: 1; }
+}
+
+/* EXPERIENCE SECTION */
+.experience-section {
+    width: 100%;
+    background: var(--bg-color);
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    transform: translateY(100vh);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease;
+    margin-top: 100vh;
+}
+
+.experience-section.revealed {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.exp-container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.exp-title {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.exp-text {
+    margin-top: 40px;
+}
+
+.exp-text .line {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #333;
+    max-width: 800px;
+    margin-bottom: 18px;
+}
+
+.exp-image-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.exp-image-box img {
+    width: 60%;
+    height: 350px; 
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.exp-image-box:hover img {
+    transform: scale(1.02);
+}
+
+.zoom-btn {
+    position: absolute;
+    bottom: 20px;
+    right: calc(25% + 20px);
+    background: rgba(37, 66, 36, 0.8);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 22px;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.exp-image-box:hover .zoom-btn {
+    opacity: 1;
+}
+
+.exp-btn {
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+}
+
+.exp-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    max-width: 95%;
+    max-height: 90%;
+}
+
+.closePopup {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+/* SMOOTH REVEAL ANIMATION */
+.smooth-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LINE BY LINE ANIMATION */
+.line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    position: relative;
+    z-index: 3;
+    background: var(--bg-color);
+}
+
+/* DESIGN SECTION */
+.design-section {
+    padding: 60px 0;
+    width: 90%;
+    margin: auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.top-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 55%;
+}
+
+.right-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hover-options {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.hover-options span {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hover-options span:hover {
+    background: var(--primary-color);
+}
+
+.image-wrapper:hover .hover-options {
+    opacity: 1;
+}
+
+/* INFINITE CAROUSEL */
+.infinite-carousel {
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0;
+    position: relative;
+    border-radius: 12px;
+    margin: 40px 0;
+    background: var(--bg-color);
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 40px;
+    border-radius: 8px;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+    padding: 10px 0;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-track img {
+    height: 180px;
+    width: 250px;
+    margin: 0 15px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(37, 66, 36, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+
+.carousel-track img:nth-child(odd) {
+    transform: translateY(-15px);
+}
+
+.carousel-track img:nth-child(even) {
+    transform: translateY(15px);
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05) translateY(0);
+    box-shadow: 0 8px 16px rgba(184, 148, 126, 0.4);
+    filter: brightness(1.1);
+    z-index: 10;
+    border: 2px solid var(--primary-color);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* FEATURED WORKS SECTION */
+.fs-section {
+    width: 90%;
+    margin: 80px auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.fs-title {
+    font-size: 42px;
+    letter-spacing: 3px;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.fs-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.fs-box {
+    width: 48%;
+}
+
+.fs-image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.fs-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.fs-img:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(184, 148, 126, 0.2);
+}
+
+.fs-hover-options {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.fs-hover-options span {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fs-hover-options span:hover {
+    background: var(--primary-color);
+}
+
+.fs-image-wrapper:hover .fs-hover-options {
+    opacity: 1;
+}
+
+.fs-name {
+    margin-top: 14px;
+    font-size: 20px;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* CLIENT SECTION */
+.fs-client-section {
+    width: 90%;
+    margin: 80px auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.fs-client-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.fs-client-left {
+    flex: 1;
+    min-width: 280px;
+}
+
+.fs-client-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+.fs-client-left-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid var(--primary-color);
+}
+
+.fs-client-text-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f0f0f0;
+}
+
+.fs-client-text-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.fs-client-text-box::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.fs-client-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.fs-client-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.fs-client-role {
+    font-weight: normal;
+    font-size: 14px;
+    color: var(--primary-color);
+    display: block;
+}
+
+.fs-client-right {
+    flex: 0 0 350px;
+    text-align: right;
+}
+
+.fs-client-right-img {
+    width: 100%;
+    max-width: 350px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid var(--primary-color);
+}
+
+/* FOOTER */
+.oh-footer {
+    background: var(--bg-color);
+    padding: 60px 0;
+    font-family: Georgia, serif;
+    color: #333;
+    border-top: 4px solid var(--primary-color);
+}
+
+.footer-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-left-img {
+    width: 70%;
+    height: 88px;
+    margin: 70px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.footer-middle {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.footer-nav li:hover {
+    color: var(--primary-color);
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.footer-text strong {
+    color: var(--primary-color);
+}
+
+.footer-logo {
+    width: 120px;
+    margin-top: 10px;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+    .exp-title {
+        font-size: 50px;
+    }
+    
+    .fs-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .slot-menu {
+        display: none;
+    }
+    
+    .contact-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .fs-client-row,
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .fs-client-right {
+        text-align: center;
+        margin-top: 30px;
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    
+    .fs-client-right-img {
+        max-width: 100%;
+        height: auto;
+        max-height: 400px;
+    }
+    
+    .fs-client-label {
+        text-align: center;
+        border-left: none;
+        border-bottom: 4px solid var(--primary-color);
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+    
+    .footer-middle, .footer-right, .footer-left {
+        text-align: center;
+    }
+    
+    .footer-nav li {
+        display: inline-block;
+        margin: 0 10px 10px 10px;
+    }
+    
+    .fs-row {
+        flex-direction: column;
+    }
+    
+    .fs-box {
+        width: 100%;
+    }
+    
+    .top-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    .image-wrapper {
+        width: 100%;
+    }
+    
+    .right-image {
+        height: 350px;
+    }
+    
+    .exp-image-box img {
+        width: 80%;
+        height: 300px;
+    }
+    
+    .featured-project {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        left: 30px;
+        top: 45%;
+        transform: translateY(-45%);
+    }
+    
+    .architecture-style {
+        left: 30px;
+        right: 30px;
+        max-width: none;
+        bottom: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+    
+    .navbar.scrolled {
+        padding: 10px 20px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 40px;
+    }
+    
+    .exp-title {
+        font-size: 36px;
+    }
+    
+    .exp-container {
+        width: 90%;
+    }
+    
+    .exp-image-box img {
+        width: 90%;
+        height: 250px;
+    }
+    
+    .exp-text .line {
+        font-size: 18px;
+    }
+    
+    .featured-project {
+        left: 20px;
+        gap: 10px;
+        font-size: 16px;
+    }
+    
+    .view-project-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .architecture-style {
+        left: 20px;
+        right: 20px;
+        padding: 20px;
+        font-size: 16px;
+        bottom: 80px;
+    }
+    
+    .scroll-down {
+        font-size: 12px;
+    }
+    
+    .carousel-container {
+        margin: 0 15px;
+    }
+    
+    .carousel-track img {
+        height: 140px;
+        width: 200px;
+        margin: 0 10px;
+    }
+    
+    .fs-img {
+        height: 300px;
+    }
+    
+    .fs-client-left-img,
+    .fs-client-right-img {
+        height: 300px;
+    }
+    
+    .footer-left-img {
+        margin: 40px;
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .exp-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .experience-section {
+        padding: 60px 0;
+    }
+    
+    .exp-image-box img {
+        width: 95%;
+        height: 200px;
+    }
+    
+    .exp-text .line {
+        font-size: 16px;
+    }
+    
+    .exp-btn {
+        font-size: 16px;
+    }
+    
+    .featured-project {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        left: 15px;
+        font-size: 14px;
+    }
+    
+    .view-project-btn {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+    
+    .architecture-style {
+        left: 15px;
+        right: 15px;
+        padding: 15px;
+        font-size: 15px;
+        bottom: 70px;
+    }
+    
+    .fs-title {
+        font-size: 28px;
+    }
+    
+    .fs-img {
+        height: 250px;
+    }
+    
+    .fs-name {
+        font-size: 18px;
+    }
+    
+    .carousel-track img {
+        height: 120px;
+        width: 170px;
+        margin: 0 8px;
+    }
+    
+    .footer-left-img {
+        margin: 30px auto;
+        width: 80%;
+        height: auto;
+    }
+    
+    .footer-nav li {
+        font-size: 16px;
+        margin: 0 8px 8px 8px;
+    }
+    
+    .mobile-menu-btn {
+        font-size: 22px;
+    }
+    
+    .mobile-menu-items .nav-text span {
+        font-size: 20px;
+    }
+    
+    .mobile-contact-btn {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .exp-title {
+        font-size: 24px;
+    }
+    
+    .exp-image-box img {
+        height: 180px;
+    }
+    
+    .featured-project {
+        font-size: 13px;
+    }
+    
+    .view-project-btn {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+    
+    .architecture-style {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .carousel-track img {
+        height: 100px;
+        width: 150px;
+        margin: 0 6px;
+    }
+    
+    .fs-img {
+        height: 200px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="img/WhatsApp Image 2025-12-07 at 16.14.05_a293a4c4.jpg" alt="OH Architecture Logo">
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="slot-menu">
+        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+    </div>
+    <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="mobile-menu-items">
+        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+    </div>
+    
+    <a href="#" class="mobile-contact-btn">Get in Touch</a>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero" id="hero">
+    <div class="hero-image-container">
+        <img src="img/IMG-20251126-WA0258.jpg" alt="Architecture project">
+    </div>
+
+    <div class="featured-project" id="featuredProject">
+        <span>FEATURED PROJECT!</span>
+        <span class="divider">|</span>
+        <span>MYRTLE POOL HOUSE</span>
+        <span class="divider">|</span>
+        <span>2024</span>
+        <span class="divider">|</span>
+        <a href="#" class="view-project-btn">VIEW PROJECT</a>
+    </div>
+
+    <div class="architecture-style" id="architectureStyle">
+        The RPA style is defined by strong, solid forms with subtle elegance, natural balance and enduring appeal
+    </div>
+
+    <div class="scroll-down" id="scrollDown">(SCROLL DOWN)</div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section" id="experienceSection">
+        <div class="exp-container">
+            <h2 class="exp-title smooth-reveal">Experience<br>Focused Design</h2>
+
+                <div class="exp-image-box smooth-reveal">
+                    <img id="mainImage" src="img/IMG-20251126-WA0209.jpg" alt="Experience Focused Design">
+                    <div class="zoom-btn" onclick="openFull()"> <i class="fas fa-expand-alt"></i></div>
+                </div>
+
+            <div class="exp-text">
+                <p class="line">We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
+                <p class="line">We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
+                <p class="line">Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces that feel effortless and truly yours.</p>
+                <p class="line">We work closely with clients right from the start, with clear communication and expert guidance along the way.</p>
+                <p class="line">We work closely with builders, consultants, and partners to ensure every project runs smoothly.</p>
+                <p class="line">Each project evolves with its own shape and character, guided by aspirations, site opportunities, and creative vision.</p>
+            </div>
+
+            <a href="#" class="exp-btn smooth-reveal">Learn more about our studio</a>
+        </div>
+    </section>
+
+    <!-- DESIGN PHILOSOPHY SECTION -->
+    <section class="design-section">
+        <div class="top-row">
+            <h3 class="vertical-text">OUR DESIGN PHILOSOPHY</h3>
+
+            <div class="image-wrapper">
+                <img src="img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg"
+                     class="right-image"
+                     onclick="openImage(this.src)">
+
+                <div class="hover-options">
+                    <span onclick="openImage('img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg')">
+                        View Full Image
+                    </span>
+                    <span>More Info</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="exp-text">
+            <p class="line">We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
+            <p class="line">We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
+            <p class="line">Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces that feel effortless and truly yours.</p>
+                <p class="line">We work closely with clients right from the start, with clear communication and expert guidance along the way.</p>
+            <p class="line">We work closely with builders, consultants, and partners to ensure every project runs smoothly.</p>
+            <p class="line">Each project evolves with its own shape and character, guided by aspirations, site opportunities, and creative vision.</p>
+        </div>
+    </section>
+
+    <!-- INFINITE CAROUSEL -->
+    <section class="infinite-carousel">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 1">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 2">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 3">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 4">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 5">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 6">
+                <!-- Repeat for smooth infinite effect -->
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 1">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 2">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 3">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 4">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 5">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED WORKS -->
+    <section class="fs-section">
+        <h2 class="fs-title">FEATURED WORKS</h2>
+
+        <div class="fs-row">
+            <div class="fs-box">
+                <div class="fs-image-wrapper">
+                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
+                    <div class="fs-hover-options">
+                        <span onclick="fsOpenImage('img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg')">View Full Image</span>
+                        <span>More Info</span>
+                    </div>
+                </div>
+                <h3 class="fs-name">Project Name 1</h3>
+            </div>
+
+            <div class="fs-box">
+                <div class="fs-image-wrapper">
+                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
+                    <div class="fs-hover-options">
+                        <span onclick="fsOpenImage('img/work2.jpg')">View Full Image</span>
+                        <span>More Info</span>
+                    </div>
+                </div>
+                <h3 class="fs-name">Project Name 2</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT TESTIMONIAL -->
+    <section class="fs-client-section">
+        <div class="fs-client-row">
+            <div class="fs-client-left">
+                <h3 class="fs-client-label">(HEAR FROM OUR CLIENT)</h3>
+                <img src="img/67b04e4ed2812e66e1318bce_OH_SIDNEYANDYMACPHERSON-16_EDIT.jpg" alt="Client House" class="fs-client-left-img">
+
+                <div class="fs-client-text-box">
+                    <p class="fs-client-text">
+                        "From the initial meeting I was impressed by the genuine enthusiasm and willingness to engage with the ideas in my brief. Johnny Hyde and the OH Architecture team engendered confidence. They cared about the project; throughout the design process they listened and interacted in a positive and professional, but relaxed, way.
+                        <br><br>
+                        As they explored design ideas, they welcomed my contributions and encouraged feedback. Consequently, I had no doubt that OH Architecture would deliver a design to meet my dreams and also my budget. And in fact, the award-winning outcome eminently attests to their skill and achievement on both counts!"
+                    </p>
+                    <p class="fs-client-name">Carmen<br><span class="fs-client-role">Homeowner of Sidney</span></p>
+                </div>
+            </div>
+
+            <div class="fs-client-right">
+                <img src="img/67c5504fd3e1172ffe17548f_OH_SIDNEYANDYMACPHERSON-19_EDIT.jpg" alt="Client Interior" class="fs-client-right-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="oh-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="img/WhatsApp Image 2025-12-07 at 15.29.10_abd5847c.jpg" alt="OH Architecture" class="footer-left-img">
+            </div>
+
+            <div class="footer-middle">
+                <p class="footer-section-title">(NAVIGATION)</p>
+                <ul class="footer-nav">
+                    <li>Home</li>
+                    <li>Works</li>
+                    <li>In Progress</li>
+                    <li>Archive</li>
+                    <li>Studio</li>
+                    <li>Process</li>
+                    <li>Gallery</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <p class="footer-section-title">(ACKNOWLEDGEMENT)</p>
+                <p class="footer-text">
+                    We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present, and acknowledge their continuing connection to land, sea and community.
+                </p>
+
+                <p class="footer-section-title">(INFO)</p>
+                <p class="footer-text">
+                    <strong>A:</strong> 101 Days Rd, Grange QLD 4051<br>
+                    <strong>E:</strong> info@oharchitecture.com.au<br>
+                    <strong>P:</strong> 07 3110 1031<br>
+                    <strong>H:</strong> Monday to Friday, 8:30am - 5:00pm
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- POPUPS -->
+<div id="fullImagePopup" class="popup">
+    <span class="closePopup" onclick="closeFull()">×</span>
+    <img id="popupImage">
+</div>
+
+<div id="imgPopup" class="popup" onclick="closeImage()">
+    <span class="closePopup" onclick="closeImage()">×</span>
+    <img id="popupImg" class="popup-img">
+</div>
+
+<div id="fs-popup" class="popup" onclick="fsCloseImage()">
+    <span class="closePopup" onclick="fsCloseImage()">×</span>
+    <img id="fs-popup-img">
+</div>
+
+<script>
+// POPUP FUNCTIONS
+function openFull() {
+    document.getElementById("popupImage").src = document.getElementById("mainImage").src;
+    document.getElementById("fullImagePopup").style.display = "flex";
+}
+
+function closeFull() {
+    document.getElementById("fullImagePopup").style.display = "none";
+}
+
+function openImage(src) {
+    document.getElementById("imgPopup").style.display = "flex";
+    document.getElementById("popupImg").src = src;
+}
+
+function closeImage() {
+    document.getElementById("imgPopup").style.display = "none";
+}
+
+function fsOpenImage(src) {
+    document.getElementById("fs-popup").style.display = "flex";
+    document.getElementById("fs-popup-img").src = src;
+}
+
+function fsCloseImage() {
+    document.getElementById("fs-popup").style.display = "none";
+}
+
+// MOBILE MENU FUNCTIONS
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenuClose.addEventListener('click', function() {
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Close mobile menu when clicking on overlay
+mobileMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === mobileMenuOverlay) {
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// SCROLL ANIMATIONS
+let experienceSection = document.getElementById('experienceSection');
+let heroSection = document.getElementById('hero');
+let featuredProject = document.getElementById('featuredProject');
+let architectureStyle = document.getElementById('architectureStyle');
+let isExperienceRevealed = false;
+
+window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    // Navbar effect
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Hide scroll down when scrolled
+    const scrollDown = document.getElementById('scrollDown');
+    if (window.scrollY > 50) {
+        scrollDown.classList.add('hidden');
+    } else {
+        scrollDown.classList.remove('hidden');
+    }
+    
+    // EXPERIENCE SECTION SLIDE UP ANIMATION
+    const slideStartPoint = windowHeight * 0.2;
+    
+    if (scrollPosition >= slideStartPoint && !isExperienceRevealed) {
+        experienceSection.classList.add('revealed');
+        isExperienceRevealed = true;
+        
+        // Fade out hero elements
+        featuredProject.style.opacity = '0';
+        architectureStyle.style.opacity = '0';
+    }
+    
+    // Hide hero when experience section is fully visible
+    if (scrollPosition >= windowHeight * 0.5) {
+        heroSection.classList.add('hidden');
+    } else {
+        heroSection.classList.remove('hidden');
+        featuredProject.style.opacity = '1';
+        architectureStyle.style.opacity = '0.9';
+    }
+    
+    // Show experience section content when scrolling back up
+    if (scrollPosition < slideStartPoint && isExperienceRevealed) {
+        experienceSection.classList.remove('revealed');
+        isExperienceRevealed = false;
+    }
+    
+    // Smooth reveal animation for experience section content
+    const revealElements = document.querySelectorAll('.smooth-reveal');
+    revealElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+            element.classList.add('revealed');
+        }
+    });
+    
+    // Line by line animation
+    const lines = document.querySelectorAll('.line');
+    lines.forEach((line, index) => {
+        const linePosition = line.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (linePosition < screenPosition) {
+            setTimeout(() => {
+                line.classList.add('visible');
+            }, index * 150);
+        }
+    });
+});
+
+// SCROLL DOWN CLICK - SMOOTH SCROLL
+document.getElementById('scrollDown').addEventListener('click', function() {
+    window.scrollTo({
+        top: window.innerHeight * 0.3,
+        behavior: 'smooth'
+    });
+});
+
+// Initialize on load
+window.addEventListener('load', function() {
+    // Trigger initial scroll event
+    window.dispatchEvent(new Event('scroll'));
+    
+    // Add initial margin to main content
+    document.querySelector('.main-content').style.marginTop = '100vh';
+    
+    // Close mobile menu on window resize to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+</body>
+</html>
