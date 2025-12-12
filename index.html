@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Architecture</title>
+<title>OH Architecture</title>
 <!-- Font Awesome CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -435,6 +435,7 @@ body {
     transform: translateY(0);
     opacity: 1;
 }
+
 
 .exp-container {
     width: 80%;
@@ -903,14 +904,15 @@ body {
     flex: 1;
     min-width: 250px;
 }
-
 .footer-left-img {
-    width: 70%;
-    height: 88px;
-    margin: 70px;
-    border-radius: 6px;
-    object-fit: cover;
+    width: 50%;
+    max-width: 280px; /* jitna chhota chahiye utna kar sakte ho */
+    height: auto;
+    object-fit: contain;
+    display: block;
+       margin-left: 120px;
 }
+
 
 .footer-middle {
     flex: 1;
@@ -1285,13 +1287,67 @@ body {
     height: 100%;
     object-fit: cover;
 }
+    
+@media (max-width: 768px) {
 
-.footer-left-img {
-    max-width: 100%;   /* container ke andar fit ho jaye */
-    height: 210px;      /* aspect ratio maintain rahe */
-    display: block;
+    .hero {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* Image mobile par perfect fit */
+        object-position: center;
+        filter: brightness(65%); /* Image visibility thodi kam */
+    }
+
+    /* White soft overlay */
+    .hero-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.18); /* Light white fade */
+    }
 }
-               
+@media (min-width: 769px) {
+
+    .hero-image-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(65%); /* Image ko halki white visibility deta hai */
+    }
+
+    /* White soft overlay (exact white-visible effect) */
+    .hero-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.18); /* Light white fade */
+    }
+}
 
 </style>
 </head>
@@ -1335,7 +1391,7 @@ body {
 <!-- HERO SECTION -->
 <section class="hero" id="hero">
     <div class="hero-image-container">
-        <img src="img/686dd6b0cd8f85e1c0078336_OH_POOLHOUSE©ANDYMACPHERSON-4 (1)-p-2000.jpg" alt="Architecture project">
+        <img src="img/WhatsApp Image 2025-12-12 at 22.39.40_b63c47dd.jpg" alt="Architecture project">
     </div>
 
     <!-- DESKTOP VERSION -->
@@ -1717,4 +1773,3 @@ video.onended = function () {
 </script>
 </body>
 </html>
-
