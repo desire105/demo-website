@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>36 Is My New 18 | The Journey of Choosing Yourself</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7C4D8B;
+            --primary-dark: #5A2D6E;
+            --primary-light: #9D6BAD;
+            --accent: #E8A798;
+            --accent-dark: #D48977;
+            --light: #FCF7F2;
+            --dark: #2D1B30;
+            --text: #3A3A3A;
+            --text-light: #777777;
+            --gray: #F5F0EB;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --nav-height: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding-top: var(--nav-height);
+        }
+
+        h1, h2, h3, h4, .quote, .chapter-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: var(--nav-height);
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            font-size: 0.9rem;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .mobile-nav.active {
+            height: auto;
+            opacity: 1;
+            visibility: visible;
+            padding: 20px 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav-links li {
+            width: 100%;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            padding: 15px 20px;
+            display: block;
+            transition: var(--transition);
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(124, 77, 139, 0.05);
+            padding-left: 30px;
+        }
+
+        .mobile-nav-links .btn {
+            margin: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(124, 77, 139, 0.95) 0%, rgba(90, 45, 110, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: calc(-1 * var(--nav-height));
+            padding-top: var(--nav-height);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            background: white;
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(360deg); }
+        }
+
+        /* Introduction */
+        .intro {
+            background-color: white;
+        }
+
+        .intro-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-quote {
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 40px;
+            line-height: 1.5;
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .intro-quote::before, .intro-quote::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .intro-quote::before {
+            top: -20px;
+            left: 0;
+        }
+
+        .intro-quote::after {
+            bottom: -40px;
+            right: 0;
+        }
+
+        /* Book Themes */
+        .themes {
+            background-color: var(--gray);
+        }
+
+        .theme-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .theme-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 5px solid var(--accent);
+        }
+
+        .theme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .theme-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(124, 77, 139, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .theme-icon i {
+            font-size: 30px;
+            color: var(--primary);
+        }
+
+        .theme-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Chapters */
+        .chapters-container {
+            position: relative;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .chapter-nav-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .chapter-nav-btn:hover, .chapter-nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .chapter-display {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: var(--shadow);
+            min-height: 600px;
+            position: relative;
+        }
+
+        .chapter-number {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        .chapter-excerpt {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 30px;
+        }
+
+        .chapter-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--primary);
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+            margin: 40px 0;
+        }
+
+        .chapter-highlight {
+            background-color: rgba(232, 167, 152, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Chapter Navigation Buttons - FIXED */
+        .chapter-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        
+        .chapter-navigation-btn {
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .chapter-navigation-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .chapter-navigation-btn.outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .chapter-navigation-btn.outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .chapter-navigation-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .chapter-navigation-btn:disabled:hover {
+            background-color: var(--primary);
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Current Chapter Indicator */
+        .chapter-indicator {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        .chapter-indicator .current {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Testimonial/Quote */
+        .testimonial {
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-quote {
+            font-size: 2.5rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: white;
+        }
+
+        .newsletter-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--light);
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .form-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 77, 139, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-about {
+            max-width: 350px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Chapter Selector */
+        .chapter-selector {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            background-color: white;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .nav-links {
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .testimonial-quote {
+                font-size: 2rem;
+            }
+            
+            .chapter-display {
+                padding: 30px;
+                min-height: 500px;
+            }
+            
+            /* Hide desktop nav links and show mobile toggle */
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-btns .btn:not(.mobile-toggle) {
+                display: none;
+            }
+            
+            .chapter-nav {
+                display: none;
+            }
+            
+            .chapter-selector {
+                display: block;
+            }
+            
+            .chapter-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .chapter-navigation-btn {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .intro-quote {
+                font-size: 1.7rem;
+                padding: 0 20px;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                min-width: 100%;
+            }
+            
+            .newsletter-box {
+                padding: 40px 20px;
+            }
+            
+            .chapter-title {
+                font-size: 2rem;
+            }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            :root {
+                --nav-height: 70px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-feather-alt"></i>
+                36<span>IsMyNew18</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#themes">Themes</a></li>
+                <li><a href="#chapters">Chapters</a></li>
+                <li><a href="#testimonial">Quotes</a></li>
+            </ul>
+            
+            <div class="nav-btns">
+                <a href="#newsletter" class="btn nav-btn">Join Journey</a>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul class="mobile-nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#themes">Book Themes</a></li>
+                <li><a href="#chapters">Chapter Previews</a></li>
+                <li><a href="#testimonial">Powerful Quotes</a></li>
+                <li><a href="#newsletter">Join Journey</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Floating Elements -->
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
+        <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 10%;"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tagline">Before You Begin</div>
+                <h1>36 Is My New 18</h1>
+                <p class="hero-subtitle">What happens when a woman stops living on autopilot and starts choosing herself—without guilt?</p>
+                
+                <div class="hero-btns">
+                    <a href="#chapters" class="btn">Explore Chapters</a>
+                    <a href="#newsletter" class="btn btn-outline">Join the Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="intro section-padding">
+        <div class="container">
+            <div class="intro-inner">
+                <h2 class="section-title">Not A Fitness Story</h2>
+                <p class="section-subtitle">A deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, family roles grow heavier, and self-worth quietly demands attention.</p>
+                
+                <div class="intro-quote">
+                    This book unfolds through raw reflections, silent realisations, social judgement, inner battles, and steady discipline.
+                </div>
+                
+                <p>It speaks to every woman who has felt tired, invisible, confused—or stuck between who she has been and who she knows she can become.</p>
+                
+                <div style="margin-top: 50px;">
+                    <a href="#themes" class="btn">Discover The Themes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Themes -->
+    <section id="themes" class="themes section-padding">
+        <div class="container">
+            <h2 class="section-title">What This Journey Is About</h2>
+            <p class="section-subtitle">This isn't about transformation. It's about coming home to yourself.</p>
+            
+            <div class="theme-cards">
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Choosing Yourself Without Abandoning Family</h3>
+                    <p>Learning to prioritize your needs while maintaining your responsibilities and relationships.</p>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness as Strength, Not Vanity</h3>
+                    <p>Redefining fitness as capability, energy, and longevity—not appearance or comparison.</p>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Mind That Heals Before Body Transforms</h3>
+                    <p>Understanding that true change begins with self-compassion and mental clarity.</p>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Courage to Grow Quietly</h3>
+                    <p>Embracing personal growth without explanation or validation from others.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Preview -->
+    <section id="chapters" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Chapter Previews</h2>
+            <p class="section-subtitle">Step into the 12-chapter journey of self-discovery</p>
+            
+            <div class="chapters-container">
+                <!-- Desktop Navigation -->
+                <div class="chapter-nav">
+                    <button class="chapter-nav-btn active" data-chapter="1">Ch 1: The Noise</button>
+                    <button class="chapter-nav-btn" data-chapter="2">Ch 2: Autopilot</button>
+                    <button class="chapter-nav-btn" data-chapter="3">Ch 3: When 35 Changes</button>
+                    <button class="chapter-nav-btn" data-chapter="4">Ch 4: Choosing Me</button>
+                    <button class="chapter-nav-btn" data-chapter="5">Ch 5: Guilt & Judgement</button>
+                    <button class="chapter-nav-btn" data-chapter="6">Ch 6: Silent Phase</button>
+                    <button class="chapter-nav-btn" data-chapter="7">Ch 7: Mind First</button>
+                    <button class="chapter-nav-btn" data-chapter="8">Ch 8: Fitness Truth</button>
+                    <button class="chapter-nav-btn" data-chapter="9">Ch 9: Discipline</button>
+                    <button class="chapter-nav-btn" data-chapter="10">Ch 10: Strong Home</button>
+                    <button class="chapter-nav-btn" data-chapter="11">Ch 11: Family Lessons</button>
+                    <button class="chapter-nav-btn" data-chapter="12">Ch 12: New 18</button>
+                </div>
+                
+                <!-- Mobile Selector -->
+                <select class="chapter-selector" id="chapterSelector">
+                    <option value="1">Chapter 1: The Noise Before the Choice</option>
+                    <option value="2">Chapter 2: Life on Autopilot</option>
+                    <option value="3">Chapter 3: When 35 Changes Everything</option>
+                    <option value="4">Chapter 4: The Day I Chose Me</option>
+                    <option value="5">Chapter 5: Guilt, Judgement & the 4 Log</option>
+                    <option value="6">Chapter 6: The Silent Phase</option>
+                    <option value="7">Chapter 7: Mind First, Body Follows</option>
+                    <option value="8">Chapter 8: Fitness Is Not Vanity</option>
+                    <option value="9">Chapter 9: Discipline Without Punishment</option>
+                    <option value="10">Chapter 10: A Strong Woman Builds a Strong Home</option>
+                    <option value="11">Chapter 11: What My Husband and Children Taught Me</option>
+                    <option value="12">Chapter 12: 36 Is My New 18</option>
+                </select>
+                
+                <div class="chapter-display">
+                    <!-- Chapter 1 -->
+                    <div class="chapter-content" id="chapter-1">
+                        <div class="chapter-number">Chapter One</div>
+                        <h3 class="chapter-title">The Noise Before the Choice</h3>
+                        <p class="chapter-excerpt">The noise did not come from the outside. It came from within. It was the quiet exhaustion that followed me everywhere—the constant feeling of doing everything right, yet feeling wrong inside. I was present for everyone, available for every role, but absent for myself.</p>
+                        
+                        <div class="chapter-quote">
+                            "My body wasn't failing me. It was trying to lead me back to myself."
+                        </div>
+                        
+                        <p class="chapter-excerpt">My first real realisation came during my postpartum period, after my first pregnancy. My body had changed. My emotions felt unfamiliar. I was healing, yet expected to return to normal—as if nothing had happened.</p>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Realisation:</strong> That realisation didn't arrive with clarity or confidence. It arrived as a quiet ache—an unspoken knowing that something within me was asking for attention. Not loudly. Not urgently. Just patiently.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn" disabled>
+                                <i class="fas fa-home"></i> Home
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">1</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 2 -->
+                    <div class="chapter-content" id="chapter-2" style="display: none;">
+                        <div class="chapter-number">Chapter Two</div>
+                        <h3 class="chapter-title">Life on Autopilot</h3>
+                        <p class="chapter-excerpt">Whether you are a working woman or a housewife, this feeling does not change. The exhaustion feels the same. The detachment feels the same. The quiet question—"Is this it?"—arrives the same way.</p>
+                        
+                        <div class="chapter-quote">
+                            "Safety is not the same as alignment."
+                        </div>
+                        
+                        <p class="chapter-excerpt">We often comfort ourselves with easy explanations. We say housewives have time but don't exercise. We say working women are good at managing time, yet still don't exercise. But the truth is simpler—and harder to accept. Time is not the problem. Intention is. Awareness is. Realisation is.</p>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Insight:</strong> Most women don't live on autopilot because they are careless. They live there because it feels necessary. Because pausing feels irresponsible. Because slowing down feels like failure.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">2</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 3 -->
+                    <div class="chapter-content" id="chapter-3" style="display: none;">
+                        <div class="chapter-number">Chapter Three</div>
+                        <h3 class="chapter-title">When 35 Changes Everything</h3>
+                        <p class="chapter-excerpt">Thirty-five doesn't announce itself loudly. It doesn't arrive with drama or warning signs. It comes quietly. One day you realise your body doesn't respond the way it used to. Recovery takes longer. Sleep feels lighter. Energy becomes selective.</p>
+                        
+                        <div class="chapter-quote">
+                            "Your body will no longer cooperate with neglect. What you ignore now will demand attention later."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Shift:</strong> This is not punishment. This is communication. For the first time, your body is not asking to be pushed harder—it is asking to be understood.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">3</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 4 -->
+                    <div class="chapter-content" id="chapter-4" style="display: none;">
+                        <div class="chapter-number">Chapter Four</div>
+                        <h3 class="chapter-title">The Day I Chose Me</h3>
+                        <p class="chapter-excerpt">Choosing yourself doesn't happen in one bold moment. It happens quietly. It happens when you realise you can't keep living exhausted and calling it normal. When your body feels heavy not because of weight—but because of neglect.</p>
+                        
+                        <div class="chapter-quote">
+                            "I didn't choose perfection. I chose presence."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Decision:</strong> Choosing myself didn't mean choosing against my family. It meant choosing a version of me that could actually sustain them. I learned that self-neglect doesn't make you strong. It makes you resentful.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">4</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 5 -->
+                    <div class="chapter-content" id="chapter-5" style="display: none;">
+                        <div class="chapter-number">Chapter Five</div>
+                        <h3 class="chapter-title">Guilt, Judgement & the 4 Log</h3>
+                        <p class="chapter-excerpt">Nobody prepares you for this part. Choosing yourself sounds inspiring in theory. In real life, it is uncomfortable, lonely, and often misunderstood. The moment you start changing—eating differently, moving differently, saying no more often—people start watching.</p>
+                        
+                        <div class="chapter-quote">
+                            "Everyone is comfortable with you being tired, but not everyone is comfortable with you being disciplined."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Four Voices:</strong> Log kya kahenge. Log kya sochenge. Log judge karenge. Log accept nahi karenge. These four logs test you daily.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">5</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 6 -->
+                    <div class="chapter-content" id="chapter-6" style="display: none;">
+                        <div class="chapter-number">Chapter Six</div>
+                        <h3 class="chapter-title">The Silent Phase</h3>
+                        <p class="chapter-excerpt">This phase doesn't look impressive from the outside. There are no announcements. No big posts. No constant motivation speeches. Life looks… normal. You still wake up early. You still manage the house. You still show up for work, family, children.</p>
+                        
+                        <div class="chapter-quote">
+                            "Real change is quiet. It doesn't scream. It doesn't demand attention. It simply keeps happening."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Truth:</strong> When nothing is pushing you—and you still show up—that's not willpower. That's identity. The silent phase teaches women a hard but freeing truth: consistency is built when no one is watching.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">6</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 7 -->
+                    <div class="chapter-content" id="chapter-7" style="display: none;">
+                        <div class="chapter-number">Chapter Seven</div>
+                        <h3 class="chapter-title">Mind First, Body Follows</h3>
+                        <p class="chapter-excerpt">Before the body changes, there is a war inside the mind. A quiet one. Messy. Confusing. This is the phase no one posts about. You stand in front of the mirror and don't fully recognise yourself. Not because you look bad—but because you feel disconnected.</p>
+                        
+                        <div class="chapter-quote">
+                            "A strong body without a strong mind breaks easily. But a strong mind can rebuild any body."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Realisation:</strong> This chapter is not about fat to fit. It is about chaos to clarity. About learning to hear your own thoughts without fear. When your mind becomes fit, your body stops fighting you.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">7</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 8 -->
+                    <div class="chapter-content" id="chapter-8" style="display: none;">
+                        <div class="chapter-number">Chapter Eight</div>
+                        <h3 class="chapter-title">Fitness Is Not Vanity</h3>
+                        <p class="chapter-excerpt">Somewhere along the way, fitness got misunderstood. It became about size. About abs. About looking a certain way. About proving discipline to the world. And for women after 35, this misunderstanding hurts the most.</p>
+                        
+                        <div class="chapter-quote">
+                            "Fitness is not vanity. Vanity seeks approval. Fitness seeks longevity."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Shift:</strong> At this stage of life, fitness is not about looking good. It's about feeling capable. It's about waking up without stiffness. About having the energy to manage your day. About not feeling trapped inside your own body.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">8</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 9 -->
+                    <div class="chapter-content" id="chapter-9" style="display: none;">
+                        <div class="chapter-number">Chapter Nine</div>
+                        <h3 class="chapter-title">Discipline Without Punishment</h3>
+                        <p class="chapter-excerpt">Most women think discipline has to be harsh. Strict. Unforgiving. All-or-nothing. We believe if we're not pushing hard, we're not doing enough. If we rest, we're lazy. If we ask for help, we're weak.</p>
+                        
+                        <div class="chapter-quote">
+                            "Discipline without punishment feels calm. It feels grounded. It feels kind—but firm."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Approach:</strong> Real discipline is flexible. It adjusts. It listens. It says, "Today, this is enough." You don't need the perfect plan. You need a personal one. One that respects your body's requirements.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">9</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 10 -->
+                    <div class="chapter-content" id="chapter-10" style="display: none;">
+                        <div class="chapter-number">Chapter Ten</div>
+                        <h3 class="chapter-title">A Strong Woman Builds a Strong Home</h3>
+                        <p class="chapter-excerpt">There is a fear most women carry quietly: "If I focus on myself, will my family suffer?" We are taught—directly and indirectly—that strength inside a woman must come at the cost of harmony around her.</p>
+                        
+                        <div class="chapter-quote">
+                            "A strong woman doesn't control her home. She stabilises it."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Realisation:</strong> A woman who is exhausted holds a home together with effort. A woman who is grounded holds it together with presence. When a woman stands strong within herself, her home doesn't need her exhaustion to survive. It rises with her.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">10</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 11 -->
+                    <div class="chapter-content" id="chapter-11" style="display: none;">
+                        <div class="chapter-number">Chapter Eleven</div>
+                        <h3 class="chapter-title">What My Husband and Children Taught Me</h3>
+                        <p class="chapter-excerpt">Some people enter your life as companions. Some enter as supporters. And then there are rare ones who enter as anchors. My husband has been all of that—and more.</p>
+                        
+                        <div class="chapter-quote">
+                            "Love does not demand exhaustion. Support does not require silence."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Lesson:</strong> No woman becomes strong alone. She becomes strong when she is supported, believed in, and allowed to grow without fear. What my husband and children taught me is simple—but life-changing.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn">
+                                Next Chapter <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">11</span> of 12
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 12 -->
+                    <div class="chapter-content" id="chapter-12" style="display: none;">
+                        <div class="chapter-number">Chapter Twelve</div>
+                        <h3 class="chapter-title">36 Is My New 18</h3>
+                        <p class="chapter-excerpt">This is not about age. It never was. When I say 36 is my new 18, I am not trying to go backwards. I am finally arriving forward. At 18, life was about becoming. At 36, life is about choosing. The difference is clarity.</p>
+                        
+                        <div class="chapter-quote">
+                            "36 isn't about going back. It's about finally moving forward."
+                        </div>
+                        
+                        <div class="chapter-highlight">
+                            <p><strong>The Final Realisation:</strong> If you are reading this and standing somewhere between confusion and courage, between guilt and growth, between exhaustion and hope—know this: You are not late. You are not weak. You are not broken. You are waking up.</p>
+                        </div>
+                        
+                        <!-- Chapter Navigation -->
+                        <div class="chapter-navigation">
+                            <button class="chapter-navigation-btn outline prev-chapter-btn">
+                                <i class="fas fa-arrow-left"></i> Previous Chapter
+                            </button>
+                            
+                            <button class="chapter-navigation-btn next-chapter-btn" disabled>
+                                The End <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chapter-indicator">
+                            Chapter <span class="current">12</span> of 12
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial/Quote -->
+    <section id="testimonial" class="testimonial section-padding">
+        <div class="container">
+            <div class="testimonial-quote">
+                "Because it isn't here to motivate you. It is here to sit beside you."
+            </div>
+            <div class="testimonial-author">— 36 Is My New 18</div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="newsletter section-padding">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2>Join The Journey</h2>
+                <p>Subscribe to receive exclusive chapter excerpts, reflections, and insights on choosing yourself after 35. Perfect for women standing between exhaustion and awakening.</p>
+                
+                <form id="newsletter-form">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Name" required>
+                        <input type="email" class="form-input" placeholder="Your Email Address" required>
+                        <button type="submit" class="btn">Subscribe Now</button>
+                    </div>
+                </form>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">No spam. Just honest reflections delivered to your inbox.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">36 Is My New 18</div>
+                    <p>A deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, and self-worth quietly demands attention.</p>
+                    
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-goodreads"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#themes">Book Themes</a></li>
+                        <li><a href="#chapters">Chapter Previews</a></li>
+                        <li><a href="#testimonial">Powerful Quotes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>The Journey</h4>
+                    <ul>
+                        <li><a href="#chapters" data-chapter="1">The Noise Before Choice</a></li>
+                        <li><a href="#chapters" data-chapter="2">Life on Autopilot</a></li>
+                        <li><a href="#chapters" data-chapter="4">Choosing Yourself</a></li>
+                        <li><a href="#chapters" data-chapter="12">36 Is My New 18</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="mailto:hello@36ismynew18.com">hello@36ismynew18.com</a></li>
+                        <li><a href="#">Media Inquiries</a></li>
+                        <li><a href="#">Speaking Engagements</a></li>
+                        <li><a href="#">Book Clubs</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 36 Is My New 18. All rights reserved. | A journey of choosing yourself without guilt.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileNav.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (mobileNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(e) {
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(e.target) && 
+                !mobileToggle.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileNav.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close mobile nav on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Chapter Navigation Logic
+        let currentChapter = 1;
+        const totalChapters = 12;
+
+        // Function to update chapter navigation buttons
+        function updateChapterNavigation() {
+            const prevBtns = document.querySelectorAll('.prev-chapter-btn');
+            const nextBtns = document.querySelectorAll('.next-chapter-btn');
+            const currentIndicators = document.querySelectorAll('.chapter-indicator .current');
+            
+            // Update all indicators
+            currentIndicators.forEach(indicator => {
+                indicator.textContent = currentChapter;
+            });
+            
+            // Update all previous buttons
+            prevBtns.forEach(btn => {
+                if (currentChapter === 1) {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fas fa-home"></i> Home';
+                } else {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-arrow-left"></i> Previous Chapter';
+                }
+            });
+            
+            // Update all next buttons
+            nextBtns.forEach(btn => {
+                if (currentChapter === totalChapters) {
+                    btn.disabled = true;
+                    btn.innerHTML = 'The End <i class="fas fa-heart"></i>';
+                } else {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Next Chapter <i class="fas fa-arrow-right"></i>';
+                }
+            });
+            
+            // Update desktop navigation buttons
+            document.querySelectorAll('.chapter-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (parseInt(btn.getAttribute('data-chapter')) === currentChapter) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update mobile selector
+            document.getElementById('chapterSelector').value = currentChapter;
+        }
+
+        // Function to show specific chapter - FIXED
+        function showChapter(chapterId, preventScroll = false) {
+            currentChapter = parseInt(chapterId);
+            
+            // Hide all chapter contents
+            document.querySelectorAll('.chapter-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Show selected chapter
+            const selectedChapter = document.getElementById(`chapter-${chapterId}`);
+            selectedChapter.style.display = 'block';
+            
+            // Update navigation
+            updateChapterNavigation();
+            
+            // Only scroll if not prevented
+            if (!preventScroll) {
+                // Smooth scroll to top of chapter display section
+                const chapterDisplay = document.querySelector('.chapter-display');
+                chapterDisplay.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+            
+            // Close mobile nav if open
+            if (mobileNav.classList.contains('active')) {
+                mobileNav.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Next Chapter Button - FIXED
+        document.addEventListener('click', function(e) {
+            // Check if next button was clicked
+            if (e.target.closest('.next-chapter-btn') && !e.target.closest('.next-chapter-btn').disabled) {
+                e.preventDefault(); // Prevent default behavior
+                if (currentChapter < totalChapters) {
+                    showChapter(currentChapter + 1);
+                }
+            }
+            
+            // Check if previous button was clicked
+            if (e.target.closest('.prev-chapter-btn') && !e.target.closest('.prev-chapter-btn').disabled) {
+                e.preventDefault(); // Prevent default behavior
+                if (currentChapter > 1) {
+                    showChapter(currentChapter - 1);
+                } else if (currentChapter === 1) {
+                    // Scroll to home if on first chapter
+                    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Desktop Chapter Navigation
+        document.querySelectorAll('.chapter-nav-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const chapterId = this.getAttribute('data-chapter');
+                showChapter(chapterId);
+            });
+        });
+
+        // Mobile Chapter Selector
+        document.getElementById('chapterSelector').addEventListener('change', function() {
+            showChapter(this.value);
+        });
+
+        // Footer chapter links
+        document.querySelectorAll('.footer-links a[data-chapter]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const chapterId = this.getAttribute('data-chapter');
+                showChapter(chapterId);
+            });
+        });
+
+        // Newsletter Form Submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            alert(`Thank you, ${name}! You've subscribed to the journey. The first chapter excerpt will be sent to ${email} shortly.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]:not(.chapter-navigation-btn)').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Keyboard Navigation for Chapters
+        document.addEventListener('keydown', function(e) {
+            // Only apply keyboard navigation when user is not typing in form
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            
+            if (e.key === 'ArrowRight' && currentChapter < totalChapters) {
+                e.preventDefault();
+                showChapter(currentChapter + 1);
+            }
+            
+            if (e.key === 'ArrowLeft' && currentChapter > 1) {
+                e.preventDefault();
+                showChapter(currentChapter - 1);
+            }
+        });
+
+        // Add floating elements dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const hero = document.querySelector('.hero');
+            for(let i = 0; i < 8; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                element.style.width = `${Math.random() * 80 + 40}px`;
+                element.style.height = element.style.width;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.animationDuration = `${Math.random() * 20 + 15}s`;
+                element.style.animationDelay = `${Math.random() * 5}s`;
+                hero.appendChild(element);
+            }
+            
+            // Set initial navbar state
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            }
+            
+            // Show first chapter
+            showChapter(1, true);
+        });
+    </script>
+</body>
+</html>
