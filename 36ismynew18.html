@@ -495,7 +495,7 @@
             border-left: 4px solid var(--accent);
         }
 
-        /* Chapter Navigation Buttons - FIXED */
+        /* Chapter Navigation Buttons */
         .chapter-navigation {
             display: flex;
             justify-content: space-between;
@@ -723,6 +723,36 @@
             display: none;
         }
 
+        /* Chapter Content Styling */
+        .chapter-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .chapter-content p.quote-line {
+            font-style: italic;
+            text-align: center;
+            margin: 25px 0;
+            padding: 0 20px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .chapter-content p.hindi-text {
+            font-style: italic;
+            margin: 15px 0;
+            padding-left: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .chapter-content .section-break {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            margin: 40px 0;
+            width: 100%;
+        }
+
         /* Responsive */
         @media (max-width: 1100px) {
             .nav-links {
@@ -812,6 +842,10 @@
             .nav-container {
                 padding: 0 15px;
             }
+            
+            .chapter-content p {
+                font-size: 1rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -844,15 +878,23 @@
             .logo {
                 font-size: 1.5rem;
             }
+            
+            .chapter-display {
+                padding: 20px;
+            }
         }
+        
         .hero-btns .btn {
-    background: #fff;
-    
-
-
-    color: #000;      /* warna dark rakho warna text gayab hoga */
-    border: 1px solid #000; /* optional but recommended */
-}
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+        
+        .hero-btns .btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
 
     </style>
 </head>
@@ -861,13 +903,12 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-
                 The Fit Mom Edit<span></span>
             </a>
             
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-
+                <li><a href="#themes">Themes</a></li>
                 <li><a href="#chapters">Chapters</a></li>
                 <li><a href="#testimonial">Quotes</a></li>
             </ul>
@@ -884,7 +925,7 @@
         <div class="mobile-nav" id="mobileNav">
             <ul class="mobile-nav-links">
                 <li><a href="#home">Home</a></li>
-
+                <li><a href="#themes">Book Themes</a></li>
                 <li><a href="#chapters">Chapter Previews</a></li>
                 <li><a href="#testimonial">Powerful Quotes</a></li>
                 <li><a href="#newsletter">Join Journey</a></li>
@@ -901,22 +942,20 @@
         
         <div class="container">
             <div class="hero-content">
-
-<h1 style="
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 64px;
-
-  text-transform: uppercase;
-  color: #ffffff;
-  margin: 0;
-">
-  The Chapters I Didn’t Skip
-</h1>
+                <h1 style="
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-size: 64px;
+                    text-transform: uppercase;
+                    color: #ffffff;
+                    margin: 0;
+                ">
+                    The Chapters I Didn't Skip
+                </h1>
                 <p class="hero-subtitle">What happens when a woman stops living on autopilot and starts choosing herself—without guilt?</p>
                 
                 <div class="hero-btns">
                     <a href="#chapters" class="btn">Explore Chapters</a>
-                    <a href="#newsletter" class="btn ">Join the Journey</a>
+                    <a href="#newsletter" class="btn">Join the Journey</a>
                 </div>
             </div>
         </div>
@@ -926,18 +965,26 @@
     <section class="intro section-padding">
         <div class="container">
             <div class="intro-inner">
-                <h2 class="section-title">Not A Fitness Story</h2>
-                <p class="section-subtitle">A deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, family roles grow heavier, and self-worth quietly demands attention.</p>
+                <h2 class="section-title">Before You Begin</h2>
+                <p class="section-subtitle">The Fit Mom Edit is not a fitness story. It is not a promise of transformation.</p>
                 
                 <div class="intro-quote">
                     This book unfolds through raw reflections, silent realisations, social judgement, inner battles, and steady discipline.
                 </div>
                 
+                <p>It is a deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, family roles grow heavier, and self-worth quietly demands attention.</p>
+                
                 <p>It speaks to every woman who has felt tired, invisible, confused—or stuck between who she has been and who she knows she can become.</p>
                 
-                <div style="margin-top: 50px;">
-
-                </div>
+                <p>It is a story about choosing yourself without abandoning your family. About fitness as strength, not vanity. About discipline without punishment. About a mind that heals before a body transforms. And about the courage to grow quietly, without explanation.</p>
+                
+                <p>If you are standing somewhere between exhaustion and awakening, between guilt and growth, this book will feel familiar.</p>
+                
+                <p class="quote-line">Because it isn't here to motivate you.</p>
+                <p class="quote-line">It is here to sit beside you.</p>
+                <p class="quote-line">And remind you—</p>
+                <p class="quote-line">36 isn't about going back.</p>
+                <p class="quote-line">It's about finally moving forward.</p>
             </div>
         </div>
     </section>
@@ -1028,17 +1075,32 @@
                     <div class="chapter-content" id="chapter-1">
                         <div class="chapter-number">Chapter One</div>
                         <h3 class="chapter-title">The Noise Before the Choice</h3>
-                        <p class="chapter-excerpt">The noise did not come from the outside. It came from within. It was the quiet exhaustion that followed me everywhere—the constant feeling of doing everything right, yet feeling wrong inside. I was present for everyone, available for every role, but absent for myself.</p>
                         
-                        <div class="chapter-quote">
-                            "My body wasn't failing me. It was trying to lead me back to myself."
-                        </div>
+                        <p>The noise did not come from the outside.</p>
+                        <p>It came from within.</p>
+                        <p>It was the quiet exhaustion that followed me everywhere—the constant feeling of doing everything right, yet feeling wrong inside. I was present for everyone, available for every role, but absent for myself.</p>
                         
-                        <p class="chapter-excerpt">My first real realisation came during my postpartum period, after my first pregnancy. My body had changed. My emotions felt unfamiliar. I was healing, yet expected to return to normal—as if nothing had happened.</p>
+                        <p>My first real realisation came during my postpartum period, after my first pregnancy. My body had changed. My emotions felt unfamiliar. I was healing, yet expected to return to normal—as if nothing had happened.</p>
                         
-                        <div class="chapter-highlight">
-                            <p><strong>The Realisation:</strong> That realisation didn't arrive with clarity or confidence. It arrived as a quiet ache—an unspoken knowing that something within me was asking for attention. Not loudly. Not urgently. Just patiently.</p>
-                        </div>
+                        <p>Physically, I felt heavy.</p>
+                        <p>Mentally, I felt scattered.</p>
+                        <p>Emotionally, I felt grateful and guilty at the same time.</p>
+                        
+                        <p>I was a daughter, a daughter-in-law, a wife, and now a mother. Roles kept adding.</p>
+                        <p>Expectations kept growing. And somewhere between feeding schedules, sleepless nights, and silent tears, I stopped listening to myself.</p>
+                        
+                        <p>Nobody tells you how loud your thoughts become in those quiet hours. How you start questioning your identity while holding the life you created. How love and loss of self can coexist.</p>
+                        
+                        <p>The noise wasn't dramatic.</p>
+                        <p>It was subtle.</p>
+                        <p>Persistent.</p>
+                        <p>Relentless.</p>
+                        
+                        <p>And yet, my body kept trying to speak to me—through fatigue, through discomfort, through restlessness.</p>
+                        
+                        <p class="quote-line">I didn't understand it then, but now I know: my body wasn't failing me. It was trying to lead me back to myself.</p>
+                        
+                        <p>That realisation didn't arrive with clarity or confidence. It arrived as a quiet ache—an unspoken knowing that something within me was asking for attention. Not loudly. Not urgently. Just patiently. I didn't have answers then, only a feeling that if I continued to ignore this voice, I would keep living—but never fully feel alive. And that was the first time I understood that listening to myself was not selfish… it was necessary.</p>
                         
                         <!-- Chapter Navigation -->
                         <div class="chapter-navigation">
@@ -1060,17 +1122,30 @@
                     <div class="chapter-content" id="chapter-2" style="display: none;">
                         <div class="chapter-number">Chapter Two</div>
                         <h3 class="chapter-title">Life on Autopilot</h3>
-                        <p class="chapter-excerpt">Whether you are a working woman or a housewife, this feeling does not change. The exhaustion feels the same. The detachment feels the same. The quiet question—"Is this it?"—arrives the same way.</p>
                         
-                        <div class="chapter-quote">
-                            "Safety is not the same as alignment."
-                        </div>
+                        <p>Whether you are a working woman or a housewife, this feeling does not change. The exhaustion feels the same. The detachment feels the same. The quiet question—"Is this it?"—arrives the same way.</p>
                         
-                        <p class="chapter-excerpt">We often comfort ourselves with easy explanations. We say housewives have time but don't exercise. We say working women are good at managing time, yet still don't exercise. But the truth is simpler—and harder to accept. Time is not the problem. Intention is. Awareness is. Realisation is.</p>
+                        <p>We often comfort ourselves with easy explanations. We say housewives have time but don't exercise. We say working women are good at managing time, yet still don't exercise. But the truth is simpler—and harder to accept. Time is not the problem. Intention is. Awareness is. Realisation is.</p>
                         
-                        <div class="chapter-highlight">
-                            <p><strong>The Insight:</strong> Most women don't live on autopilot because they are careless. They live there because it feels necessary. Because pausing feels irresponsible. Because slowing down feels like failure.</p>
-                        </div>
+                        <p>That is why the grass always looks greener on the other side. When you are on autopilot, you assume someone else has figured it out better. Someone else has discipline. Someone else has motivation. Someone else has answers.</p>
+                        
+                        <p>What we don't realise is that most of us are moving the same way—waking up, fulfilling roles, meeting expectations, ticking boxes—without ever pausing to ask ourselves how we feel inside our own bodies.</p>
+                        
+                        <p>Autopilot doesn't arrive suddenly. It settles in quietly. You still function. You still smile. You still do what needs to be done. But you stop listening.</p>
+                        
+                        <p>Realisation comes… and then it goes. You try temporary solutions. A gym membership. A promise to start Monday. A short burst of motivation. And then life pulls you back. Responsibilities take over. Fatigue wins.</p>
+                        
+                        <p>And slowly, you return to the same square—just older, more tired, and a little more disconnected than before.</p>
+                        
+                        <p>Years passed like this. And somewhere along the way, I became a mother again—this time, the mother of two. Yet the realisation was still only halfway there. Not because I didn't care. Not because I didn't try. But because I never sat with myself in peace long enough to hear what my body was saying.</p>
+                        
+                        <p>I kept moving. I kept adjusting. I kept surviving. Autopilot felt safe. Familiar. Acceptable.</p>
+                        
+                        <p class="quote-line">But safety is not the same as alignment.</p>
+                        
+                        <p>And deep inside, my body was waiting—not to be fixed, not to be pushed, but simply to be heard.</p>
+                        
+                        <p>Most women don't live on autopilot because they are careless. They live there because it feels necessary. Because pausing feels irresponsible. Because slowing down feels like failure. Between school timings, family needs, work pressure, social expectations, and the constant need to "manage," listening to yourself feels like an extra task you can't afford. So you postpone it. Not once—but every day. Until your body starts carrying conversations your mind refused to have. And that is when autopilot stops being convenience and starts becoming a quiet cost you pay with your health, your energy, and your sense of self.</p>
                         
                         <!-- Chapter Navigation -->
                         <div class="chapter-navigation">
@@ -1092,15 +1167,48 @@
                     <div class="chapter-content" id="chapter-3" style="display: none;">
                         <div class="chapter-number">Chapter Three</div>
                         <h3 class="chapter-title">When 35 Changes Everything</h3>
-                        <p class="chapter-excerpt">Thirty-five doesn't announce itself loudly. It doesn't arrive with drama or warning signs. It comes quietly. One day you realise your body doesn't respond the way it used to. Recovery takes longer. Sleep feels lighter. Energy becomes selective.</p>
                         
-                        <div class="chapter-quote">
-                            "Your body will no longer cooperate with neglect. What you ignore now will demand attention later."
-                        </div>
+                        <p>Thirty-five doesn't announce itself loudly. It doesn't arrive with drama or warning signs. It comes quietly.</p>
                         
-                        <div class="chapter-highlight">
-                            <p><strong>The Shift:</strong> This is not punishment. This is communication. For the first time, your body is not asking to be pushed harder—it is asking to be understood.</p>
-                        </div>
+                        <p>One day you realise your body doesn't respond the way it used to. Recovery takes longer. Sleep feels lighter. Energy becomes selective. What once felt effortless now requires intention.</p>
+                        
+                        <p>At first, you ignore it. You tell yourself it's just tiredness. Just stress. Just a phase. After all, you've handled harder things.</p>
+                        
+                        <p>But slowly, something shifts.</p>
+                        
+                        <p>You start noticing your reflection more—not with vanity, but with curiosity. Your face looks familiar, yet different. Your body carries stories now. Stretch marks, stiffness, softness, strength—all coexisting.</p>
+                        
+                        <p>And then comes the mental weight.</p>
+                        
+                        <p>The invisible load women carry only grows heavier after 35. Responsibilities multiply. Expectations deepen. There is less room to fall apart, yet more reasons to feel overwhelmed.</p>
+                        
+                        <p>You are expected to be mature. Stable. Grateful. So you silence the discomfort.</p>
+                        
+                        <p>But your body doesn't.</p>
+                        
+                        <p>It speaks through hormonal changes, unexplained fatigue, bloating, mood swings, and a quiet loss of motivation. It asks for care—not later, not someday—but now.</p>
+                        
+                        <p>This is where many women feel confused.</p>
+                        
+                        <p>You are not old. But you are no longer untouched by time. And society doesn't prepare you for this middle space.</p>
+                        
+                        <p>You are praised for managing everything. But no one asks how much it is costing you.</p>
+                        
+                        <p>Comparison creeps in. You see women who seem fitter, calmer, more put together. You wonder what they are doing differently. And once again, the grass looks greener.</p>
+                        
+                        <p>But what you don't see is their inner work. Their discipline. Their choices.</p>
+                        
+                        <p class="quote-line">At 35+, the truth becomes unavoidable: your body will no longer cooperate with neglect. What you ignore now will demand attention later.</p>
+                        
+                        <p>This is not punishment. This is communication.</p>
+                        
+                        <p>For the first time, your body is not asking to be pushed harder—it is asking to be understood.</p>
+                        
+                        <p>And somewhere between acceptance and resistance, a quiet thought forms: maybe this is not the beginning of decline… maybe this is the beginning of awareness.</p>
+                        
+                        <p class="quote-line">Because once you see, you can no longer unsee.</p>
+                        
+                        <p>For many women, this phase shows up in ordinary moments—clothes that fit differently, energy that runs out sooner, patience that thins faster than before. It shows up when you realise you need recovery, not just effort. When ignoring your body starts costing more than listening to it. And slowly, you understand that this change is not asking you to fear age—it is asking you to respond to it with respect. Not dramatically. Not urgently. Just honestly.</p>
                         
                         <!-- Chapter Navigation -->
                         <div class="chapter-navigation">
@@ -1122,14 +1230,38 @@
                     <div class="chapter-content" id="chapter-4" style="display: none;">
                         <div class="chapter-number">Chapter Four</div>
                         <h3 class="chapter-title">The Day I Chose Me</h3>
-                        <p class="chapter-excerpt">Choosing yourself doesn't happen in one bold moment. It happens quietly. It happens when you realise you can't keep living exhausted and calling it normal. When your body feels heavy not because of weight—but because of neglect.</p>
                         
-                        <div class="chapter-quote">
-                            "I didn't choose perfection. I chose presence."
-                        </div>
+                        <p>Choosing yourself doesn't happen in one bold moment. It happens quietly.</p>
+                        
+                        <p>It happens when you realise you can't keep living exhausted and calling it normal. When your body feels heavy not because of weight—but because of neglect.</p>
+                        
+                        <p>The day I chose myself wasn't dramatic. There were no declarations. No announcements. Just a simple decision—to stop postponing myself.</p>
+                        
+                        <p class="quote-line">I didn't choose perfection. I chose presence.</p>
+                        <p class="quote-line">I didn't choose extremes. I chose consistency.</p>
+                        
+                        <p>I started listening to my body instead of fighting it. I started respecting my energy instead of draining it. I started showing up—not when everything was perfect—but even when it was inconvenient.</p>
+                        
+                        <p>And with that choice came discomfort.</p>
+                        
+                        <p>Guilt surfaced. Doubt followed. The familiar voice whispered, "Is this selfish?"</p>
+                        
+                        <p>But beneath the noise, something steadier began to grow—self-respect.</p>
+                        
+                        <p>Choosing myself didn't mean choosing against my family. It meant choosing a version of me that could actually sustain them.</p>
+                        
+                        <p>I learned that self-neglect doesn't make you strong. It makes you resentful. And resentment silently leaks into every relationship.</p>
+                        
+                        <p>So I chose differently.</p>
+                        
+                        <p>I chose to eat better—not to shrink, but to support myself. I chose to move—not to punish my body, but to feel capable again. I chose rest—not as weakness, but as recovery. And slowly, the chaos inside me softened.</p>
+                        
+                        <p>I wasn't suddenly confident. I wasn't magically disciplined. But I was consistent. And consistency changed how I saw myself.</p>
+                        
+                        <p>Choosing myself didn't solve everything. But it gave me something I hadn't felt in a long time—clarity.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Decision:</strong> Choosing myself didn't mean choosing against my family. It meant choosing a version of me that could actually sustain them. I learned that self-neglect doesn't make you strong. It makes you resentful.</p>
+                            <p><strong>The Insight:</strong> Choosing yourself often feels heavier than it should—because we are taught to earn rest, justify care, and explain our choices. We wait for permission that never comes. This chapter is not about rebellion; it is about responsibility. The responsibility to stop abandoning yourself quietly. Because when a woman chooses herself with honesty—not guilt—she doesn't take away from her life. She finally stands fully inside it.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1152,14 +1284,49 @@
                     <div class="chapter-content" id="chapter-5" style="display: none;">
                         <div class="chapter-number">Chapter Five</div>
                         <h3 class="chapter-title">Guilt, Judgement & the 4 Log</h3>
-                        <p class="chapter-excerpt">Nobody prepares you for this part. Choosing yourself sounds inspiring in theory. In real life, it is uncomfortable, lonely, and often misunderstood. The moment you start changing—eating differently, moving differently, saying no more often—people start watching.</p>
                         
-                        <div class="chapter-quote">
-                            "Everyone is comfortable with you being tired, but not everyone is comfortable with you being disciplined."
-                        </div>
+                        <p>Nobody prepares you for this part. Choosing yourself sounds inspiring in theory. In real life, it is uncomfortable, lonely, and often misunderstood.</p>
+                        
+                        <p>The moment you start changing—eating differently, moving differently, saying no more often—people start watching. And then come the comments.</p>
+                        
+                        <p class="hindi-text">"Itna time mil kaise jata hai?"</p>
+                        <p class="hindi-text">"Bas apne upar hi dhyan rehta hai."</p>
+                        <p class="hindi-text">"Gym-vym jaa rahi hai… ghar kaun sambhalta hai?"</p>
+                        <p class="hindi-text">"Midlife crisis lag raha hai."</p>
+                        <p class="hindi-text">"Iska pati ko malum hai, yeh kya-kya karti hai yeh age mein?"</p>
+                        <p class="hindi-text">"Pati kuch bolta nahi?"</p>
+                        <p class="hindi-text">"Iski family ne permission di kya?"</p>
+                        <p class="hindi-text">"Bechare bache."</p>
+                        <p class="hindi-text">"Sab maid bharose choda hua hai?"</p>
+                        
+                        <p>Nobody asks how long you were invisible before this. Nobody asks how tired you were. Nobody asks what it took to reach here. They only see the surface.</p>
+                        
+                        <p>And slowly, guilt creeps in.</p>
+                        
+                        <p>You feel guilty for leaving the house for an hour. Guilty for choosing protein over comfort food. Guilty for saying, "I can't today." Guilty for doing something that does not directly serve someone else.</p>
+                        
+                        <p>As women, guilt is our default setting.</p>
+                        
+                        <p>Judgement doesn't always come from strangers. Sometimes it comes from people closest to you. Family. Friends. Relatives. Their concern is disguised as advice. Their curiosity feels like surveillance.</p>
+                        
+                        <p>And then come the four voices:</p>
+                        <p class="hindi-text">Log kya kahenge.</p>
+                        <p class="hindi-text">Log kya sochenge.</p>
+                        <p class="hindi-text">Log judge karenge.</p>
+                        <p class="hindi-text">Log accept nahi karenge.</p>
+                        
+                        <p>These four logs test you daily.</p>
+                        
+                        <p>So you shrink your progress. You downplay your effort. You pretend it's "not that serious."</p>
+                        
+                        <p class="quote-line">Until you realise something brutal: everyone is comfortable with you being tired, but not everyone is comfortable with you being disciplined.</p>
+                        
+                        <p>This phase feels cruel because it strips illusions. Go back to being convenient—or move forward, misunderstood.</p>
+                        
+                        <p>If you stay, the guilt loosens. The noise fades. And self-respect begins to speak louder.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Four Voices:</strong> Log kya kahenge. Log kya sochenge. Log judge karenge. Log accept nahi karenge. These four logs test you daily.</p>
+                            <p><strong>The Realisation:</strong> What makes this phase heavier is that most women are already carrying invisible labour—emotional availability, mental planning, silent adjustments. So when you finally choose something for yourself, the judgement doesn't feel external; it feels personal. You start questioning your intentions. You wonder if you are becoming selfish. But the truth is, guilt appears not because you are doing something wrong—it appears because you are doing something unfamiliar. You are stepping out of a version of yourself that others were comfortable benefiting from. And learning to sit with that discomfort, without shrinking back, is one of the most courageous things a woman can do.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1182,14 +1349,79 @@
                     <div class="chapter-content" id="chapter-6" style="display: none;">
                         <div class="chapter-number">Chapter Six</div>
                         <h3 class="chapter-title">The Silent Phase</h3>
-                        <p class="chapter-excerpt">This phase doesn't look impressive from the outside. There are no announcements. No big posts. No constant motivation speeches. Life looks… normal. You still wake up early. You still manage the house. You still show up for work, family, children.</p>
                         
-                        <div class="chapter-quote">
-                            "Real change is quiet. It doesn't scream. It doesn't demand attention. It simply keeps happening."
-                        </div>
+                        <p>This phase doesn't look impressive from the outside. There are no announcements. No big posts. No constant motivation speeches.</p>
+                        
+                        <p>Life looks… normal.</p>
+                        
+                        <p>You still wake up early. You still manage the house. You still show up for work, family, children.</p>
+                        
+                        <p>But something inside you has changed.</p>
+                        
+                        <p>This is the phase where people stop commenting—not because they understand, but because they've lost interest.</p>
+                        
+                        <p>You're no longer new. No longer dramatic. No longer entertaining to judge.</p>
+                        
+                        <p>And honestly, that hurts a little.</p>
+                        
+                        <p>Because humans are strange like that. We crave noise around our change. Validation. Reaction.</p>
+                        
+                        <p>But now—there is silence.</p>
+                        
+                        <p>No one is clapping. No one is questioning. No one is checking if you're still doing "all that."</p>
+                        
+                        <p>And for the first time, you're left alone with yourself.</p>
+                        
+                        <p>This is where most people slip.</p>
+                        
+                        <p>Because without external pressure or praise, discipline becomes internal. And internal discipline is hard.</p>
+                        
+                        <p>There are days when nothing feels exciting. The routine feels boring. Progress feels slow.</p>
+                        
+                        <p>You don't feel "inspired." You just feel… steady.</p>
+                        
+                        <p>You go for movement even when you don't feel like it. You eat better without announcing it. You rest without explaining yourself.</p>
+                        
+                        <p>There is no rush. No proving. No urgency. Just consistency.</p>
+                        
+                        <p>And consistency is lonely.</p>
+                        
+                        <p>This phase tests you in a different way. Not with judgement—but with monotony.</p>
+                        
+                        <p>You start wondering: Is this enough? Is this even working? Why doesn't this feel dramatic?</p>
+                        
+                        <p class="quote-line">But that's the truth no one talks about. Real change is quiet.</p>
+                        
+                        <p>It doesn't scream. It doesn't demand attention. It simply keeps happening.</p>
+                        
+                        <p>Your body starts responding—not overnight, but honestly. Your mind feels calmer—not lighter, but clearer.</p>
+                        
+                        <p>Your reactions soften. Your patience deepens.</p>
+                        
+                        <p>You're not suddenly perfect. You still have bad days. You still feel tired. You still doubt yourself sometimes.</p>
+                        
+                        <p>But you don't quit anymore.</p>
+                        
+                        <p>Because now, this isn't a phase. This is how you live.</p>
+                        
+                        <p>You've stopped negotiating with yourself. Stopped waiting for motivation. Stopped restarting every Monday.</p>
+                        
+                        <p>This is the phase where you stop trying to impress anyone—including yourself.</p>
+                        
+                        <p>And without realising it, you become trustworthy to yourself.</p>
+                        
+                        <p>That is powerful.</p>
+                        
+                        <p>No one sees it. No one applauds it.</p>
+                        
+                        <p>But this is where everything locks in.</p>
+                        
+                        <p>The silent phase doesn't feel glamorous. But it is the most honest phase of all.</p>
+                        
+                        <p class="quote-line">Because when nothing is pushing you—and you still show up—that's not willpower. That's identity.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Truth:</strong> When nothing is pushing you—and you still show up—that's not willpower. That's identity. The silent phase teaches women a hard but freeing truth: consistency is built when no one is watching.</p>
+                            <p><strong>The Lesson:</strong> The silent phase teaches women a hard but freeing truth: consistency is built when no one is watching. This is where excuses dissolve because there is no audience to perform for. You learn to move through boredom, not escape it. You learn that discipline is not loud motivation—it is quiet reliability. And slowly, your nervous system starts trusting you. You stop betraying yourself with promises you don't keep. This phase reshapes how you relate to effort, patience, and self-worth. It doesn't make you exciting—but it makes you solid. And solidity, in a woman, changes everything.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1212,14 +1444,82 @@
                     <div class="chapter-content" id="chapter-7" style="display: none;">
                         <div class="chapter-number">Chapter Seven</div>
                         <h3 class="chapter-title">Mind First, Body Follows</h3>
-                        <p class="chapter-excerpt">Before the body changes, there is a war inside the mind. A quiet one. Messy. Confusing. This is the phase no one posts about. You stand in front of the mirror and don't fully recognise yourself. Not because you look bad—but because you feel disconnected.</p>
                         
-                        <div class="chapter-quote">
-                            "A strong body without a strong mind breaks easily. But a strong mind can rebuild any body."
-                        </div>
+                        <p>Before the body changes, there is a war inside the mind. A quiet one. Messy. Confusing.</p>
+                        
+                        <p>This is the phase no one posts about.</p>
+                        
+                        <p>You stand in front of the mirror and don't fully recognise yourself. Not because you look bad—but because you feel disconnected.</p>
+                        
+                        <p>You don't know what you want yet. You only know what you don't want anymore.</p>
+                        
+                        <p>You're not lazy. You're not careless. You're tired of fighting yourself every single day.</p>
+                        
+                        <p>Many women think their problem is weight. Fit to fat. Fat to fit.</p>
+                        
+                        <p>But that's not the real struggle.</p>
+                        
+                        <p>The real struggle is this: your mind is exhausted from years of adjustment.</p>
+                        
+                        <p>Adjusting to expectations. Adjusting to roles. Adjusting to guilt. Adjusting to silence.</p>
+                        
+                        <p>You've been strong for everyone—but confused for yourself.</p>
+                        
+                        <p>And in that confusion, you start believing the wrong things.</p>
+                        
+                        <p>"If I become slim, I'll feel confident."</p>
+                        <p>"If I lose weight, everything will settle."</p>
+                        <p>"If I look fit, I'll finally feel okay."</p>
+                        
+                        <p>But plenty of slim women feel lost. Plenty of fit bodies carry anxious minds.</p>
+                        
+                        <p>Because a weak, noisy, doubtful mind will never feel settled—no matter what size the body is.</p>
+                        
+                        <p>This chapter is not about fat to fit. It is about chaos to clarity.</p>
+                        
+                        <p>About learning to hear your own thoughts without fear. About stopping the constant self-criticism. About choosing calm over punishment.</p>
+                        
+                        <p class="quote-line">A strong body without a strong mind breaks easily. But a strong mind can rebuild any body.</p>
+                        
+                        <p>When the mind shifts, your relationship with movement changes.</p>
+                        
+                        <p>You stop exercising to shrink. You start moving to feel alive.</p>
+                        <p>You stop eating to control. You start eating to support.</p>
+                        <p>You stop chasing motivation. You build understanding.</p>
+                        
+                        <p>This is where innocent women struggle the most—because no one taught us this part.</p>
+                        
+                        <p>We were taught to look good. Not to feel grounded.</p>
+                        <p>We were taught discipline as pressure. Not as self-respect.</p>
+                        
+                        <p>So the mind resists. It fears change. It fears consistency. It fears failing again.</p>
+                        
+                        <p>Some days your mind will say:</p>
+                        <p>"Why even try?"</p>
+                        <p>"Nothing changes."</p>
+                        <p>"You'll quit anyway."</p>
+                        
+                        <p>That doesn't mean you are weak. It means your mind is learning a new language.</p>
+                        <p>Patience. Trust. Stability.</p>
+                        
+                        <p>This is where transformation actually begins. Not when the scale moves—but when your thoughts soften.</p>
+                        
+                        <p>When you stop being cruel to yourself. When you stop attaching your worth to appearance.</p>
+                        
+                        <p>A fit body is not a slim body. A fit body is a supported body. A listened-to body. A respected body.</p>
+                        
+                        <p>And that respect starts in the mind.</p>
+                        
+                        <p>When the mind becomes steady, the body follows naturally. Not perfectly. Not quickly. But honestly.</p>
+                        
+                        <p>This chapter is about choosing strength over shrinking. Clarity over confusion. Alignment over appearance.</p>
+                        
+                        <p class="quote-line">Because when your mind becomes fit, your body stops fighting you.</p>
+                        
+                        <p>And for the first time, you're not trying to fix yourself—you're learning to stand with yourself.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Realisation:</strong> This chapter is not about fat to fit. It is about chaos to clarity. About learning to hear your own thoughts without fear. When your mind becomes fit, your body stops fighting you.</p>
+                            <p><strong>The Practical Shift:</strong> This mental shift is deeply practical. It changes how you respond to missed workouts, emotional eating, tired days, and slow progress. Instead of spiralling into self-blame, you pause. You adjust. You continue. A steady mind learns to differentiate between discipline and punishment, effort and exhaustion. This is where you stop abandoning yourself at the first sign of imperfection. You don't become softer—you become wiser. And that wisdom creates a body that no longer feels like an enemy, but a companion you can finally trust.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1242,14 +1542,58 @@
                     <div class="chapter-content" id="chapter-8" style="display: none;">
                         <div class="chapter-number">Chapter Eight</div>
                         <h3 class="chapter-title">Fitness Is Not Vanity</h3>
-                        <p class="chapter-excerpt">Somewhere along the way, fitness got misunderstood. It became about size. About abs. About looking a certain way. About proving discipline to the world. And for women after 35, this misunderstanding hurts the most.</p>
                         
-                        <div class="chapter-quote">
-                            "Fitness is not vanity. Vanity seeks approval. Fitness seeks longevity."
-                        </div>
+                        <p>Somewhere along the way, fitness got misunderstood. It became about size. About abs. About looking a certain way. About proving discipline to the world. And for women after 35, this misunderstanding hurts the most.</p>
+                        
+                        <p>Because when you say you're focusing on fitness, people assume vanity. They assume insecurity. They assume you're trying to look young.</p>
+                        
+                        <p>But the truth is very different.</p>
+                        
+                        <p>At this stage of life, fitness is not about looking good. It's about feeling capable. It's about waking up without stiffness. About having the energy to manage your day. About not feeling trapped inside your own body.</p>
+                        
+                        <p>After 35, your body doesn't need punishment. It needs partnership.</p>
+                        
+                        <p>You are no longer trying to impress anyone. You are trying to support yourself.</p>
+                        
+                        <p>Fitness becomes less about mirrors and more about mornings. Less about clothes and more about confidence in your own strength.</p>
+                        
+                        <p class="quote-line">You don't work out to shrink your body. You move so your body doesn't shrink your life.</p>
+                        
+                        <p>This is the age where health stops being theoretical. You start seeing real consequences—lower back pain, joint issues, hormonal imbalances, low energy, mood fluctuations.</p>
+                        
+                        <p>Ignoring your body now doesn't make you selfless. It makes life harder later.</p>
+                        
+                        <p>Still, women hesitate. Because fitness feels selfish. Because time feels limited. Because society keeps asking, "Is this really necessary?"</p>
+                        
+                        <p>Yes. It is.</p>
+                        
+                        <p>Not because you want to look fit—but because you want to live fit.</p>
+                        
+                        <p>A fit body means you can bend without fear. You can lift without strain. You can walk without exhaustion. You can age without resentment.</p>
+                        
+                        <p>Fitness after 35 is not a luxury. It is maintenance.</p>
+                        <p>Just like sleep. Just like nutrition. Just like emotional boundaries.</p>
+                        
+                        <p>And here's the part no one says clearly: you don't owe anyone an explanation for taking care of your body.</p>
+                        
+                        <p>Your body carries you through every role you play—mother, wife, daughter, daughter-in-law, professional, caregiver.</p>
+                        
+                        <p>Yet it is the only one we feel guilty for prioritising.</p>
+                        
+                        <p>That needs to change.</p>
+                        
+                        <p class="quote-line">Fitness is not vanity. Vanity seeks approval. Fitness seeks longevity. Vanity wants attention. Fitness wants strength.</p>
+                        
+                        <p>And strength, after 35, is freedom.</p>
+                        
+                        <p>Freedom to live without fear of your own body. Freedom to trust yourself physically. Freedom to grow older without feeling helpless.</p>
+                        
+                        <p>You don't need a perfect body. You need a reliable one.</p>
+                        
+                        <p>And choosing that—day after day—quietly, consistently—is not obsession. It is wisdom.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Shift:</strong> At this stage of life, fitness is not about looking good. It's about feeling capable. It's about waking up without stiffness. About having the energy to manage your day. About not feeling trapped inside your own body.</p>
+                            <p><strong>The Real-World View:</strong> For many women, fitness becomes real when everyday life starts feeling heavier—when climbing stairs leaves you breathless, when tying shoelaces strains your back, when fatigue shows up before the day even begins. It's not about selfies or gym clothes; it's about carrying grocery bags without pain, playing with children without exhaustion, travelling without fear of falling sick. These are not dramatic goals, but they are deeply human ones. Fitness, here, becomes the ability to live independently, confidently, and without constant physical compromise. And that shift—from appearance to ability—is where true empowerment begins.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1272,14 +1616,60 @@
                     <div class="chapter-content" id="chapter-9" style="display: none;">
                         <div class="chapter-number">Chapter Nine</div>
                         <h3 class="chapter-title">Discipline Without Punishment</h3>
-                        <p class="chapter-excerpt">Most women think discipline has to be harsh. Strict. Unforgiving. All-or-nothing. We believe if we're not pushing hard, we're not doing enough. If we rest, we're lazy. If we ask for help, we're weak.</p>
                         
-                        <div class="chapter-quote">
-                            "Discipline without punishment feels calm. It feels grounded. It feels kind—but firm."
-                        </div>
+                        <p>Most women think discipline has to be harsh. Strict. Unforgiving. All-or-nothing.</p>
+                        
+                        <p>We believe if we're not pushing hard, we're not doing enough. If we rest, we're lazy. If we ask for help, we're weak.</p>
+                        
+                        <p>But after 35, punishment stops working.</p>
+                        
+                        <p>Your body doesn't respond to pressure the way it once did. And neither does your mind.</p>
+                        
+                        <p>This is where many women get stuck—trying to force discipline the way they did in their twenties, and then blaming themselves when it doesn't last.</p>
+                        
+                        <p>But discipline is not meant to hurt you. It is meant to support you.</p>
+                        
+                        <p>And support sometimes means asking for help.</p>
+                        
+                        <p>You are allowed to seek guidance. You are allowed to learn. You are allowed to not know everything.</p>
+                        
+                        <p>You can take help from trainers. From group classes. From online platforms. From YouTube videos. From books. From conversations.</p>
+                        
+                        <p>You can take inspiration from anyone you admire—your grandmother who stayed active her whole life, a neighbour who walks every morning, a woman at the gym who moves with confidence, or even a celebrity whose consistency inspires you.</p>
+                        
+                        <p>Motivation does not have a hierarchy. Inspiration is inspiration.</p>
+                        
+                        <p>What matters is how you use it.</p>
+                        
+                        <p>The mistake many women make is copying blindly—following trends, chasing routines that don't suit their bodies, trying to keep up instead of tuning in.</p>
+                        
+                        <p>Discipline becomes punishment when it ignores your reality—your age, your hormones, your energy, your lifestyle, your emotional state.</p>
+                        
+                        <p>Real discipline is flexible. It adjusts. It listens.</p>
+                        
+                        <p>It says, "Today, this is enough."</p>
+                        <p>"Today, I'll go slower."</p>
+                        <p>"Today, I'll show up differently—but I'll still show up."</p>
+                        
+                        <p>You don't need the perfect plan. You need a personal one.</p>
+                        <p>One that respects your body's requirements. One that allows growth without fear. One that feels sustainable, not suffocating.</p>
+                        
+                        <p>You are allowed to try. You are allowed to fail. You are allowed to restart—without drama or shame.</p>
+                        
+                        <p>Choose movement you can return to. Food you can live with. Habits that feel realistic.</p>
+                        
+                        <p>This is not about impressing anyone. It is about building something you can maintain.</p>
+                        
+                        <p class="quote-line">Discipline without punishment feels calm. It feels grounded. It feels kind—but firm.</p>
+                        
+                        <p>It doesn't scream. It doesn't threaten. It doesn't guilt you into obedience.</p>
+                        
+                        <p>It walks with you.</p>
+                        
+                        <p>And when discipline comes from self-respect, not fear—it stops being temporary. It becomes a way of life.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Approach:</strong> Real discipline is flexible. It adjusts. It listens. It says, "Today, this is enough." You don't need the perfect plan. You need a personal one. One that respects your body's requirements.</p>
+                            <p><strong>In Practice:</strong> In real life, discipline shows up on tired weekdays, not perfect mornings. It shows up when you choose a short walk instead of skipping movement altogether, when you eat simply instead of perfectly, when you rest without guilt instead of forcing productivity. This kind of discipline is deeply practical—it allows space for festivals, family emergencies, emotional days, and slow weeks. It doesn't collapse at the first disruption. And for women, this matters because life is rarely predictable. Sustainable discipline understands that consistency is built not by intensity, but by compassion that keeps you returning.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1302,14 +1692,59 @@
                     <div class="chapter-content" id="chapter-10" style="display: none;">
                         <div class="chapter-number">Chapter Ten</div>
                         <h3 class="chapter-title">A Strong Woman Builds a Strong Home</h3>
-                        <p class="chapter-excerpt">There is a fear most women carry quietly: "If I focus on myself, will my family suffer?" We are taught—directly and indirectly—that strength inside a woman must come at the cost of harmony around her.</p>
                         
-                        <div class="chapter-quote">
-                            "A strong woman doesn't control her home. She stabilises it."
-                        </div>
+                        <p>There is a fear most women carry quietly: "If I focus on myself, will my family suffer?"</p>
+                        
+                        <p>We are taught—directly and indirectly—that strength inside a woman must come at the cost of harmony around her. That if she grows, something else will weaken.</p>
+                        
+                        <p>But what no one tells you is this: a woman who is exhausted holds a home together with effort. A woman who is grounded holds it together with presence.</p>
+                        
+                        <p>When I started choosing myself consistently—not occasionally, not dramatically—something unexpected happened.</p>
+                        
+                        <p>The house didn't fall apart. The children didn't suffer. The family didn't feel neglected.</p>
+                        
+                        <p>Instead, the atmosphere changed.</p>
+                        
+                        <p>I was calmer. Less reactive. More patient—not because I was trying harder, but because I had more to give.</p>
+                        
+                        <p>When your body feels supported, your mind stops snapping. When your mind feels steady, your relationships soften.</p>
+                        
+                        <p>I wasn't rushing through conversations anymore. I wasn't carrying resentment disguised as sacrifice. I wasn't constantly tired and calling it "normal."</p>
+                        
+                        <p>And slowly, my home felt different.</p>
+                        <p>Not louder. Not stricter.</p>
+                        <p class="quote-line">Stronger.</p>
+                        
+                        <p>Children don't learn from lectures. They learn from energy.</p>
+                        
+                        <p>They notice when you respect your body. They notice when you keep promises to yourself. They notice when discipline exists without anger.</p>
+                        
+                        <p>They learn that taking care of yourself is not selfish—it is normal.</p>
+                        
+                        <p>Your spouse notices too. Not through words, but through consistency. Through stability. Through the quiet confidence that replaces constant fatigue.</p>
+                        
+                        <p>And then comes the irony.</p>
+                        
+                        <p>The same four log who once judged you start asking different questions.</p>
+                        
+                        <p class="hindi-text">"Kaise manage kar leti ho sab?"</p>
+                        <p class="hindi-text">"Sab kuch itna balanced kaise lagta hai?"</p>
+                        <p class="hindi-text">"Ghar bhi, health bhi… sab perfect lag raha hai."</p>
+                        
+                        <p>They don't realise—nothing became perfect. It became aligned.</p>
+                        
+                        <p>You didn't add more effort. You removed inner chaos.</p>
+                        
+                        <p class="quote-line">A strong woman doesn't control her home. She stabilises it.</p>
+                        
+                        <p>Not by doing more—but by being better with herself first.</p>
+                        
+                        <p>This is not about becoming an ideal woman. It's about becoming a healthy one.</p>
+                        
+                        <p class="quote-line">Because when a woman stands strong within herself, her home doesn't need her exhaustion to survive. It rises with her.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Realisation:</strong> A woman who is exhausted holds a home together with effort. A woman who is grounded holds it together with presence. When a woman stands strong within herself, her home doesn't need her exhaustion to survive. It rises with her.</p>
+                            <p><strong>The Everyday Reality:</strong> In everyday life, this strength shows up quietly—in calmer mornings, fewer arguments, more patience during chaos. When a mother eats well, moves regularly, and rests without guilt, the household rhythm shifts naturally. Meals become lighter, emotions steadier, and boundaries clearer. Children learn balance not through instruction, but observation. They see that caring for yourself is part of caring for others. And over time, the home stops depending on a woman's sacrifice and starts thriving on her stability. That is the real legacy of strength.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1332,14 +1767,56 @@
                     <div class="chapter-content" id="chapter-11" style="display: none;">
                         <div class="chapter-number">Chapter Eleven</div>
                         <h3 class="chapter-title">What My Husband and Children Taught Me</h3>
-                        <p class="chapter-excerpt">Some people enter your life as companions. Some enter as supporters. And then there are rare ones who enter as anchors. My husband has been all of that—and more.</p>
                         
-                        <div class="chapter-quote">
-                            "Love does not demand exhaustion. Support does not require silence."
-                        </div>
+                        <p>Some people enter your life as companions. Some enter as supporters. And then there are rare ones who enter as anchors.</p>
+                        
+                        <p>My husband has been all of that—and more.</p>
+                        
+                        <p>He has been a parent to me when I needed grounding. A best friend when I needed honesty. A partner when I needed strength. A person whose way of living can inspire anyone—and yet, it took me a long time to take inspiration from him.</p>
+                        
+                        <p>Not because he wasn't showing it. But because I wasn't ready to see it.</p>
+                        
+                        <p>He believed in me when no one else did. He supported me when my ideas felt unclear to others. He stood beside me when my body was at its worst and loved me without trying to "fix" me.</p>
+                        
+                        <p>When I doubted my thoughts, he trusted my mind. When I questioned my direction, he never questioned my potential.</p>
+                        
+                        <p>There were moments when I couldn't explain myself—when even I didn't fully understand what I was becoming.</p>
+                        
+                        <p>But he never asked me to shrink. Never rushed my process. Never made my confusion feel like a flaw.</p>
+                        
+                        <p>Sometimes I wonder how he carried so much faith so quietly. How he could see clarity where others saw chaos. How he could be so sure when I was still searching.</p>
+                        
+                        <p>I don't think gratitude is enough for this kind of presence. But it is all I have.</p>
+                        
+                        <p>I thank God every day for giving me a man who didn't just walk with me—but stood for me.</p>
+                        
+                        <p>And then there are my children.</p>
+                        
+                        <p>They didn't teach me through words. They taught me through observation.</p>
+                        
+                        <p>They taught me that consistency matters more than perfection. That calm is more powerful than control. That the way I treat myself becomes the way they learn to treat their own bodies and minds.</p>
+                        
+                        <p>They don't need a tired mother. They need a present one.</p>
+                        <p>They don't need sacrifice soaked in resentment. They need strength rooted in balance.</p>
+                        
+                        <p>Through them, I learned that self-care is not separate from family—it is the foundation of it.</p>
+                        
+                        <p>This chapter is not about praise. It is about acknowledgement.</p>
+                        
+                        <p>Because no woman becomes strong alone.</p>
+                        <p>She becomes strong when she is supported, believed in, and allowed to grow without fear.</p>
+                        
+                        <p class="quote-line">What my husband and children taught me is simple—but life-changing:</p>
+                        <p class="quote-line">Love does not demand exhaustion.</p>
+                        <p class="quote-line">Support does not require silence.</p>
+                        <p class="quote-line">And belief, when given at the right time, can change the entire direction of a life.</p>
+                        
+                        <p>I am still becoming. Still learning. Still choosing.</p>
+                        <p>But I am not doing it alone.</p>
+                        <p class="quote-line">And that makes all the difference.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Lesson:</strong> No woman becomes strong alone. She becomes strong when she is supported, believed in, and allowed to grow without fear. What my husband and children taught me is simple—but life-changing.</p>
+                            <p><strong>The Nature of Support:</strong> For many women, support looks different from what they imagined. It doesn't always come as loud encouragement or constant advice. Sometimes, it comes as quiet faith—someone holding space while you figure yourself out. A partner who doesn't rush your healing. Children who reflect your growth back to you without judgement. In real life, this kind of support becomes the soil in which a woman finally feels safe enough to grow. And when she grows from safety instead of pressure, her strength becomes steady, not fragile. That steadiness ripples outward—into her relationships, her parenting, and the way she shows up for the world.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1362,14 +1839,62 @@
                     <div class="chapter-content" id="chapter-12" style="display: none;">
                         <div class="chapter-number">Chapter Twelve</div>
                         <h3 class="chapter-title">The Fit Mom Edit</h3>
-                        <p class="chapter-excerpt">This is not about age. It never was. When I say 36 is my new 18, I am not trying to go backwards. I am finally arriving forward. At 18, life was about becoming. At 36, life is about choosing. The difference is clarity.</p>
                         
-                        <div class="chapter-quote">
-                            "36 isn't about going back. It's about finally moving forward."
-                        </div>
+                        <p>This is not about age. It never was.</p>
+                        
+                        <p>When I say The Fit Mom Edit, I am not trying to go backwards. I am finally arriving forward.</p>
+                        
+                        <p>At 18, life was about becoming. At 36, life is about choosing.</p>
+                        <p>The difference is clarity.</p>
+                        
+                        <p>At 18, I followed expectations. At 36, I follow alignment.</p>
+                        <p>At 18, I didn't know my limits. At 36, I respect them.</p>
+                        <p>At 18, I borrowed confidence. At 36, I've built it.</p>
+                        
+                        <p>This version of me is not louder. Not faster. Not desperate to prove anything.</p>
+                        <p>She is calmer. More intentional. More honest.</p>
+                        
+                        <p>She knows when to rest. She knows when to push. She knows when to walk away. She knows when to stay.</p>
+                        
+                        <p>This chapter is not a finish line. It's a flow.</p>
+                        
+                        <p>I no longer measure life in milestones alone—weight lost, habits built, chapters completed.</p>
+                        
+                        <p>I measure it in how I feel inside my body. How I respond instead of react. How I show up without resentment. How I stand without apology.</p>
+                        
+                        <p>Choosing myself did not make me selfish. It made me available in a healthier way.</p>
+                        <p>Fitness didn't make me obsessed. It made me capable.</p>
+                        <p>Discipline didn't cage me. It gave me freedom.</p>
+                        <p>And family didn't get less of me—they got a steadier version of me.</p>
+                        
+                        <p>This is what growth after 35 looks like.</p>
+                        <p>Not perfection. Not constant motivation. Not a flawless routine.</p>
+                        <p>But awareness. Consistency. Self-trust.</p>
+                        
+                        <p>I no longer wait for permission. I no longer wait for validation. I no longer wait for the "right time."</p>
+                        
+                        <p>Because now I know—</p>
+                        <p>the body doesn't ask for urgency. It asks for respect.</p>
+                        <p>the mind doesn't ask for pressure. It asks for patience.</p>
+                        <p>and life doesn't ask for sacrifice at the cost of self. It asks for balance.</p>
+                        
+                        <p class="quote-line">If you are reading this and standing somewhere between confusion and courage, between guilt and growth, between exhaustion and hope—know this:</p>
+                        
+                        <p class="quote-line">You are not late.</p>
+                        <p class="quote-line">You are not weak.</p>
+                        <p class="quote-line">You are not broken.</p>
+                        <p class="quote-line">You are waking up.</p>
+                        
+                        <p>And waking up is never loud.</p>
+                        <p>It is quiet. Personal. Uncomfortable. Brave.</p>
+                        
+                        <p class="quote-line">36 is not my new 18 because I am younger.</p>
+                        <p class="quote-line">The Fit Mom Edit for the first time, I am living with intention.</p>
+                        
+                        <p>And that—that is the youngest I have ever felt.</p>
                         
                         <div class="chapter-highlight">
-                            <p><strong>The Final Realisation:</strong> If you are reading this and standing somewhere between confusion and courage, between guilt and growth, between exhaustion and hope—know this: You are not late. You are not weak. You are not broken. You are waking up.</p>
+                            <p><strong>The Final Realisation:</strong> This realisation comes after years of postponing themselves—waiting for the "right phase," the "settled life," the "easier time." But life rarely offers clean pauses. What changes instead is awareness. You begin to understand that intention matters more than age, and choice matters more than circumstance. This chapter speaks to women who are done waiting—to those who are ready to live with presence instead of postponement. Because when a woman starts choosing consciously, she doesn't rewind her life. She finally steps fully into it.</p>
                         </div>
                         
                         <!-- Chapter Navigation -->
@@ -1442,7 +1967,7 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-
+                        <li><a href="#themes">Book Themes</a></li>
                         <li><a href="#chapters">Chapter Previews</a></li>
                         <li><a href="#testimonial">Powerful Quotes</a></li>
                     </ul>
@@ -1586,7 +2111,7 @@
             document.getElementById('chapterSelector').value = currentChapter;
         }
 
-        // Function to show specific chapter - FIXED
+        // Function to show specific chapter
         function showChapter(chapterId, preventScroll = false) {
             currentChapter = parseInt(chapterId);
             
@@ -1621,11 +2146,11 @@
             }
         }
 
-        // Next Chapter Button - FIXED
+        // Next Chapter Button
         document.addEventListener('click', function(e) {
             // Check if next button was clicked
             if (e.target.closest('.next-chapter-btn') && !e.target.closest('.next-chapter-btn').disabled) {
-                e.preventDefault(); // Prevent default behavior
+                e.preventDefault();
                 if (currentChapter < totalChapters) {
                     showChapter(currentChapter + 1);
                 }
@@ -1633,7 +2158,7 @@
             
             // Check if previous button was clicked
             if (e.target.closest('.prev-chapter-btn') && !e.target.closest('.prev-chapter-btn').disabled) {
-                e.preventDefault(); // Prevent default behavior
+                e.preventDefault();
                 if (currentChapter > 1) {
                     showChapter(currentChapter - 1);
                 } else if (currentChapter === 1) {
@@ -1739,5 +2264,3 @@
     </script>
 </body>
 </html>
-
-
