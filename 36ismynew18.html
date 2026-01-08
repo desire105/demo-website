@@ -1,2266 +1,1795 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Fit Mom Edit | The Journey of Choosing Yourself</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #7C4D8B;
-            --primary-dark: #5A2D6E;
-            --primary-light: #9D6BAD;
-            --accent: #E8A798;
-            --accent-dark: #D48977;
-            --light: #FCF7F2;
-            --dark: #2D1B30;
-            --text: #3A3A3A;
-            --text-light: #777777;
-            --gray: #F5F0EB;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
-            --nav-height: 80px;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            background-color: var(--light);
-            line-height: 1.7;
-            overflow-x: hidden;
-            padding-top: var(--nav-height);
-        }
-
-        h1, h2, h3, h4, .quote, .chapter-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            line-height: 1.3;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 36px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            height: var(--nav-height);
-        }
-
-        .navbar.scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            z-index: 1001;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .logo i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 1rem;
-            transition: var(--transition);
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btns {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .nav-btn {
-            padding: 10px 24px;
-            font-size: 0.9rem;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--primary);
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        /* Mobile Navigation */
-        .mobile-nav {
-            position: fixed;
-            top: var(--nav-height);
-            left: 0;
-            width: 100%;
-            height: 0;
-            background-color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: var(--transition);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .mobile-nav.active {
-            height: auto;
-            opacity: 1;
-            visibility: visible;
-            padding: 20px 0;
-        }
-
-        .mobile-nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .mobile-nav-links li {
-            width: 100%;
-        }
-
-        .mobile-nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-size: 1.1rem;
-            padding: 15px 20px;
-            display: block;
-            transition: var(--transition);
-            border-bottom: 1px solid #eee;
-        }
-
-        .mobile-nav-links a:hover {
-            color: var(--primary);
-            background-color: rgba(124, 77, 139, 0.05);
-            padding-left: 30px;
-        }
-
-        .mobile-nav-links .btn {
-            margin: 20px;
-            display: block;
-            text-align: center;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(124, 77, 139, 0.95) 0%, rgba(90, 45, 110, 0.95) 100%), 
-                        url('https://images.unsplash.com/photo-1530092285049-1c42085fd395?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: calc(-1 * var(--nav-height));
-            padding-top: var(--nav-height);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-tagline {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .floating-element {
-            position: absolute;
-            opacity: 0.1;
-            background: white;
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-1000px) rotate(360deg); }
-        }
-
-        /* Introduction */
-        .intro {
-            background-color: white;
-        }
-
-        .intro-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 50px;
-            text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .intro-quote {
-            font-size: 2rem;
-            font-style: italic;
-            color: var(--primary);
-            margin-bottom: 40px;
-            line-height: 1.5;
-            position: relative;
-            padding: 0 40px;
-        }
-
-        .intro-quote::before, .intro-quote::after {
-            content: '"';
-            font-size: 4rem;
-            color: var(--accent);
-            position: absolute;
-            opacity: 0.3;
-        }
-
-        .intro-quote::before {
-            top: -20px;
-            left: 0;
-        }
-
-        .intro-quote::after {
-            bottom: -40px;
-            right: 0;
-        }
-
-        /* Book Themes */
-        .themes {
-            background-color: var(--gray);
-        }
-
-        .theme-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .theme-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border-top: 5px solid var(--accent);
-        }
-
-        .theme-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .theme-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(124, 77, 139, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-        }
-
-        .theme-icon i {
-            font-size: 30px;
-            color: var(--primary);
-        }
-
-        .theme-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        /* Chapters */
-        .chapters-container {
-            position: relative;
-        }
-
-        .chapter-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .chapter-nav-btn {
-            padding: 10px 20px;
-            background-color: white;
-            border: 1px solid #eee;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .chapter-nav-btn:hover, .chapter-nav-btn.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .chapter-display {
-            background-color: white;
-            border-radius: 15px;
-            padding: 50px;
-            box-shadow: var(--shadow);
-            min-height: 600px;
-            position: relative;
-        }
-
-        .chapter-number {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .chapter-title {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 30px;
-        }
-
-        .chapter-excerpt {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text);
-            margin-bottom: 30px;
-        }
-
-        .chapter-quote {
-            font-size: 1.3rem;
-            font-style: italic;
-            color: var(--primary);
-            border-left: 3px solid var(--accent);
-            padding-left: 20px;
-            margin: 40px 0;
-        }
-
-        .chapter-highlight {
-            background-color: rgba(232, 167, 152, 0.1);
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            border-left: 4px solid var(--accent);
-        }
-
-        /* Chapter Navigation Buttons */
-        .chapter-navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-        
-        .chapter-navigation-btn {
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-        
-        .chapter-navigation-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .chapter-navigation-btn.outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .chapter-navigation-btn.outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .chapter-navigation-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-        
-        .chapter-navigation-btn:disabled:hover {
-            background-color: var(--primary);
-            transform: none !important;
-            box-shadow: none !important;
-        }
-        
-        /* Current Chapter Indicator */
-        .chapter-indicator {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 15px;
-            font-weight: 500;
-        }
-        
-        .chapter-indicator .current {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* Testimonial/Quote */
-        .testimonial {
-            background: linear-gradient(to right, var(--primary-dark), var(--primary));
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-quote {
-            font-size: 2.5rem;
-            font-style: italic;
-            margin-bottom: 30px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.4;
-        }
-
-        .testimonial-author {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Newsletter */
-        .newsletter {
-            background-color: white;
-        }
-
-        .newsletter-box {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: var(--light);
-            padding: 60px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-
-        .form-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .form-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 18px 25px;
-            border: 1px solid #ddd;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(124, 77, 139, 0.1);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 80px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-about {
-            max-width: 350px;
-        }
-
-        .footer-links h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        /* Chapter Selector */
-        .chapter-selector {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            background-color: white;
-            display: none;
-        }
-
-        /* Chapter Content Styling */
-        .chapter-content p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        .chapter-content p.quote-line {
-            font-style: italic;
-            text-align: center;
-            margin: 25px 0;
-            padding: 0 20px;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-        
-        .chapter-content p.hindi-text {
-            font-style: italic;
-            margin: 15px 0;
-            padding-left: 20px;
-            color: var(--primary-dark);
-        }
-        
-        .chapter-content .section-break {
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--accent), transparent);
-            margin: 40px 0;
-            width: 100%;
-        }
-
-        /* Responsive */
-        @media (max-width: 1100px) {
-            .nav-links {
-                gap: 25px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-            
-            .testimonial-quote {
-                font-size: 2rem;
-            }
-            
-            .chapter-display {
-                padding: 30px;
-                min-height: 500px;
-            }
-            
-            /* Hide desktop nav links and show mobile toggle */
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .nav-btns .btn:not(.mobile-toggle) {
-                display: none;
-            }
-            
-            .chapter-nav {
-                display: none;
-            }
-            
-            .chapter-selector {
-                display: block;
-            }
-            
-            .chapter-navigation {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .chapter-navigation-btn {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .intro-quote {
-                font-size: 1.7rem;
-                padding: 0 20px;
-            }
-            
-            .form-group {
-                flex-direction: column;
-            }
-            
-            .form-input {
-                min-width: 100%;
-            }
-            
-            .newsletter-box {
-                padding: 40px 20px;
-            }
-            
-            .chapter-title {
-                font-size: 2rem;
-            }
-            
-            .nav-container {
-                padding: 0 15px;
-            }
-            
-            .chapter-content p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .section-padding {
-                padding: 70px 0;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-            
-            :root {
-                --nav-height: 70px;
-            }
-            
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .chapter-display {
-                padding: 20px;
-            }
-        }
-        
-        .hero-btns .btn {
-            background: #fff;
-            color: #000;
-            border: 1px solid #000;
-        }
-        
-        .hero-btns .btn:hover {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OH Architecture </title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', Helvetica, sans-serif;
+}
+
+:root {
+    --primary-color: #B8947E;
+    --secondary-color: #254224;
+    --dark-color: #1A1A1A;
+    --light-color: #F8F5F2;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --bg-color: #F2F0E4;
+}
+
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    background-color: var(--bg-color);
+}
+
+/* NAVBAR STYLES */
+.navbar {
+    width: 100%;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(242, 240, 228, 0.98);
+    padding: 15px 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled .logo {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .contact-btn {
+    background: var(--primary-color);
+    border: none;
+}
+
+.logo img {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.slot-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+    height: 26px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.6, 0.01, 0.3, 1);
+}
+
+.nav-text span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 26px;
+    line-height: 26px;
+    transition: color 0.4s ease;
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.nav-item:hover .nav-text {
+    transform: translateY(-26px);
+}
+
+.contact-btn {
+    position: relative;
+    padding: 16px 36px;
+    background: var(--primary-color);
+    color: white !important;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 46px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.contact-btn .nav-text {
+    display: flex;
+    flex-direction: column;
+    height: 56px;
+}
+
+.contact-btn .nav-text span {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 600;
+    height: 56px;
+    line-height: 56px;
+}
+
+.contact-btn:hover .nav-text {
+    transform: translateY(-56px);
+}
+
+.contact-btn:hover {
+    box-shadow: 0 0 20px rgba(184, 148, 126, 0.4);
+    transform: translateY(-2px);
+    background: #a5836d;
+}
+
+/* MOBILE HAMBURGER MENU */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10002;
+    padding: 10px;
+}
+
+.navbar.scrolled .mobile-menu-btn {
+    color: var(--secondary-color);
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(242, 240, 228, 0.98);
+    z-index: 10001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-menu-overlay.active {
+    display: flex;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mobile-menu-items .nav-item {
+    height: 40px;
+}
+
+.mobile-menu-items .nav-text span {
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--secondary-color);
+}
+
+.mobile-contact-btn {
+    padding: 18px 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.mobile-contact-btn:hover {
+    background: #a5836d;
+    transform: translateY(-2px);
+}
+
+/* HERO SECTION */
+.hero {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    transition: opacity 0.8s ease;
+}
+
+.hero.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* FEATURED PROJECT - DESKTOP */
+.featured-project {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 10;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: opacity 0.8s ease;
+}
+
+.featured-project .divider {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.view-project-btn {
+    color: white;
+    
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+       white-space: nowrap;
+}
+
+.view-project-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* FEATURED PROJECT - MOBILE */
+.mobile-featured-project {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    transition: opacity 0.8s ease;
+}
+
+.mobile-featured-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.mobile-featured-title .divider {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 10px;
+}
+
+.mobile-view-project-btn {
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 12px 30px;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.mobile-view-project-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.architecture-style {
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    color: white;
+    max-width: 400px;
+    text-align: left;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.9;
+    background: rgba(37, 66, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    transition: opacity 0.8s ease;
+}
+
+/* SCROLL DOWN */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-down::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background-color: white;
+    animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+    0% { height: 40px; opacity: 1; }
+    50% { height: 50px; opacity: 0.7; }
+    100% { height: 40px; opacity: 1; }
+}
+
+/* EXPERIENCE SECTION */
+.experience-section {
+    width: 100%;
+    background: var(--bg-color);
+    padding: 100px 0;
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    transform: translateY(100vh);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease;
+    margin-top: 100vh;
+}
+
+.experience-section.revealed {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.exp-container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.exp-title {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.exp-text {
+    margin-top: 40px;
+}
+
+.exp-text .line {
+    font-size: 20px;
+    line-height: 1.7;
+    color: #333;
+    max-width: 800px;
+    margin-bottom: 18px;
+}
+
+.exp-image-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.exp-image-box img {
+    width: 1660px;
+    height: 480px; 
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+}
+
+.exp-image-box:hover img {
+    transform: scale(1.02);
+}
+
+.zoom-btn {
+    position: absolute;
+    bottom: 20px;
+    right: calc(25% + 20px);
+    background: rgba(37, 66, 36, 0.8);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 22px;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.exp-image-box:hover .zoom-btn {
+    opacity: 1;
+}
+
+.exp-btn {
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+}
+
+.exp-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    max-width: 95%;
+    max-height: 90%;
+}
+
+.closePopup {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    z-index: 100000;
+}
+
+/* SMOOTH REVEAL ANIMATION */
+.smooth-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* LINE BY LINE ANIMATION */
+.line {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MAIN CONTENT */
+.main-content {
+    position: relative;
+    z-index: 3;
+    background: var(--bg-color);
+}
+
+/* DESIGN SECTION */
+.design-section {
+    padding: 60px 0;
+    width: 90%;
+    margin: auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.top-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 55%;
+}
+
+.right-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hover-options {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.hover-options span {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hover-options span:hover {
+    background: var(--primary-color);
+}
+
+.image-wrapper:hover .hover-options {
+    opacity: 1;
+}
+
+/* INFINITE CAROUSEL */
+.infinite-carousel {
+    overflow: hidden;
+    width: 100%;
+    padding: 30px 0;
+    position: relative;
+    border-radius: 12px;
+    margin: 40px 0;
+    background: var(--bg-color);
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 40px;
+    border-radius: 8px;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+    padding: 10px 0;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-track img {
+    height: 180px;
+    width: 250px;
+    margin: 0 15px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(37, 66, 36, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    filter: brightness(0.95);
+}
+
+.carousel-track img:nth-child(odd) {
+    transform: translateY(-15px);
+}
+
+.carousel-track img:nth-child(even) {
+    transform: translateY(15px);
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05) translateY(0);
+    box-shadow: 0 8px 16px rgba(184, 148, 126, 0.4);
+    filter: brightness(1.1);
+    z-index: 10;
+    border: 2px solid var(--primary-color);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* FEATURED WORKS SECTION */
+.fs-section {
+    width: 90%;
+    margin: 80px auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.fs-title {
+    font-size: 42px;
+    letter-spacing: 3px;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.fs-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.fs-box {
+    width: 48%;
+}
+
+.fs-image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.fs-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.fs-img:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(184, 148, 126, 0.2);
+}
+
+.fs-hover-options {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.fs-hover-options span {
+    background: var(--secondary-color);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fs-hover-options span:hover {
+    background: var(--primary-color);
+}
+
+.fs-image-wrapper:hover .fs-hover-options {
+    opacity: 1;
+}
+
+.fs-name {
+    margin-top: 14px;
+    font-size: 20px;
+    color: var(--secondary-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* CLIENT SECTION */
+.fs-client-section {
+    width: 90%;
+    margin: 80px auto;
+    font-family: Georgia, serif;
+    background: var(--bg-color);
+}
+
+.fs-client-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.fs-client-left {
+    flex: 1;
+    min-width: 280px;
+}
+
+.fs-client-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+.fs-client-left-img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid var(--primary-color);
+}
+
+.fs-client-text-box {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) #f0f0f0;
+}
+
+.fs-client-text-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.fs-client-text-box::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.fs-client-text {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.fs-client-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--secondary-color);
+}
+
+.fs-client-role {
+    font-weight: normal;
+    font-size: 14px;
+    color: var(--primary-color);
+    display: block;
+}
+
+.fs-client-right {
+    flex: 0 0 350px;
+    text-align: right;
+}
+
+.fs-client-right-img {
+    width: 100%;
+    max-width: 350px;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid var(--primary-color);
+}
+
+/* FOOTER */
+.oh-footer {
+    background: var(--bg-color);
+    padding: 60px 0;
+    font-family: Georgia, serif;
+    color: #333;
+    border-top: 4px solid var(--primary-color);
+}
+
+.footer-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    flex: 1;
+    min-width: 250px;
+}
+.footer-left-img {
+    width: 50%;
+    max-width: 280px; /* jitna chhota chahiye utna kar sakte ho */
+    height: auto;
+    object-fit: contain;
+    display: block;
+       margin-left: 120px;
+}
+
+
+.footer-middle {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--primary-color);
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+.footer-nav li:hover {
+    color: var(--primary-color);
+}
+
+.footer-right {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.footer-text strong {
+    color: var(--primary-color);
+}
+
+.footer-logo {
+    width: 120px;
+    margin-top: 10px;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+@media (max-width: 1200px) {
+    .exp-title {
+        font-size: 50px;
+    }
+    
+    .fs-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .slot-menu {
+        display: none;
+    }
+    
+    .contact-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    /* HERO SECTION MOBILE STYLES */
+    .featured-project {
+        display: none;
+    }
+    
+    .mobile-featured-project {
+        display: block;
+    }
+    
+    .architecture-style {
+        left: 30px;
+        right: 30px;
+        max-width: none;
+        bottom: 100px;
+    }
+    
+    .fs-client-row,
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .fs-client-right {
+        text-align: center;
+        margin-top: 30px;
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    
+    .fs-client-right-img {
+        max-width: 100%;
+        height: auto;
+        max-height: 400px;
+    }
+    
+    .fs-client-label {
+        text-align: center;
+        border-left: none;
+        border-bottom: 4px solid var(--primary-color);
+        padding-left: 0;
+        padding-bottom: 5px;
+    }
+    
+    .footer-middle, .footer-right, .footer-left {
+        text-align: center;
+    }
+    
+    .footer-nav li {
+        display: inline-block;
+        margin: 0 10px 10px 10px;
+    }
+    
+    .fs-row {
+        flex-direction: column;
+    }
+    
+    .fs-box {
+        width: 100%;
+    }
+    
+    .top-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-top: 0;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 20px;
+    }
+    
+    .image-wrapper {
+        width: 100%;
+    }
+    
+    .right-image {
+        height: 350px;
+    }
+    
+    .exp-image-box img {
+        width: 80%;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+    
+    .navbar.scrolled {
+        padding: 10px 20px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 50px;
+    }
+    
+    .mobile-featured-title {
+        font-size: 18px;
+    }
+    
+    .exp-title {
+        font-size: 36px;
+    }
+    
+    .exp-container {
+        width: 90%;
+    }
+    
+    .exp-image-box img {
+        width: 90%;
+        height: 250px;
+    }
+    
+    .exp-text .line {
+        font-size: 18px;
+    }
+    
+    .architecture-style {
+        left: 20px;
+        right: 20px;
+        padding: 20px;
+        font-size: 16px;
+        bottom: 80px;
+    }
+    
+    .scroll-down {
+        font-size: 12px;
+    }
+    
+    .carousel-container {
+        margin: 0 15px;
+    }
+    
+    .carousel-track img {
+        height: 140px;
+        width: 200px;
+        margin: 0 10px;
+    }
+    
+    .fs-img {
+        height: 300px;
+    }
+    
+    .fs-client-left-img,
+    .fs-client-right-img {
+        height: 300px;
+    }
+    
+    .footer-left-img {
+        margin: 40px;
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .mobile-featured-title {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+    
+    .mobile-view-project-btn {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    
+    .exp-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    .experience-section {
+        padding: 60px 0;
+    }
+    
+    .exp-image-box img {
+        width: 95%;
+        height: 200px;
+    }
+    
+    .exp-text .line {
+        font-size: 16px;
+    }
+    
+    .exp-btn {
+        font-size: 16px;
+    }
+    
+    .architecture-style {
+        left: 15px;
+        right: 15px;
+        padding: 15px;
+        font-size: 15px;
+        bottom: 140px;
+    }
+    
+    .fs-title {
+        font-size: 28px;
+    }
+    
+    .fs-img {
+        height: 250px;
+    }
+    
+    .fs-name {
+        font-size: 18px;
+    }
+    
+    .carousel-track img {
+        height: 120px;
+        width: 170px;
+        margin: 0 8px;
+    }
+    
+    .footer-left-img {
+        margin: 30px auto;
+        width: 80%;
+        height: auto;
+    }
+    
+    .footer-nav li {
+        font-size: 16px;
+        margin: 0 8px 8px 8px;
+    }
+    
+    .mobile-menu-btn {
+        font-size: 22px;
+    }
+    
+    .mobile-menu-items .nav-text span {
+        font-size: 20px;
+    }
+    
+    .mobile-contact-btn {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .exp-title {
+        font-size: 24px;
+    }
+    
+    .mobile-featured-title {
+        font-size: 14px;
+    }
+    
+    .exp-image-box img {
+        height: 180px;
+    }
+    
+    .architecture-style {
+        font-size: 14px;
+        padding: 12px;
+    }
+    
+    .carousel-track img {
+        height: 100px;
+        width: 150px;
+        margin: 0 6px;
+    }
+    
+    .fs-img {
+        height: 200px;
+    }
+}
+#video-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+#video-preloader video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    
+@media (max-width: 768px) {
+
+    .hero {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;   /* Image mobile par perfect fit */
+        object-position: center;
+        filter: brightness(65%); /* Image visibility thodi kam */
+    }
+
+    /* White soft overlay */
+    .hero-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.18); /* Light white fade */
+    }
+}
+@media (min-width: 769px) {
+
+    .hero-image-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .hero-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: brightness(65%); /* Image ko halki white visibility deta hai */
+    }
+
+    /* White soft overlay (exact white-visible effect) */
+    .hero-image-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.18); /* Light white fade */
+    }
+}#gif-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+#gif-preloader img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* full screen gif */
+}
+
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                The Fit Mom Edit<span></span>
-            </a>
-            
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#themes">Themes</a></li>
-                <li><a href="#chapters">Chapters</a></li>
-                <li><a href="#testimonial">Quotes</a></li>
-            </ul>
-            
-            <div class="nav-btns">
-                <a href="#newsletter" class="btn nav-btn">Join Journey</a>
-                <button class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
+    </div>
+    
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="slot-menu">
+        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+    </div>
+    <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="mobile-menu-items">
+        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+    </div>
+    
+    <a href="#" class="mobile-contact-btn">Get in Touch</a>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero" id="hero">
+    <div class="hero-image-container">
+        <img src="img/WhatsApp Image 2025-12-12 at 22.39.40_b63c47dd.jpg" alt="Architecture project">
+    </div>
+
+    <!-- DESKTOP VERSION -->
+    <div class="featured-project" id="featuredProject">
+        <span>FEATURED PROJECT!</span>
+        <span class="divider">|</span>
+        <span>MYRTLE POOL HOUSE</span>
+        <span class="divider">|</span>
+        <span>2024</span>
+        <span class="divider">|</span>
+        <a href="#" class="view-project-btn">VIEW PROJECT</a>
+    </div>
+
+    <!-- MOBILE VERSION -->
+    <div class="mobile-featured-project" id="mobileFeaturedProject">
+        <div class="mobile-featured-title">
+            Featured projects <span class="divider">||</span> The weaving shuttle
+        </div>
+        <a href="#" class="mobile-view-project-btn">VIEW PROJECT</a>
+    </div>
+
+    <div class="architecture-style" id="architectureStyle">
+        The RPA style is defined by strong, solid forms with subtle elegance, natural balance and enduring appeal
+    </div>
+
+    <div class="scroll-down" id="scrollDown">(SCROLL DOWN)</div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience-section" id="experienceSection">
+        <div class="exp-container">
+            <h2 class="exp-title smooth-reveal">Experience<br>Focused Design</h2>
+
+                <div class="exp-image-box smooth-reveal">
+                    <img id="mainImage" src="img/IMG-20251126-WA0209.jpg" alt="Experience Focused Design">
+                    <div class="zoom-btn" onclick="openFull()"> <i class="fas fa-expand-alt"></i></div>
+                </div>
+
+            <div class="exp-text">
+                <p class="line">We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
+                <p class="line">We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
+                <p class="line">Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces that feel effortless and truly yours.</p>
+                <p class="line">We work closely with clients right from the start, with clear communication and expert guidance along the way.</p>
+                <p class="line">We work closely with builders, consultants, and partners to ensure every project runs smoothly.</p>
+                <p class="line">Each project evolves with its own shape and character, guided by aspirations, site opportunities, and creative vision.</p>
+            </div>
+
+            <a href="#" class="exp-btn smooth-reveal">Learn more about our studio</a>
+        </div>
+    </section>
+
+    <!-- DESIGN PHILOSOPHY SECTION -->
+    <section class="design-section">
+        <div class="top-row">
+            <h3 class="vertical-text">OUR DESIGN PHILOSOPHY</h3>
+
+            <div class="image-wrapper">
+                <img src="img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg"
+                     class="right-image"
+                     onclick="openImage(this.src)">
+
+                <div class="hover-options">
+                    <span onclick="openImage('img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg')">
+                        View Full Image
+                    </span>
+                    <span>More Info</span>
+                </div>
             </div>
         </div>
-        
-        <!-- Mobile Navigation -->
-        <div class="mobile-nav" id="mobileNav">
-            <ul class="mobile-nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#themes">Book Themes</a></li>
-                <li><a href="#chapters">Chapter Previews</a></li>
-                <li><a href="#testimonial">Powerful Quotes</a></li>
-                <li><a href="#newsletter">Join Journey</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <!-- Floating Elements -->
-        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
-        <div class="floating-element" style="width: 80px; height: 80px; top: 80%; left: 10%;"></div>
-        
-        <div class="container">
-            <div class="hero-content">
-                <h1 style="
-                    font-family: 'Bebas Neue', sans-serif;
-                    font-size: 64px;
-                    text-transform: uppercase;
-                    color: #ffffff;
-                    margin: 0;
-                ">
-                    The Chapters I Didn't Skip
-                </h1>
-                <p class="hero-subtitle">What happens when a woman stops living on autopilot and starts choosing herself—without guilt?</p>
-                
-                <div class="hero-btns">
-                    <a href="#chapters" class="btn">Explore Chapters</a>
-                    <a href="#newsletter" class="btn">Join the Journey</a>
-                </div>
+        <div class="exp-text">
+            <p class="line">We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
+            <p class="line">We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
+            <p class="line">Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces that feel effortless and truly yours.</p>
+                <p class="line">We work closely with clients right from the start, with clear communication and expert guidance along the way.</p>
+            <p class="line">We work closely with builders, consultants, and partners to ensure every project runs smoothly.</p>
+            <p class="line">Each project evolves with its own shape and character, guided by aspirations, site opportunities, and creative vision.</p>
+        </div>
+    </section>
+
+    <!-- INFINITE CAROUSEL -->
+    <section class="infinite-carousel">
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 1">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 2">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 3">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 4">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 5">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 6">
+                <!-- Repeat for smooth infinite effect -->
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 1">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 2">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 3">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Image 4">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Image 5">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Image 6">
             </div>
         </div>
     </section>
 
-    <!-- Introduction -->
-    <section class="intro section-padding">
-        <div class="container">
-            <div class="intro-inner">
-                <h2 class="section-title">Before You Begin</h2>
-                <p class="section-subtitle">The Fit Mom Edit is not a fitness story. It is not a promise of transformation.</p>
-                
-                <div class="intro-quote">
-                    This book unfolds through raw reflections, silent realisations, social judgement, inner battles, and steady discipline.
+    <!-- FEATURED WORKS -->
+    <section class="fs-section">
+        <h2 class="fs-title">FEATURED WORKS</h2>
+
+        <div class="fs-row">
+            <div class="fs-box">
+                <div class="fs-image-wrapper">
+                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
+                    <div class="fs-hover-options">
+                        <span onclick="fsOpenImage('img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg')">View Full Image</span>
+                        <span>More Info</span>
+                    </div>
                 </div>
-                
-                <p>It is a deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, family roles grow heavier, and self-worth quietly demands attention.</p>
-                
-                <p>It speaks to every woman who has felt tired, invisible, confused—or stuck between who she has been and who she knows she can become.</p>
-                
-                <p>It is a story about choosing yourself without abandoning your family. About fitness as strength, not vanity. About discipline without punishment. About a mind that heals before a body transforms. And about the courage to grow quietly, without explanation.</p>
-                
-                <p>If you are standing somewhere between exhaustion and awakening, between guilt and growth, this book will feel familiar.</p>
-                
-                <p class="quote-line">Because it isn't here to motivate you.</p>
-                <p class="quote-line">It is here to sit beside you.</p>
-                <p class="quote-line">And remind you—</p>
-                <p class="quote-line">36 isn't about going back.</p>
-                <p class="quote-line">It's about finally moving forward.</p>
+                <h3 class="fs-name">Project Name 1</h3>
+            </div>
+
+            <div class="fs-box">
+                <div class="fs-image-wrapper">
+                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
+                    <div class="fs-hover-options">
+                        <span onclick="fsOpenImage('img/work2.jpg')">View Full Image</span>
+                        <span>More Info</span>
+                    </div>
+                </div>
+                <h3 class="fs-name">Project Name 2</h3>
             </div>
         </div>
     </section>
 
-    <!-- Book Themes -->
-    <section id="themes" class="themes section-padding">
-        <div class="container">
-            <h2 class="section-title">What This Journey Is About</h2>
-            <p class="section-subtitle">This isn't about transformation. It's about coming home to yourself.</p>
-            
-            <div class="theme-cards">
-                <div class="theme-card">
-                    <div class="theme-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Choosing Yourself Without Abandoning Family</h3>
-                    <p>Learning to prioritize your needs while maintaining your responsibilities and relationships.</p>
+    <!-- CLIENT TESTIMONIAL -->
+    <section class="fs-client-section">
+        <div class="fs-client-row">
+            <div class="fs-client-left">
+                <h3 class="fs-client-label">(HEAR FROM OUR CLIENT)</h3>
+                <img src="img/67b04e4ed2812e66e1318bce_OH_SIDNEYANDYMACPHERSON-16_EDIT.jpg" alt="Client House" class="fs-client-left-img">
+
+                <div class="fs-client-text-box">
+                    <p class="fs-client-text">
+                        "From the initial meeting I was impressed by the genuine enthusiasm and willingness to engage with the ideas in my brief. Johnny Hyde and the OH Architecture team engendered confidence. They cared about the project; throughout the design process they listened and interacted in a positive and professional, but relaxed, way.
+                        <br><br>
+                        As they explored design ideas, they welcomed my contributions and encouraged feedback. Consequently, I had no doubt that OH Architecture would deliver a design to meet my dreams and also my budget. And in fact, the award-winning outcome eminently attests to their skill and achievement on both counts!"
+                    </p>
+                    <p class="fs-client-name">Carmen<br><span class="fs-client-role">Homeowner of Sidney</span></p>
                 </div>
-                
-                <div class="theme-card">
-                    <div class="theme-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>Fitness as Strength, Not Vanity</h3>
-                    <p>Redefining fitness as capability, energy, and longevity—not appearance or comparison.</p>
-                </div>
-                
-                <div class="theme-card">
-                    <div class="theme-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Mind That Heals Before Body Transforms</h3>
-                    <p>Understanding that true change begins with self-compassion and mental clarity.</p>
-                </div>
-                
-                <div class="theme-card">
-                    <div class="theme-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Courage to Grow Quietly</h3>
-                    <p>Embracing personal growth without explanation or validation from others.</p>
-                </div>
+            </div>
+
+            <div class="fs-client-right">
+                <img src="img/67c5504fd3e1172ffe17548f_OH_SIDNEYANDYMACPHERSON-19_EDIT.jpg" alt="Client Interior" class="fs-client-right-img">
             </div>
         </div>
     </section>
 
-    <!-- Chapters Preview -->
-    <section id="chapters" class="section-padding">
-        <div class="container">
-            <h2 class="section-title">Chapter Previews</h2>
-            <p class="section-subtitle">Step into the 12-chapter journey of self-discovery</p>
-            
-            <div class="chapters-container">
-                <!-- Desktop Navigation -->
-                <div class="chapter-nav">
-                    <button class="chapter-nav-btn active" data-chapter="1">Ch 1: The Noise</button>
-                    <button class="chapter-nav-btn" data-chapter="2">Ch 2: Autopilot</button>
-                    <button class="chapter-nav-btn" data-chapter="3">Ch 3: When 35 Changes</button>
-                    <button class="chapter-nav-btn" data-chapter="4">Ch 4: Choosing Me</button>
-                    <button class="chapter-nav-btn" data-chapter="5">Ch 5: Guilt & Judgement</button>
-                    <button class="chapter-nav-btn" data-chapter="6">Ch 6: Silent Phase</button>
-                    <button class="chapter-nav-btn" data-chapter="7">Ch 7: Mind First</button>
-                    <button class="chapter-nav-btn" data-chapter="8">Ch 8: Fitness Truth</button>
-                    <button class="chapter-nav-btn" data-chapter="9">Ch 9: Discipline</button>
-                    <button class="chapter-nav-btn" data-chapter="10">Ch 10: Strong Home</button>
-                    <button class="chapter-nav-btn" data-chapter="11">Ch 11: Family Lessons</button>
-                    <button class="chapter-nav-btn" data-chapter="12">Ch 12: The Fit Mom Edit</button>
-                </div>
-                
-                <!-- Mobile Selector -->
-                <select class="chapter-selector" id="chapterSelector">
-                    <option value="1">Chapter 1: The Noise Before the Choice</option>
-                    <option value="2">Chapter 2: Life on Autopilot</option>
-                    <option value="3">Chapter 3: When 35 Changes Everything</option>
-                    <option value="4">Chapter 4: The Day I Chose Me</option>
-                    <option value="5">Chapter 5: Guilt, Judgement & the 4 Log</option>
-                    <option value="6">Chapter 6: The Silent Phase</option>
-                    <option value="7">Chapter 7: Mind First, Body Follows</option>
-                    <option value="8">Chapter 8: Fitness Is Not Vanity</option>
-                    <option value="9">Chapter 9: Discipline Without Punishment</option>
-                    <option value="10">Chapter 10: A Strong Woman Builds a Strong Home</option>
-                    <option value="11">Chapter 11: What My Husband and Children Taught Me</option>
-                    <option value="12">Chapter 12: The Fit Mom Edit</option>
-                </select>
-                
-                <div class="chapter-display">
-                    <!-- Chapter 1 -->
-                    <div class="chapter-content" id="chapter-1">
-                        <div class="chapter-number">Chapter One</div>
-                        <h3 class="chapter-title">The Noise Before the Choice</h3>
-                        
-                        <p>The noise did not come from the outside.</p>
-                        <p>It came from within.</p>
-                        <p>It was the quiet exhaustion that followed me everywhere—the constant feeling of doing everything right, yet feeling wrong inside. I was present for everyone, available for every role, but absent for myself.</p>
-                        
-                        <p>My first real realisation came during my postpartum period, after my first pregnancy. My body had changed. My emotions felt unfamiliar. I was healing, yet expected to return to normal—as if nothing had happened.</p>
-                        
-                        <p>Physically, I felt heavy.</p>
-                        <p>Mentally, I felt scattered.</p>
-                        <p>Emotionally, I felt grateful and guilty at the same time.</p>
-                        
-                        <p>I was a daughter, a daughter-in-law, a wife, and now a mother. Roles kept adding.</p>
-                        <p>Expectations kept growing. And somewhere between feeding schedules, sleepless nights, and silent tears, I stopped listening to myself.</p>
-                        
-                        <p>Nobody tells you how loud your thoughts become in those quiet hours. How you start questioning your identity while holding the life you created. How love and loss of self can coexist.</p>
-                        
-                        <p>The noise wasn't dramatic.</p>
-                        <p>It was subtle.</p>
-                        <p>Persistent.</p>
-                        <p>Relentless.</p>
-                        
-                        <p>And yet, my body kept trying to speak to me—through fatigue, through discomfort, through restlessness.</p>
-                        
-                        <p class="quote-line">I didn't understand it then, but now I know: my body wasn't failing me. It was trying to lead me back to myself.</p>
-                        
-                        <p>That realisation didn't arrive with clarity or confidence. It arrived as a quiet ache—an unspoken knowing that something within me was asking for attention. Not loudly. Not urgently. Just patiently. I didn't have answers then, only a feeling that if I continued to ignore this voice, I would keep living—but never fully feel alive. And that was the first time I understood that listening to myself was not selfish… it was necessary.</p>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn" disabled>
-                                <i class="fas fa-home"></i> Home
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">1</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 2 -->
-                    <div class="chapter-content" id="chapter-2" style="display: none;">
-                        <div class="chapter-number">Chapter Two</div>
-                        <h3 class="chapter-title">Life on Autopilot</h3>
-                        
-                        <p>Whether you are a working woman or a housewife, this feeling does not change. The exhaustion feels the same. The detachment feels the same. The quiet question—"Is this it?"—arrives the same way.</p>
-                        
-                        <p>We often comfort ourselves with easy explanations. We say housewives have time but don't exercise. We say working women are good at managing time, yet still don't exercise. But the truth is simpler—and harder to accept. Time is not the problem. Intention is. Awareness is. Realisation is.</p>
-                        
-                        <p>That is why the grass always looks greener on the other side. When you are on autopilot, you assume someone else has figured it out better. Someone else has discipline. Someone else has motivation. Someone else has answers.</p>
-                        
-                        <p>What we don't realise is that most of us are moving the same way—waking up, fulfilling roles, meeting expectations, ticking boxes—without ever pausing to ask ourselves how we feel inside our own bodies.</p>
-                        
-                        <p>Autopilot doesn't arrive suddenly. It settles in quietly. You still function. You still smile. You still do what needs to be done. But you stop listening.</p>
-                        
-                        <p>Realisation comes… and then it goes. You try temporary solutions. A gym membership. A promise to start Monday. A short burst of motivation. And then life pulls you back. Responsibilities take over. Fatigue wins.</p>
-                        
-                        <p>And slowly, you return to the same square—just older, more tired, and a little more disconnected than before.</p>
-                        
-                        <p>Years passed like this. And somewhere along the way, I became a mother again—this time, the mother of two. Yet the realisation was still only halfway there. Not because I didn't care. Not because I didn't try. But because I never sat with myself in peace long enough to hear what my body was saying.</p>
-                        
-                        <p>I kept moving. I kept adjusting. I kept surviving. Autopilot felt safe. Familiar. Acceptable.</p>
-                        
-                        <p class="quote-line">But safety is not the same as alignment.</p>
-                        
-                        <p>And deep inside, my body was waiting—not to be fixed, not to be pushed, but simply to be heard.</p>
-                        
-                        <p>Most women don't live on autopilot because they are careless. They live there because it feels necessary. Because pausing feels irresponsible. Because slowing down feels like failure. Between school timings, family needs, work pressure, social expectations, and the constant need to "manage," listening to yourself feels like an extra task you can't afford. So you postpone it. Not once—but every day. Until your body starts carrying conversations your mind refused to have. And that is when autopilot stops being convenience and starts becoming a quiet cost you pay with your health, your energy, and your sense of self.</p>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">2</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 3 -->
-                    <div class="chapter-content" id="chapter-3" style="display: none;">
-                        <div class="chapter-number">Chapter Three</div>
-                        <h3 class="chapter-title">When 35 Changes Everything</h3>
-                        
-                        <p>Thirty-five doesn't announce itself loudly. It doesn't arrive with drama or warning signs. It comes quietly.</p>
-                        
-                        <p>One day you realise your body doesn't respond the way it used to. Recovery takes longer. Sleep feels lighter. Energy becomes selective. What once felt effortless now requires intention.</p>
-                        
-                        <p>At first, you ignore it. You tell yourself it's just tiredness. Just stress. Just a phase. After all, you've handled harder things.</p>
-                        
-                        <p>But slowly, something shifts.</p>
-                        
-                        <p>You start noticing your reflection more—not with vanity, but with curiosity. Your face looks familiar, yet different. Your body carries stories now. Stretch marks, stiffness, softness, strength—all coexisting.</p>
-                        
-                        <p>And then comes the mental weight.</p>
-                        
-                        <p>The invisible load women carry only grows heavier after 35. Responsibilities multiply. Expectations deepen. There is less room to fall apart, yet more reasons to feel overwhelmed.</p>
-                        
-                        <p>You are expected to be mature. Stable. Grateful. So you silence the discomfort.</p>
-                        
-                        <p>But your body doesn't.</p>
-                        
-                        <p>It speaks through hormonal changes, unexplained fatigue, bloating, mood swings, and a quiet loss of motivation. It asks for care—not later, not someday—but now.</p>
-                        
-                        <p>This is where many women feel confused.</p>
-                        
-                        <p>You are not old. But you are no longer untouched by time. And society doesn't prepare you for this middle space.</p>
-                        
-                        <p>You are praised for managing everything. But no one asks how much it is costing you.</p>
-                        
-                        <p>Comparison creeps in. You see women who seem fitter, calmer, more put together. You wonder what they are doing differently. And once again, the grass looks greener.</p>
-                        
-                        <p>But what you don't see is their inner work. Their discipline. Their choices.</p>
-                        
-                        <p class="quote-line">At 35+, the truth becomes unavoidable: your body will no longer cooperate with neglect. What you ignore now will demand attention later.</p>
-                        
-                        <p>This is not punishment. This is communication.</p>
-                        
-                        <p>For the first time, your body is not asking to be pushed harder—it is asking to be understood.</p>
-                        
-                        <p>And somewhere between acceptance and resistance, a quiet thought forms: maybe this is not the beginning of decline… maybe this is the beginning of awareness.</p>
-                        
-                        <p class="quote-line">Because once you see, you can no longer unsee.</p>
-                        
-                        <p>For many women, this phase shows up in ordinary moments—clothes that fit differently, energy that runs out sooner, patience that thins faster than before. It shows up when you realise you need recovery, not just effort. When ignoring your body starts costing more than listening to it. And slowly, you understand that this change is not asking you to fear age—it is asking you to respond to it with respect. Not dramatically. Not urgently. Just honestly.</p>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">3</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 4 -->
-                    <div class="chapter-content" id="chapter-4" style="display: none;">
-                        <div class="chapter-number">Chapter Four</div>
-                        <h3 class="chapter-title">The Day I Chose Me</h3>
-                        
-                        <p>Choosing yourself doesn't happen in one bold moment. It happens quietly.</p>
-                        
-                        <p>It happens when you realise you can't keep living exhausted and calling it normal. When your body feels heavy not because of weight—but because of neglect.</p>
-                        
-                        <p>The day I chose myself wasn't dramatic. There were no declarations. No announcements. Just a simple decision—to stop postponing myself.</p>
-                        
-                        <p class="quote-line">I didn't choose perfection. I chose presence.</p>
-                        <p class="quote-line">I didn't choose extremes. I chose consistency.</p>
-                        
-                        <p>I started listening to my body instead of fighting it. I started respecting my energy instead of draining it. I started showing up—not when everything was perfect—but even when it was inconvenient.</p>
-                        
-                        <p>And with that choice came discomfort.</p>
-                        
-                        <p>Guilt surfaced. Doubt followed. The familiar voice whispered, "Is this selfish?"</p>
-                        
-                        <p>But beneath the noise, something steadier began to grow—self-respect.</p>
-                        
-                        <p>Choosing myself didn't mean choosing against my family. It meant choosing a version of me that could actually sustain them.</p>
-                        
-                        <p>I learned that self-neglect doesn't make you strong. It makes you resentful. And resentment silently leaks into every relationship.</p>
-                        
-                        <p>So I chose differently.</p>
-                        
-                        <p>I chose to eat better—not to shrink, but to support myself. I chose to move—not to punish my body, but to feel capable again. I chose rest—not as weakness, but as recovery. And slowly, the chaos inside me softened.</p>
-                        
-                        <p>I wasn't suddenly confident. I wasn't magically disciplined. But I was consistent. And consistency changed how I saw myself.</p>
-                        
-                        <p>Choosing myself didn't solve everything. But it gave me something I hadn't felt in a long time—clarity.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Insight:</strong> Choosing yourself often feels heavier than it should—because we are taught to earn rest, justify care, and explain our choices. We wait for permission that never comes. This chapter is not about rebellion; it is about responsibility. The responsibility to stop abandoning yourself quietly. Because when a woman chooses herself with honesty—not guilt—she doesn't take away from her life. She finally stands fully inside it.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">4</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 5 -->
-                    <div class="chapter-content" id="chapter-5" style="display: none;">
-                        <div class="chapter-number">Chapter Five</div>
-                        <h3 class="chapter-title">Guilt, Judgement & the 4 Log</h3>
-                        
-                        <p>Nobody prepares you for this part. Choosing yourself sounds inspiring in theory. In real life, it is uncomfortable, lonely, and often misunderstood.</p>
-                        
-                        <p>The moment you start changing—eating differently, moving differently, saying no more often—people start watching. And then come the comments.</p>
-                        
-                        <p class="hindi-text">"Itna time mil kaise jata hai?"</p>
-                        <p class="hindi-text">"Bas apne upar hi dhyan rehta hai."</p>
-                        <p class="hindi-text">"Gym-vym jaa rahi hai… ghar kaun sambhalta hai?"</p>
-                        <p class="hindi-text">"Midlife crisis lag raha hai."</p>
-                        <p class="hindi-text">"Iska pati ko malum hai, yeh kya-kya karti hai yeh age mein?"</p>
-                        <p class="hindi-text">"Pati kuch bolta nahi?"</p>
-                        <p class="hindi-text">"Iski family ne permission di kya?"</p>
-                        <p class="hindi-text">"Bechare bache."</p>
-                        <p class="hindi-text">"Sab maid bharose choda hua hai?"</p>
-                        
-                        <p>Nobody asks how long you were invisible before this. Nobody asks how tired you were. Nobody asks what it took to reach here. They only see the surface.</p>
-                        
-                        <p>And slowly, guilt creeps in.</p>
-                        
-                        <p>You feel guilty for leaving the house for an hour. Guilty for choosing protein over comfort food. Guilty for saying, "I can't today." Guilty for doing something that does not directly serve someone else.</p>
-                        
-                        <p>As women, guilt is our default setting.</p>
-                        
-                        <p>Judgement doesn't always come from strangers. Sometimes it comes from people closest to you. Family. Friends. Relatives. Their concern is disguised as advice. Their curiosity feels like surveillance.</p>
-                        
-                        <p>And then come the four voices:</p>
-                        <p class="hindi-text">Log kya kahenge.</p>
-                        <p class="hindi-text">Log kya sochenge.</p>
-                        <p class="hindi-text">Log judge karenge.</p>
-                        <p class="hindi-text">Log accept nahi karenge.</p>
-                        
-                        <p>These four logs test you daily.</p>
-                        
-                        <p>So you shrink your progress. You downplay your effort. You pretend it's "not that serious."</p>
-                        
-                        <p class="quote-line">Until you realise something brutal: everyone is comfortable with you being tired, but not everyone is comfortable with you being disciplined.</p>
-                        
-                        <p>This phase feels cruel because it strips illusions. Go back to being convenient—or move forward, misunderstood.</p>
-                        
-                        <p>If you stay, the guilt loosens. The noise fades. And self-respect begins to speak louder.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Realisation:</strong> What makes this phase heavier is that most women are already carrying invisible labour—emotional availability, mental planning, silent adjustments. So when you finally choose something for yourself, the judgement doesn't feel external; it feels personal. You start questioning your intentions. You wonder if you are becoming selfish. But the truth is, guilt appears not because you are doing something wrong—it appears because you are doing something unfamiliar. You are stepping out of a version of yourself that others were comfortable benefiting from. And learning to sit with that discomfort, without shrinking back, is one of the most courageous things a woman can do.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">5</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 6 -->
-                    <div class="chapter-content" id="chapter-6" style="display: none;">
-                        <div class="chapter-number">Chapter Six</div>
-                        <h3 class="chapter-title">The Silent Phase</h3>
-                        
-                        <p>This phase doesn't look impressive from the outside. There are no announcements. No big posts. No constant motivation speeches.</p>
-                        
-                        <p>Life looks… normal.</p>
-                        
-                        <p>You still wake up early. You still manage the house. You still show up for work, family, children.</p>
-                        
-                        <p>But something inside you has changed.</p>
-                        
-                        <p>This is the phase where people stop commenting—not because they understand, but because they've lost interest.</p>
-                        
-                        <p>You're no longer new. No longer dramatic. No longer entertaining to judge.</p>
-                        
-                        <p>And honestly, that hurts a little.</p>
-                        
-                        <p>Because humans are strange like that. We crave noise around our change. Validation. Reaction.</p>
-                        
-                        <p>But now—there is silence.</p>
-                        
-                        <p>No one is clapping. No one is questioning. No one is checking if you're still doing "all that."</p>
-                        
-                        <p>And for the first time, you're left alone with yourself.</p>
-                        
-                        <p>This is where most people slip.</p>
-                        
-                        <p>Because without external pressure or praise, discipline becomes internal. And internal discipline is hard.</p>
-                        
-                        <p>There are days when nothing feels exciting. The routine feels boring. Progress feels slow.</p>
-                        
-                        <p>You don't feel "inspired." You just feel… steady.</p>
-                        
-                        <p>You go for movement even when you don't feel like it. You eat better without announcing it. You rest without explaining yourself.</p>
-                        
-                        <p>There is no rush. No proving. No urgency. Just consistency.</p>
-                        
-                        <p>And consistency is lonely.</p>
-                        
-                        <p>This phase tests you in a different way. Not with judgement—but with monotony.</p>
-                        
-                        <p>You start wondering: Is this enough? Is this even working? Why doesn't this feel dramatic?</p>
-                        
-                        <p class="quote-line">But that's the truth no one talks about. Real change is quiet.</p>
-                        
-                        <p>It doesn't scream. It doesn't demand attention. It simply keeps happening.</p>
-                        
-                        <p>Your body starts responding—not overnight, but honestly. Your mind feels calmer—not lighter, but clearer.</p>
-                        
-                        <p>Your reactions soften. Your patience deepens.</p>
-                        
-                        <p>You're not suddenly perfect. You still have bad days. You still feel tired. You still doubt yourself sometimes.</p>
-                        
-                        <p>But you don't quit anymore.</p>
-                        
-                        <p>Because now, this isn't a phase. This is how you live.</p>
-                        
-                        <p>You've stopped negotiating with yourself. Stopped waiting for motivation. Stopped restarting every Monday.</p>
-                        
-                        <p>This is the phase where you stop trying to impress anyone—including yourself.</p>
-                        
-                        <p>And without realising it, you become trustworthy to yourself.</p>
-                        
-                        <p>That is powerful.</p>
-                        
-                        <p>No one sees it. No one applauds it.</p>
-                        
-                        <p>But this is where everything locks in.</p>
-                        
-                        <p>The silent phase doesn't feel glamorous. But it is the most honest phase of all.</p>
-                        
-                        <p class="quote-line">Because when nothing is pushing you—and you still show up—that's not willpower. That's identity.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Lesson:</strong> The silent phase teaches women a hard but freeing truth: consistency is built when no one is watching. This is where excuses dissolve because there is no audience to perform for. You learn to move through boredom, not escape it. You learn that discipline is not loud motivation—it is quiet reliability. And slowly, your nervous system starts trusting you. You stop betraying yourself with promises you don't keep. This phase reshapes how you relate to effort, patience, and self-worth. It doesn't make you exciting—but it makes you solid. And solidity, in a woman, changes everything.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">6</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 7 -->
-                    <div class="chapter-content" id="chapter-7" style="display: none;">
-                        <div class="chapter-number">Chapter Seven</div>
-                        <h3 class="chapter-title">Mind First, Body Follows</h3>
-                        
-                        <p>Before the body changes, there is a war inside the mind. A quiet one. Messy. Confusing.</p>
-                        
-                        <p>This is the phase no one posts about.</p>
-                        
-                        <p>You stand in front of the mirror and don't fully recognise yourself. Not because you look bad—but because you feel disconnected.</p>
-                        
-                        <p>You don't know what you want yet. You only know what you don't want anymore.</p>
-                        
-                        <p>You're not lazy. You're not careless. You're tired of fighting yourself every single day.</p>
-                        
-                        <p>Many women think their problem is weight. Fit to fat. Fat to fit.</p>
-                        
-                        <p>But that's not the real struggle.</p>
-                        
-                        <p>The real struggle is this: your mind is exhausted from years of adjustment.</p>
-                        
-                        <p>Adjusting to expectations. Adjusting to roles. Adjusting to guilt. Adjusting to silence.</p>
-                        
-                        <p>You've been strong for everyone—but confused for yourself.</p>
-                        
-                        <p>And in that confusion, you start believing the wrong things.</p>
-                        
-                        <p>"If I become slim, I'll feel confident."</p>
-                        <p>"If I lose weight, everything will settle."</p>
-                        <p>"If I look fit, I'll finally feel okay."</p>
-                        
-                        <p>But plenty of slim women feel lost. Plenty of fit bodies carry anxious minds.</p>
-                        
-                        <p>Because a weak, noisy, doubtful mind will never feel settled—no matter what size the body is.</p>
-                        
-                        <p>This chapter is not about fat to fit. It is about chaos to clarity.</p>
-                        
-                        <p>About learning to hear your own thoughts without fear. About stopping the constant self-criticism. About choosing calm over punishment.</p>
-                        
-                        <p class="quote-line">A strong body without a strong mind breaks easily. But a strong mind can rebuild any body.</p>
-                        
-                        <p>When the mind shifts, your relationship with movement changes.</p>
-                        
-                        <p>You stop exercising to shrink. You start moving to feel alive.</p>
-                        <p>You stop eating to control. You start eating to support.</p>
-                        <p>You stop chasing motivation. You build understanding.</p>
-                        
-                        <p>This is where innocent women struggle the most—because no one taught us this part.</p>
-                        
-                        <p>We were taught to look good. Not to feel grounded.</p>
-                        <p>We were taught discipline as pressure. Not as self-respect.</p>
-                        
-                        <p>So the mind resists. It fears change. It fears consistency. It fears failing again.</p>
-                        
-                        <p>Some days your mind will say:</p>
-                        <p>"Why even try?"</p>
-                        <p>"Nothing changes."</p>
-                        <p>"You'll quit anyway."</p>
-                        
-                        <p>That doesn't mean you are weak. It means your mind is learning a new language.</p>
-                        <p>Patience. Trust. Stability.</p>
-                        
-                        <p>This is where transformation actually begins. Not when the scale moves—but when your thoughts soften.</p>
-                        
-                        <p>When you stop being cruel to yourself. When you stop attaching your worth to appearance.</p>
-                        
-                        <p>A fit body is not a slim body. A fit body is a supported body. A listened-to body. A respected body.</p>
-                        
-                        <p>And that respect starts in the mind.</p>
-                        
-                        <p>When the mind becomes steady, the body follows naturally. Not perfectly. Not quickly. But honestly.</p>
-                        
-                        <p>This chapter is about choosing strength over shrinking. Clarity over confusion. Alignment over appearance.</p>
-                        
-                        <p class="quote-line">Because when your mind becomes fit, your body stops fighting you.</p>
-                        
-                        <p>And for the first time, you're not trying to fix yourself—you're learning to stand with yourself.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Practical Shift:</strong> This mental shift is deeply practical. It changes how you respond to missed workouts, emotional eating, tired days, and slow progress. Instead of spiralling into self-blame, you pause. You adjust. You continue. A steady mind learns to differentiate between discipline and punishment, effort and exhaustion. This is where you stop abandoning yourself at the first sign of imperfection. You don't become softer—you become wiser. And that wisdom creates a body that no longer feels like an enemy, but a companion you can finally trust.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">7</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 8 -->
-                    <div class="chapter-content" id="chapter-8" style="display: none;">
-                        <div class="chapter-number">Chapter Eight</div>
-                        <h3 class="chapter-title">Fitness Is Not Vanity</h3>
-                        
-                        <p>Somewhere along the way, fitness got misunderstood. It became about size. About abs. About looking a certain way. About proving discipline to the world. And for women after 35, this misunderstanding hurts the most.</p>
-                        
-                        <p>Because when you say you're focusing on fitness, people assume vanity. They assume insecurity. They assume you're trying to look young.</p>
-                        
-                        <p>But the truth is very different.</p>
-                        
-                        <p>At this stage of life, fitness is not about looking good. It's about feeling capable. It's about waking up without stiffness. About having the energy to manage your day. About not feeling trapped inside your own body.</p>
-                        
-                        <p>After 35, your body doesn't need punishment. It needs partnership.</p>
-                        
-                        <p>You are no longer trying to impress anyone. You are trying to support yourself.</p>
-                        
-                        <p>Fitness becomes less about mirrors and more about mornings. Less about clothes and more about confidence in your own strength.</p>
-                        
-                        <p class="quote-line">You don't work out to shrink your body. You move so your body doesn't shrink your life.</p>
-                        
-                        <p>This is the age where health stops being theoretical. You start seeing real consequences—lower back pain, joint issues, hormonal imbalances, low energy, mood fluctuations.</p>
-                        
-                        <p>Ignoring your body now doesn't make you selfless. It makes life harder later.</p>
-                        
-                        <p>Still, women hesitate. Because fitness feels selfish. Because time feels limited. Because society keeps asking, "Is this really necessary?"</p>
-                        
-                        <p>Yes. It is.</p>
-                        
-                        <p>Not because you want to look fit—but because you want to live fit.</p>
-                        
-                        <p>A fit body means you can bend without fear. You can lift without strain. You can walk without exhaustion. You can age without resentment.</p>
-                        
-                        <p>Fitness after 35 is not a luxury. It is maintenance.</p>
-                        <p>Just like sleep. Just like nutrition. Just like emotional boundaries.</p>
-                        
-                        <p>And here's the part no one says clearly: you don't owe anyone an explanation for taking care of your body.</p>
-                        
-                        <p>Your body carries you through every role you play—mother, wife, daughter, daughter-in-law, professional, caregiver.</p>
-                        
-                        <p>Yet it is the only one we feel guilty for prioritising.</p>
-                        
-                        <p>That needs to change.</p>
-                        
-                        <p class="quote-line">Fitness is not vanity. Vanity seeks approval. Fitness seeks longevity. Vanity wants attention. Fitness wants strength.</p>
-                        
-                        <p>And strength, after 35, is freedom.</p>
-                        
-                        <p>Freedom to live without fear of your own body. Freedom to trust yourself physically. Freedom to grow older without feeling helpless.</p>
-                        
-                        <p>You don't need a perfect body. You need a reliable one.</p>
-                        
-                        <p>And choosing that—day after day—quietly, consistently—is not obsession. It is wisdom.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Real-World View:</strong> For many women, fitness becomes real when everyday life starts feeling heavier—when climbing stairs leaves you breathless, when tying shoelaces strains your back, when fatigue shows up before the day even begins. It's not about selfies or gym clothes; it's about carrying grocery bags without pain, playing with children without exhaustion, travelling without fear of falling sick. These are not dramatic goals, but they are deeply human ones. Fitness, here, becomes the ability to live independently, confidently, and without constant physical compromise. And that shift—from appearance to ability—is where true empowerment begins.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">8</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 9 -->
-                    <div class="chapter-content" id="chapter-9" style="display: none;">
-                        <div class="chapter-number">Chapter Nine</div>
-                        <h3 class="chapter-title">Discipline Without Punishment</h3>
-                        
-                        <p>Most women think discipline has to be harsh. Strict. Unforgiving. All-or-nothing.</p>
-                        
-                        <p>We believe if we're not pushing hard, we're not doing enough. If we rest, we're lazy. If we ask for help, we're weak.</p>
-                        
-                        <p>But after 35, punishment stops working.</p>
-                        
-                        <p>Your body doesn't respond to pressure the way it once did. And neither does your mind.</p>
-                        
-                        <p>This is where many women get stuck—trying to force discipline the way they did in their twenties, and then blaming themselves when it doesn't last.</p>
-                        
-                        <p>But discipline is not meant to hurt you. It is meant to support you.</p>
-                        
-                        <p>And support sometimes means asking for help.</p>
-                        
-                        <p>You are allowed to seek guidance. You are allowed to learn. You are allowed to not know everything.</p>
-                        
-                        <p>You can take help from trainers. From group classes. From online platforms. From YouTube videos. From books. From conversations.</p>
-                        
-                        <p>You can take inspiration from anyone you admire—your grandmother who stayed active her whole life, a neighbour who walks every morning, a woman at the gym who moves with confidence, or even a celebrity whose consistency inspires you.</p>
-                        
-                        <p>Motivation does not have a hierarchy. Inspiration is inspiration.</p>
-                        
-                        <p>What matters is how you use it.</p>
-                        
-                        <p>The mistake many women make is copying blindly—following trends, chasing routines that don't suit their bodies, trying to keep up instead of tuning in.</p>
-                        
-                        <p>Discipline becomes punishment when it ignores your reality—your age, your hormones, your energy, your lifestyle, your emotional state.</p>
-                        
-                        <p>Real discipline is flexible. It adjusts. It listens.</p>
-                        
-                        <p>It says, "Today, this is enough."</p>
-                        <p>"Today, I'll go slower."</p>
-                        <p>"Today, I'll show up differently—but I'll still show up."</p>
-                        
-                        <p>You don't need the perfect plan. You need a personal one.</p>
-                        <p>One that respects your body's requirements. One that allows growth without fear. One that feels sustainable, not suffocating.</p>
-                        
-                        <p>You are allowed to try. You are allowed to fail. You are allowed to restart—without drama or shame.</p>
-                        
-                        <p>Choose movement you can return to. Food you can live with. Habits that feel realistic.</p>
-                        
-                        <p>This is not about impressing anyone. It is about building something you can maintain.</p>
-                        
-                        <p class="quote-line">Discipline without punishment feels calm. It feels grounded. It feels kind—but firm.</p>
-                        
-                        <p>It doesn't scream. It doesn't threaten. It doesn't guilt you into obedience.</p>
-                        
-                        <p>It walks with you.</p>
-                        
-                        <p>And when discipline comes from self-respect, not fear—it stops being temporary. It becomes a way of life.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>In Practice:</strong> In real life, discipline shows up on tired weekdays, not perfect mornings. It shows up when you choose a short walk instead of skipping movement altogether, when you eat simply instead of perfectly, when you rest without guilt instead of forcing productivity. This kind of discipline is deeply practical—it allows space for festivals, family emergencies, emotional days, and slow weeks. It doesn't collapse at the first disruption. And for women, this matters because life is rarely predictable. Sustainable discipline understands that consistency is built not by intensity, but by compassion that keeps you returning.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">9</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 10 -->
-                    <div class="chapter-content" id="chapter-10" style="display: none;">
-                        <div class="chapter-number">Chapter Ten</div>
-                        <h3 class="chapter-title">A Strong Woman Builds a Strong Home</h3>
-                        
-                        <p>There is a fear most women carry quietly: "If I focus on myself, will my family suffer?"</p>
-                        
-                        <p>We are taught—directly and indirectly—that strength inside a woman must come at the cost of harmony around her. That if she grows, something else will weaken.</p>
-                        
-                        <p>But what no one tells you is this: a woman who is exhausted holds a home together with effort. A woman who is grounded holds it together with presence.</p>
-                        
-                        <p>When I started choosing myself consistently—not occasionally, not dramatically—something unexpected happened.</p>
-                        
-                        <p>The house didn't fall apart. The children didn't suffer. The family didn't feel neglected.</p>
-                        
-                        <p>Instead, the atmosphere changed.</p>
-                        
-                        <p>I was calmer. Less reactive. More patient—not because I was trying harder, but because I had more to give.</p>
-                        
-                        <p>When your body feels supported, your mind stops snapping. When your mind feels steady, your relationships soften.</p>
-                        
-                        <p>I wasn't rushing through conversations anymore. I wasn't carrying resentment disguised as sacrifice. I wasn't constantly tired and calling it "normal."</p>
-                        
-                        <p>And slowly, my home felt different.</p>
-                        <p>Not louder. Not stricter.</p>
-                        <p class="quote-line">Stronger.</p>
-                        
-                        <p>Children don't learn from lectures. They learn from energy.</p>
-                        
-                        <p>They notice when you respect your body. They notice when you keep promises to yourself. They notice when discipline exists without anger.</p>
-                        
-                        <p>They learn that taking care of yourself is not selfish—it is normal.</p>
-                        
-                        <p>Your spouse notices too. Not through words, but through consistency. Through stability. Through the quiet confidence that replaces constant fatigue.</p>
-                        
-                        <p>And then comes the irony.</p>
-                        
-                        <p>The same four log who once judged you start asking different questions.</p>
-                        
-                        <p class="hindi-text">"Kaise manage kar leti ho sab?"</p>
-                        <p class="hindi-text">"Sab kuch itna balanced kaise lagta hai?"</p>
-                        <p class="hindi-text">"Ghar bhi, health bhi… sab perfect lag raha hai."</p>
-                        
-                        <p>They don't realise—nothing became perfect. It became aligned.</p>
-                        
-                        <p>You didn't add more effort. You removed inner chaos.</p>
-                        
-                        <p class="quote-line">A strong woman doesn't control her home. She stabilises it.</p>
-                        
-                        <p>Not by doing more—but by being better with herself first.</p>
-                        
-                        <p>This is not about becoming an ideal woman. It's about becoming a healthy one.</p>
-                        
-                        <p class="quote-line">Because when a woman stands strong within herself, her home doesn't need her exhaustion to survive. It rises with her.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Everyday Reality:</strong> In everyday life, this strength shows up quietly—in calmer mornings, fewer arguments, more patience during chaos. When a mother eats well, moves regularly, and rests without guilt, the household rhythm shifts naturally. Meals become lighter, emotions steadier, and boundaries clearer. Children learn balance not through instruction, but observation. They see that caring for yourself is part of caring for others. And over time, the home stops depending on a woman's sacrifice and starts thriving on her stability. That is the real legacy of strength.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">10</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 11 -->
-                    <div class="chapter-content" id="chapter-11" style="display: none;">
-                        <div class="chapter-number">Chapter Eleven</div>
-                        <h3 class="chapter-title">What My Husband and Children Taught Me</h3>
-                        
-                        <p>Some people enter your life as companions. Some enter as supporters. And then there are rare ones who enter as anchors.</p>
-                        
-                        <p>My husband has been all of that—and more.</p>
-                        
-                        <p>He has been a parent to me when I needed grounding. A best friend when I needed honesty. A partner when I needed strength. A person whose way of living can inspire anyone—and yet, it took me a long time to take inspiration from him.</p>
-                        
-                        <p>Not because he wasn't showing it. But because I wasn't ready to see it.</p>
-                        
-                        <p>He believed in me when no one else did. He supported me when my ideas felt unclear to others. He stood beside me when my body was at its worst and loved me without trying to "fix" me.</p>
-                        
-                        <p>When I doubted my thoughts, he trusted my mind. When I questioned my direction, he never questioned my potential.</p>
-                        
-                        <p>There were moments when I couldn't explain myself—when even I didn't fully understand what I was becoming.</p>
-                        
-                        <p>But he never asked me to shrink. Never rushed my process. Never made my confusion feel like a flaw.</p>
-                        
-                        <p>Sometimes I wonder how he carried so much faith so quietly. How he could see clarity where others saw chaos. How he could be so sure when I was still searching.</p>
-                        
-                        <p>I don't think gratitude is enough for this kind of presence. But it is all I have.</p>
-                        
-                        <p>I thank God every day for giving me a man who didn't just walk with me—but stood for me.</p>
-                        
-                        <p>And then there are my children.</p>
-                        
-                        <p>They didn't teach me through words. They taught me through observation.</p>
-                        
-                        <p>They taught me that consistency matters more than perfection. That calm is more powerful than control. That the way I treat myself becomes the way they learn to treat their own bodies and minds.</p>
-                        
-                        <p>They don't need a tired mother. They need a present one.</p>
-                        <p>They don't need sacrifice soaked in resentment. They need strength rooted in balance.</p>
-                        
-                        <p>Through them, I learned that self-care is not separate from family—it is the foundation of it.</p>
-                        
-                        <p>This chapter is not about praise. It is about acknowledgement.</p>
-                        
-                        <p>Because no woman becomes strong alone.</p>
-                        <p>She becomes strong when she is supported, believed in, and allowed to grow without fear.</p>
-                        
-                        <p class="quote-line">What my husband and children taught me is simple—but life-changing:</p>
-                        <p class="quote-line">Love does not demand exhaustion.</p>
-                        <p class="quote-line">Support does not require silence.</p>
-                        <p class="quote-line">And belief, when given at the right time, can change the entire direction of a life.</p>
-                        
-                        <p>I am still becoming. Still learning. Still choosing.</p>
-                        <p>But I am not doing it alone.</p>
-                        <p class="quote-line">And that makes all the difference.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Nature of Support:</strong> For many women, support looks different from what they imagined. It doesn't always come as loud encouragement or constant advice. Sometimes, it comes as quiet faith—someone holding space while you figure yourself out. A partner who doesn't rush your healing. Children who reflect your growth back to you without judgement. In real life, this kind of support becomes the soil in which a woman finally feels safe enough to grow. And when she grows from safety instead of pressure, her strength becomes steady, not fragile. That steadiness ripples outward—into her relationships, her parenting, and the way she shows up for the world.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn">
-                                Next Chapter <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">11</span> of 12
-                        </div>
-                    </div>
-                    
-                    <!-- Chapter 12 -->
-                    <div class="chapter-content" id="chapter-12" style="display: none;">
-                        <div class="chapter-number">Chapter Twelve</div>
-                        <h3 class="chapter-title">The Fit Mom Edit</h3>
-                        
-                        <p>This is not about age. It never was.</p>
-                        
-                        <p>When I say The Fit Mom Edit, I am not trying to go backwards. I am finally arriving forward.</p>
-                        
-                        <p>At 18, life was about becoming. At 36, life is about choosing.</p>
-                        <p>The difference is clarity.</p>
-                        
-                        <p>At 18, I followed expectations. At 36, I follow alignment.</p>
-                        <p>At 18, I didn't know my limits. At 36, I respect them.</p>
-                        <p>At 18, I borrowed confidence. At 36, I've built it.</p>
-                        
-                        <p>This version of me is not louder. Not faster. Not desperate to prove anything.</p>
-                        <p>She is calmer. More intentional. More honest.</p>
-                        
-                        <p>She knows when to rest. She knows when to push. She knows when to walk away. She knows when to stay.</p>
-                        
-                        <p>This chapter is not a finish line. It's a flow.</p>
-                        
-                        <p>I no longer measure life in milestones alone—weight lost, habits built, chapters completed.</p>
-                        
-                        <p>I measure it in how I feel inside my body. How I respond instead of react. How I show up without resentment. How I stand without apology.</p>
-                        
-                        <p>Choosing myself did not make me selfish. It made me available in a healthier way.</p>
-                        <p>Fitness didn't make me obsessed. It made me capable.</p>
-                        <p>Discipline didn't cage me. It gave me freedom.</p>
-                        <p>And family didn't get less of me—they got a steadier version of me.</p>
-                        
-                        <p>This is what growth after 35 looks like.</p>
-                        <p>Not perfection. Not constant motivation. Not a flawless routine.</p>
-                        <p>But awareness. Consistency. Self-trust.</p>
-                        
-                        <p>I no longer wait for permission. I no longer wait for validation. I no longer wait for the "right time."</p>
-                        
-                        <p>Because now I know—</p>
-                        <p>the body doesn't ask for urgency. It asks for respect.</p>
-                        <p>the mind doesn't ask for pressure. It asks for patience.</p>
-                        <p>and life doesn't ask for sacrifice at the cost of self. It asks for balance.</p>
-                        
-                        <p class="quote-line">If you are reading this and standing somewhere between confusion and courage, between guilt and growth, between exhaustion and hope—know this:</p>
-                        
-                        <p class="quote-line">You are not late.</p>
-                        <p class="quote-line">You are not weak.</p>
-                        <p class="quote-line">You are not broken.</p>
-                        <p class="quote-line">You are waking up.</p>
-                        
-                        <p>And waking up is never loud.</p>
-                        <p>It is quiet. Personal. Uncomfortable. Brave.</p>
-                        
-                        <p class="quote-line">36 is not my new 18 because I am younger.</p>
-                        <p class="quote-line">The Fit Mom Edit for the first time, I am living with intention.</p>
-                        
-                        <p>And that—that is the youngest I have ever felt.</p>
-                        
-                        <div class="chapter-highlight">
-                            <p><strong>The Final Realisation:</strong> This realisation comes after years of postponing themselves—waiting for the "right phase," the "settled life," the "easier time." But life rarely offers clean pauses. What changes instead is awareness. You begin to understand that intention matters more than age, and choice matters more than circumstance. This chapter speaks to women who are done waiting—to those who are ready to live with presence instead of postponement. Because when a woman starts choosing consciously, she doesn't rewind her life. She finally steps fully into it.</p>
-                        </div>
-                        
-                        <!-- Chapter Navigation -->
-                        <div class="chapter-navigation">
-                            <button class="chapter-navigation-btn outline prev-chapter-btn">
-                                <i class="fas fa-arrow-left"></i> Previous Chapter
-                            </button>
-                            
-                            <button class="chapter-navigation-btn next-chapter-btn" disabled>
-                                The End <i class="fas fa-heart"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="chapter-indicator">
-                            Chapter <span class="current">12</span> of 12
-                        </div>
-                    </div>
-                </div>
+    <!-- FOOTER -->
+    <footer class="oh-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="img/WhatsApp_Image_2025-12-12_at_22.26.16_1d885e4c-removebg-preview.png" alt="OH Architecture" class="footer-left-img">
             </div>
-        </div>
-    </section>
 
-    <!-- Testimonial/Quote -->
-    <section id="testimonial" class="testimonial section-padding">
-        <div class="container">
-            <div class="testimonial-quote">
-                "Because it isn't here to motivate you. It is here to sit beside you."
+            <div class="footer-middle">
+                <p class="footer-section-title">(NAVIGATION)</p>
+                <ul class="footer-nav">
+                    <li>Home</li>
+                    <li>Works</li>
+                    <li>In Progress</li>
+                    <li>Archive</li>
+                    <li>Studio</li>
+                    <li>Process</li>
+                    <li>Gallery</li>
+                    <li>Contact Us</li>
+                </ul>
             </div>
-            <div class="testimonial-author">— The Fit Mom Edit</div>
-        </div>
-    </section>
 
-    <!-- Newsletter -->
-    <section id="newsletter" class="newsletter section-padding">
-        <div class="container">
-            <div class="newsletter-box">
-                <h2>Join The Journey</h2>
-                <p>Subscribe to receive exclusive chapter excerpts, reflections, and insights on choosing yourself after 35. Perfect for women standing between exhaustion and awakening.</p>
-                
-                <form id="newsletter-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                        <input type="email" class="form-input" placeholder="Your Email Address" required>
-                        <button type="submit" class="btn">Subscribe Now</button>
-                    </div>
-                </form>
-                
-                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">No spam. Just honest reflections delivered to your inbox.</p>
-            </div>
-        </div>
-    </section>
+            <div class="footer-right">
+                <p class="footer-section-title">(ACKNOWLEDGEMENT)</p>
+                <p class="footer-text">
+                    We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present, and acknowledge their continuing connection to land, sea and community.
+                </p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">The Fit Mom Edit</div>
-                    <p>A deeply honest journey of life after 35—where the body begins to speak louder, the mind asks harder questions, and self-worth quietly demands attention.</p>
-                    
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-goodreads"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#themes">Book Themes</a></li>
-                        <li><a href="#chapters">Chapter Previews</a></li>
-                        <li><a href="#testimonial">Powerful Quotes</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>The Journey</h4>
-                    <ul>
-                        <li><a href="#chapters" data-chapter="1">The Noise Before Choice</a></li>
-                        <li><a href="#chapters" data-chapter="2">Life on Autopilot</a></li>
-                        <li><a href="#chapters" data-chapter="4">Choosing Yourself</a></li>
-                        <li><a href="#chapters" data-chapter="12">The Fit Mom Edit</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="mailto:hello@36ismynew18.com">hello@36ismynew18.com</a></li>
-                        <li><a href="#">Media Inquiries</a></li>
-                        <li><a href="#">Speaking Engagements</a></li>
-                        <li><a href="#">Book Clubs</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                &copy; 2023 The Fit Mom Edit. All rights reserved. | A journey of choosing yourself without guilt.
+                <p class="footer-section-title">(INFO)</p>
+                <p class="footer-text">
+                    <strong>A:</strong> 101 Days Rd, Grange QLD 4051<br>
+                    <strong>E:</strong> info@oharchitecture.com.au<br>
+                    <strong>P:</strong> 07 3110 1031<br>
+                    <strong>H:</strong> Monday to Friday, 8:30am - 5:00pm
+                </p>
             </div>
         </div>
     </footer>
+</div>
+<div id="gif-preloader">
+    <img src="img/WhatsAppVideo2025-12-12at20.21.09_57fdc230-ezgif.com-video-to-gif-converter.gif" alt="Loading..." id="loadingGif">
+</div>
 
-    <script>
-        // Mobile Navigation Toggle
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileNav = document.getElementById('mobileNav');
+<!-- POPUPS -->
+<div id="fullImagePopup" class="popup">
+    <span class="closePopup" onclick="closeFull()">×</span>
+    <img id="popupImage">
+</div>
+
+<div id="imgPopup" class="popup" onclick="closeImage()">
+    <span class="closePopup" onclick="closeImage()">×</span>
+    <img id="popupImg" class="popup-img">
+</div>
+
+<div id="fs-popup" class="popup" onclick="fsCloseImage()">
+    <span class="closePopup" onclick="fsCloseImage()">×</span>
+    <img id="fs-popup-img">
+</div>
+
+<script>
+// POPUP FUNCTIONS
+function openFull() {
+    document.getElementById("popupImage").src = document.getElementById("mainImage").src;
+    document.getElementById("fullImagePopup").style.display = "flex";
+}
+
+function closeFull() {
+    document.getElementById("fullImagePopup").style.display = "none";
+}
+
+function openImage(src) {
+    document.getElementById("imgPopup").style.display = "flex";
+    document.getElementById("popupImg").src = src;
+}
+
+function closeImage() {
+    document.getElementById("imgPopup").style.display = "none";
+}
+
+function fsOpenImage(src) {
+    document.getElementById("fs-popup").style.display = "flex";
+    document.getElementById("fs-popup-img").src = src;
+}
+
+function fsCloseImage() {
+    document.getElementById("fs-popup").style.display = "none";
+}
+
+// MOBILE MENU FUNCTIONS
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenuClose.addEventListener('click', function() {
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Close mobile menu when clicking on overlay
+mobileMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === mobileMenuOverlay) {
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// SCROLL ANIMATIONS
+let experienceSection = document.getElementById('experienceSection');
+let heroSection = document.getElementById('hero');
+let featuredProject = document.getElementById('featuredProject');
+let architectureStyle = document.getElementById('architectureStyle');
+let isExperienceRevealed = false;
+
+window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    // Navbar effect
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    // Hide scroll down when scrolled
+    const scrollDown = document.getElementById('scrollDown');
+    if (window.scrollY > 50) {
+        scrollDown.classList.add('hidden');
+    } else {
+        scrollDown.classList.remove('hidden');
+    }
+    
+    // EXPERIENCE SECTION SLIDE UP ANIMATION
+    const slideStartPoint = windowHeight * 0.2;
+    
+    if (scrollPosition >= slideStartPoint && !isExperienceRevealed) {
+        experienceSection.classList.add('revealed');
+        isExperienceRevealed = true;
         
-        mobileToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileNav.classList.toggle('active');
-            const icon = this.querySelector('i');
-            if (mobileNav.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden';
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile nav when clicking outside
-        document.addEventListener('click', function(e) {
-            if (mobileNav.classList.contains('active') && 
-                !mobileNav.contains(e.target) && 
-                !mobileToggle.contains(e.target)) {
-                mobileNav.classList.remove('active');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile nav when clicking a link
-        document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Close mobile nav on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Chapter Navigation Logic
-        let currentChapter = 1;
-        const totalChapters = 12;
-
-        // Function to update chapter navigation buttons
-        function updateChapterNavigation() {
-            const prevBtns = document.querySelectorAll('.prev-chapter-btn');
-            const nextBtns = document.querySelectorAll('.next-chapter-btn');
-            const currentIndicators = document.querySelectorAll('.chapter-indicator .current');
-            
-            // Update all indicators
-            currentIndicators.forEach(indicator => {
-                indicator.textContent = currentChapter;
-            });
-            
-            // Update all previous buttons
-            prevBtns.forEach(btn => {
-                if (currentChapter === 1) {
-                    btn.disabled = true;
-                    btn.innerHTML = '<i class="fas fa-home"></i> Home';
-                } else {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-arrow-left"></i> Previous Chapter';
-                }
-            });
-            
-            // Update all next buttons
-            nextBtns.forEach(btn => {
-                if (currentChapter === totalChapters) {
-                    btn.disabled = true;
-                    btn.innerHTML = 'The End <i class="fas fa-heart"></i>';
-                } else {
-                    btn.disabled = false;
-                    btn.innerHTML = 'Next Chapter <i class="fas fa-arrow-right"></i>';
-                }
-            });
-            
-            // Update desktop navigation buttons
-            document.querySelectorAll('.chapter-nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (parseInt(btn.getAttribute('data-chapter')) === currentChapter) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Update mobile selector
-            document.getElementById('chapterSelector').value = currentChapter;
+        // Fade out hero elements
+        featuredProject.style.opacity = '0';
+        architectureStyle.style.opacity = '0';
+    }
+    
+    // Hide hero when experience section is fully visible
+    if (scrollPosition >= windowHeight * 0.5) {
+        heroSection.classList.add('hidden');
+    } else {
+        heroSection.classList.remove('hidden');
+        featuredProject.style.opacity = '1';
+        architectureStyle.style.opacity = '0.9';
+    }
+    
+    // Show experience section content when scrolling back up
+    if (scrollPosition < slideStartPoint && isExperienceRevealed) {
+        experienceSection.classList.remove('revealed');
+        isExperienceRevealed = false;
+    }
+    
+    // Smooth reveal animation for experience section content
+    const revealElements = document.querySelectorAll('.smooth-reveal');
+    revealElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+        
+        if (elementPosition < screenPosition) {
+            element.classList.add('revealed');
         }
-
-        // Function to show specific chapter
-        function showChapter(chapterId, preventScroll = false) {
-            currentChapter = parseInt(chapterId);
-            
-            // Hide all chapter contents
-            document.querySelectorAll('.chapter-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // Show selected chapter
-            const selectedChapter = document.getElementById(`chapter-${chapterId}`);
-            selectedChapter.style.display = 'block';
-            
-            // Update navigation
-            updateChapterNavigation();
-            
-            // Only scroll if not prevented
-            if (!preventScroll) {
-                // Smooth scroll to top of chapter display section
-                const chapterDisplay = document.querySelector('.chapter-display');
-                chapterDisplay.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }
-            
-            // Close mobile nav if open
-            if (mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            }
+    });
+    
+    // Line by line animation
+    const lines = document.querySelectorAll('.line');
+    lines.forEach((line, index) => {
+        const linePosition = line.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (linePosition < screenPosition) {
+            setTimeout(() => {
+                line.classList.add('visible');
+            }, index * 150);
         }
+    });
+});
 
-        // Next Chapter Button
-        document.addEventListener('click', function(e) {
-            // Check if next button was clicked
-            if (e.target.closest('.next-chapter-btn') && !e.target.closest('.next-chapter-btn').disabled) {
-                e.preventDefault();
-                if (currentChapter < totalChapters) {
-                    showChapter(currentChapter + 1);
-                }
-            }
-            
-            // Check if previous button was clicked
-            if (e.target.closest('.prev-chapter-btn') && !e.target.closest('.prev-chapter-btn').disabled) {
-                e.preventDefault();
-                if (currentChapter > 1) {
-                    showChapter(currentChapter - 1);
-                } else if (currentChapter === 1) {
-                    // Scroll to home if on first chapter
-                    document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
+// SCROLL DOWN CLICK - SMOOTH SCROLL
+document.getElementById('scrollDown').addEventListener('click', function() {
+    window.scrollTo({
+        top: window.innerHeight * 0.3,
+        behavior: 'smooth'
+    });
+});
 
-        // Desktop Chapter Navigation
-        document.querySelectorAll('.chapter-nav-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const chapterId = this.getAttribute('data-chapter');
-                showChapter(chapterId);
-            });
-        });
+// Initialize on load
+window.addEventListener('load', function() {
+    // Trigger initial scroll event
+    window.dispatchEvent(new Event('scroll'));
+    
+    // Add initial margin to main content
+    document.querySelector('.main-content').style.marginTop = '100vh';
+    
+    // Close mobile menu on window resize to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+window.addEventListener("load", function () {
+    const preloader = document.getElementById("gif-preloader");
 
-        // Mobile Chapter Selector
-        document.getElementById('chapterSelector').addEventListener('change', function() {
-            showChapter(this.value);
-        });
+    if (!preloader) return;
 
-        // Footer chapter links
-        document.querySelectorAll('.footer-links a[data-chapter]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const chapterId = this.getAttribute('data-chapter');
-                showChapter(chapterId);
-            });
-        });
+    setTimeout(() => {
+        preloader.style.display = "none";
+    }, 5900); // ⏱ 5.3 seconds
+});
 
-        // Newsletter Form Submission
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Show success message
-            alert(`Thank you, ${name}! You've subscribed to the journey. The first chapter excerpt will be sent to ${email} shortly.`);
-            
-            // Reset form
-            this.reset();
-        });
 
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]:not(.chapter-navigation-btn)').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Keyboard Navigation for Chapters
-        document.addEventListener('keydown', function(e) {
-            // Only apply keyboard navigation when user is not typing in form
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                return;
-            }
-            
-            if (e.key === 'ArrowRight' && currentChapter < totalChapters) {
-                e.preventDefault();
-                showChapter(currentChapter + 1);
-            }
-            
-            if (e.key === 'ArrowLeft' && currentChapter > 1) {
-                e.preventDefault();
-                showChapter(currentChapter - 1);
-            }
-        });
-
-        // Add floating elements dynamically
-        document.addEventListener('DOMContentLoaded', function() {
-            const hero = document.querySelector('.hero');
-            for(let i = 0; i < 8; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                element.style.width = `${Math.random() * 80 + 40}px`;
-                element.style.height = element.style.width;
-                element.style.top = `${Math.random() * 100}%`;
-                element.style.left = `${Math.random() * 100}%`;
-                element.style.animationDuration = `${Math.random() * 20 + 15}s`;
-                element.style.animationDelay = `${Math.random() * 5}s`;
-                hero.appendChild(element);
-            }
-            
-            // Set initial navbar state
-            if (window.scrollY > 50) {
-                document.querySelector('.navbar').classList.add('scrolled');
-            }
-            
-            // Show first chapter
-            showChapter(1, true);
-        });
-    </script>
+</script>
 </body>
 </html>
+
