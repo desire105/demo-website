@@ -955,7 +955,7 @@
                 
                 <div class="hero-btns">
                     <a href="#chapters" class="btn">Explore Chapters</a>
-                    <a href="#newsletter" class="btn">Join the Journey</a>
+                    <a href="#newsletter" class="btn">Know More About My Journey</a>
                 </div>
             </div>
         </div>
@@ -1958,14 +1958,15 @@
             <div class="newsletter-box">
                 <h2>Join The Journey</h2>
                 <p>Subscribe to receive exclusive chapter excerpts, reflections, and insights on choosing yourself after 35. Perfect for women standing between exhaustion and awakening.</p>
-                
-                <form id="newsletter-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                        <input type="email" class="form-input" placeholder="Your Email Address" required>
-                        <button type="submit" class="btn">Subscribe Now</button>
-                    </div>
-                </form>
+  <form method="POST" action="subscribe.php">
+
+    <div class="form-group">
+        <input type="text" class="form-input" name="name" placeholder="Your Name" required>
+        <input type="email" class="form-input" name="email" placeholder="Your Email Address" required>
+        <button type="submit" class="btn">Subscribe Now</button>
+    </div>
+</form>
+
                 
                 <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">No spam. Just honest reflections delivered to your inbox.</p>
             </div>
@@ -2289,3 +2290,4 @@
     </script>
 </body>
 </html>
+
