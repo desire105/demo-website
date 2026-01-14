@@ -1,129 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
-<title>Staggered Image Grid with Auto-play Videos</title>
+<title>Premium Center Logo Navbar</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="jquery/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+:root{
+    --text:#111;
+    --muted:#777;
+    --accent:#111111; /* Changed from orange to black */
+    --bg:#ffffff;
+    --border:#e0e0e0; /* Added border color */
+}
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Inter', Arial, sans-serif;
 }
 
 body{
-  background:#f6f5f2;
-  padding:60px 40px;
+    background:#f6f6f6;
 }
 
-/* Section */
-.gallery-section{
-  margin-bottom:120px;
+/* Navbar */
+.navbar{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 48px;
+    background:black;
+
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }
 
-.gallery-section h2{
-  font-size:32px;
-  margin-bottom:40px;
-  letter-spacing:1px;
+/* Navbar ke niche se content start ho */
+body{
+    padding-top:72px;
 }
 
-/* Grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
+/* LEFT LOGO */
+.nav-left-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
 }
 
-/* Images and Videos */
-.grid img,
-.grid video{
-  width:100%;
-  object-fit:cover;
-  border-radius:14px;
-  transition:0.4s ease;
-  display:block;
+.nav-left-logo img{
+    height:38px;
+    cursor:pointer;
 }
 
-/* Heights – organic (repeat pattern) */
-.grid img:nth-child(6n+1),
-.grid img:nth-child(6n+2),
-.grid video:nth-child(6n+1),
-.grid video:nth-child(6n+2){height:320px;}
-
-.grid img:nth-child(6n+3),
-.grid img:nth-child(6n+4),
-.grid video:nth-child(6n+3),
-.grid video:nth-child(6n+4){height:260px;}
-
-.grid img:nth-child(6n+5),
-.grid img:nth-child(6n+6),
-.grid video:nth-child(6n+5),
-.grid video:nth-child(6n+6){height:360px;}
-
-/* Stagger offsets */
-.grid img:nth-child(even),
-.grid video:nth-child(even){margin-top:40px;}
-
-.grid img:nth-child(3n),
-.grid video:nth-child(3n){margin-top:-30px;}
-
-/* Hover Effects */
-.grid img:hover,
-.grid video:hover{
-  transform:scale(1.03);
+/* CENTER MENU */
+.nav-center{
+    display:flex;
+    gap:34px;
 }
 
-/* Video specific styles */
-.grid video{
-  background:#000;
+.nav-center a{
+    text-decoration:none;
+    color:white;
+    font-size:15px;
+    font-weight:500;
+    letter-spacing:0.2px;
+    position:relative;
+    transition:color .3s ease;
 }
 
-/* Video controls styling */
-.grid video::-webkit-media-controls-panel {
-  background-color: rgba(0,0,0,0.5);
+/* Minimal underline */
+.nav-center a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:100%;
+    height:2px;
+    background:var(--accent);
+    transform:scaleX(0);
+    transform-origin:right;
+    transition:transform .3s ease;
 }
 
-.grid video::-webkit-media-controls-play-button {
-  color: white;
+.nav-center a:hover{
+    color:var(--accent);
 }
 
-/* Tablet */
-@media(max-width:900px){
-  .grid{
-    grid-template-columns:repeat(2,1fr);
+.nav-center a:hover::after{
+    transform:scaleX(1);
+    transform-origin:left;
+}
+
+/* RIGHT ICONS */
+.nav-right{
+    display:flex;
+    gap:26px;
+    align-items:center;
+}
+
+.nav-right a{
+    color:white;
+    font-size:18px;
+    position:relative;
+    transition:color .3s ease;
+}
+
+.nav-right a:hover{
+    color:var(--accent);
+}
+
+/* Cart badge */
+.cart-count{
+    position:absolute;
+    top:-6px;
+    right:-10px;
+    background:var(--accent);
+    color:#fff;
+    font-size:10px;
+    font-weight:600;
+    padding:2px 6px;
+    border-radius:12px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+/* Carousel Section */
+.carousel-section {
+  background: #f6f5f2;
+  padding: 40px 0;
+}
+
+.carousel-title {
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.img-carousel {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 5%,
+    black 95%,
+    transparent 100%
+  );
+}
+
+.img-track {
+  display: flex;
+  width: max-content;
+  animation: moveRight 30s linear infinite;
+}
+
+.img-track img {
+  width: 160px;
+  height: 150px;
+  margin: 0 12px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2); /* Lighter shadow */
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
   }
-  .grid img,
-  .grid video{
-    margin-top:0;
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* Mobile */
-@media(max-width:500px){
-  body{
-    padding:30px 16px;
+.img-track:hover {
+  animation-play-state: paused;
+}
+
+/* Section Title - SPACING REDUCED HERE */
+.section-title {
+  text-align: center;
+  color: var(--text);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 1.5rem; /* Reduced from 3rem */
+  margin-bottom: 0.5rem;
+}
+
+.section-sub {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1rem; /* Reduced from 2rem */
+}
+
+/* Custom Gallery */
+.custom-gallery {
+  padding: 20px 40px; /* Reduced top/bottom padding */
+}
+
+.custom-gallery .container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.custom-gallery .left-img {
+  flex: 1 1 40%;
+}
+
+.custom-gallery .left-img img,
+.custom-gallery .right-imgs .top-img img,
+.custom-gallery .right-imgs .bottom-imgs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 29px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Lighter shadow */
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-gallery .left-img img:hover,
+.custom-gallery .right-imgs .top-img img:hover,
+.custom-gallery .right-imgs .bottom-imgs img:hover {
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.custom-gallery .right-imgs {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.custom-gallery .right-imgs .bottom-imgs {
+  display: flex;
+  gap: 20px;
+  height: 250px;
+}
+
+.custom-gallery .right-imgs .bottom-imgs img {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
   }
 
-  .gallery-section{
-    margin-bottom:80px;
+  .img-track img {
+    width: 120px;
+    height: 80px;
+  }
+  
+  .navbar {
+    padding: 0 24px;
+  }
+  
+  .nav-center {
+    gap: 20px;
+  }
+  
+  .section-title {
+    margin-top: 1rem; /* Further reduced for mobile */
+  }
+  
+  .custom-gallery {
+    padding: 15px 20px; /* Reduced for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 350px;
   }
 
-  .gallery-section h2{
-    font-size:24px;
-    margin-bottom:24px;
+  .img-track img {
+    width: 100px;
+    height: 70px;
   }
-
-  .grid{
-    grid-template-columns:1fr;
-    gap:18px;
+  
+  .navbar {
+    padding: 0 16px;
   }
+  
+  .nav-center {
+    gap: 15px;
+  }
+  
+  .nav-center a {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem; /* Smaller font for mobile */
+    margin-top: 0.75rem;
+  }
+  
+  .custom-gallery {
+    padding: 10px 15px; /* Further reduced for mobile */
+  }
+}
 
-  .grid img,
-  .grid video{
-    height:260px !important;
-    margin-top:0 !important;
+@media (max-width: 900px) {
+  .custom-gallery .container {
+    flex-direction: column;
+  }
+  .custom-gallery .right-imgs .bottom-imgs img {
+    height: 150px;
   }
 }
 </style>
@@ -131,139 +350,2738 @@ body{
 
 <body>
 
-<section class="gallery-section">
+<nav class="navbar">
 
-<h2 class="luxury-text">Property Lifestyle Luxury</h2>
+    <!-- LEFT LOGO -->
+    <div class="nav-left-logo">
+        <img src="img/logo.jpg" alt="Brand Logo">
+    </div>
 
-<style>
-.luxury-text{
-  font-family: 'Great Vibes', cursive;
-  font-size: 48px;
-  font-weight: 400;
-  letter-spacing: 2px;
+    <!-- CENTER MENU -->
+    <div class="nav-center">
+        <a href="#">Hot Deals</a>
+        <a href="#">Shop</a>
+        <a href="#">Accessories</a>
+        <a href="#">Service</a>
+        <a href="#">Support</a>
+    </div>
+
+    <!-- RIGHT ICONS -->
+    <div class="nav-right">
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+        <a href="#">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+    </div>
+
+</nav>
+<!-- Hero Section (Only Video) -->
+<section class="hero-carousel">
+  <style>
+    .hero-carousel {
+      width: 100%;
+      height: 400px;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+    
+    .carousel-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .carousel-track {
+      display: flex;
+      width: 300%;
+      height: 440px;
+      transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    
+    .carousel-slide {
+      width: 33.333%;
+      height: 100%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .slide-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .slide-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding: 40px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 15px;
+      max-width: 800px;
+      margin: 0 20px;
+      backdrop-filter: blur(5px);
+      transform: translateY(0);
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-slide.active .slide-content {
+      transform: translateY(0);
+      animation: fadeUp 0.8s ease;
+    }
+    
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .slide-content h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+    
+    .slide-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .slide-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+    
+    .slide-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+    
+    .carousel-nav {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 10;
+    }
+    
+    .nav-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+    
+    .nav-dot.active::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.8);
+      animation: dotProgress 5s linear forwards;
+    }
+    
+    @keyframes dotProgress {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    
+    .carousel-btn:hover {
+      background: rgba(0,0,0,0.9);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .prev-btn {
+      left: 30px;
+    }
+    
+    .next-btn {
+      right: 30px;
+    }
+    
+    .prev-btn:hover {
+      animation: slideLeft 0.5s infinite alternate;
+    }
+    
+    .next-btn:hover {
+      animation: slideRight 0.5s infinite alternate;
+    }
+    
+    @keyframes slideLeft {
+      0% {
+        transform: translateY(-50%) translateX(0);
+      }
+      100% {
+        transform: translateY(-50%) translateX(-5px);
+      }
+    }
+    
+    @keyframes slideRight {
+      0% {
+        transform: translateY(-50%) translateX(0);
+      }
+      100% {
+        transform: translateY(-50%) translateX(5px);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-carousel {
+        height: 500px;
+      }
+      
+      .slide-content h2 {
+        font-size: 2.2rem;
+      }
+      
+      .slide-content p {
+        font-size: 1.1rem;
+      }
+      
+      .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .prev-btn {
+        left: 15px;
+      }
+      
+      .next-btn {
+        right: 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-carousel {
+        height: 450px;
+      }
+      
+      .slide-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .slide-content p {
+        font-size: 1rem;
+      }
+      
+      .slide-content {
+        padding: 25px;
+      }
+    }
+    .apple-category{
+  background:#fff;
+  padding:40px 20px;
 }
-</style>
 
-  <div class="grid">
-    <!-- Original 12 Images -->
-    <img src="img1/489910044_1256683429795713_8193219002443053414_n.jpg">
-    <img src="img1/490219408_1256683693129020_7318408783796790956_n.jpg">
-    <img src="img1/490508127_1256683696462353_7720630262064696672_n.jpg">
-    
-    <!-- First Video - Auto-playing -->
-    <video autoplay muted loop playsinline>
-      <source src="img1/AQO5h0LVuyRs0wOzonwPMCVil-L9aeaEH67G63lUfHBdoDBUI0Dj3pXH7fzrMOvDopHfM-PiGC2i0dq6sE2KhjnOV2N9eM5n05TtAWE.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    
-    <img src="img1/490811603_1256683703129019_6521097621237983560_n.jpg">
-    <img src="img1/491769907_1256684483128941_5157740937750063960_n.jpg">
-    
-    <img src="img1/491831466_1256684453128944_4654462437681711160_n.jpg">
-    <img src="img1/588454285_18397801087120906_3424977267911400730_n.jpg">
-    
-    <!-- Second Video - Auto-playing -->
-    <video autoplay muted loop playsinline>
-      <source src="img1/AQOwpeaS6-9YawHv0e4zQpC7xMyCRb16-8gSzi0jPNCdbpv2vrrIfH3KZWwgENFNud6ORUpf0daKGomrZm6Vgvpj7QV7GoT36Exln2I.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    
-    <!-- Third Video - Auto-playing -->
-    <video autoplay muted loop playsinline>
-      <source src="img1/AQPzLemhW-_7pSHHWM9Wj7yPb9iprQV6eDye0DjzYobUSNYRUszRasR1pfOqyK-gAuKgDTG9LR0tilc8G08Pg4b_S7kMkNwUdYXbZyY.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    
-    <img src="img1/588616193_18397801078120906_7840881580615262491_n.jpg">
-    <img src="img1/588729197_17971387169968694_892525063302432629_n.jpg">
-    
-    <!-- Fourth Video - Auto-playing -->
-    <video autoplay muted loop playsinline>
-      <source src="img1/AQPfT0E0uNTkyTJDDE5T46Y8LTbvZvru6TMBMQWbe3MU7zBOc4txjJUtbzktH_LWTGq7GsI7tfB6FgH9OjCf26COaENuvUiomj_Yv_s.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    
-    <img src="img1/589939631_17971387160968694_4240544639759661606_n.jpg">
-    <img src="img1/589961471_18397801183120906_7246745750000624313_n.jpg">
-    <img src="img1/590403062_18397801144120906_9188437954903957483_n.jpg">
+.category-list{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:35px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
 
-    <!-- Added 20 more images -->
-    <img src="img1/590423002_18397801174120906_352350702810152430_n.jpg">
-    <img src="img1/590433643_18397801192120906_7304846595102786541_n.jpg">
-    <img src="img1/590800159_18397801096120906_5512657451833304474_n.jpg">
-    <img src="img1/590889501_17971387178968694_61959697372549099_n.jpg">
-    <video autoplay muted loop playsinline>
-      <source src="img1/AQMdJu6DxfzyBNOQ-hAcczvxOIJCp9T9bEN4uFimj-MT9h3KZ3jmt1z2KuouwVDIl9PCqUXWxSt4ZxAibkxj1ZLhV5jncGd4WH1wgW4.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <img src="img1/591156811_17971387211968694_2661825507230424101_n.jpg">
+.category-list::-webkit-scrollbar{
+  display:none;
+}
+
+.category-item{
+  text-align:center;
+  min-width:90px;
+  cursor:pointer;
+}
+
+.category-item img{
+  width:70px;
+  height:auto;
+  margin-bottom:10px;
+  transition:transform 0.3s ease;
+}
+
+.category-item span{
+  font-size:14px;
+  color:#444;
+}
+
+.category-item:hover img{
+  transform:scale(1.1);
+}
+
+.category-item:hover span{
+  color:#000;
+}
+
+  </style>
+
+  <div class="carousel-container">
+    <div class="carousel-track">
+      <!-- Slide 1 with img tag -->
+      <div class="carousel-slide active">
+        <img class="slide-img" src="img/27.jpg" alt="Hero Image 1">
+        <div class="slide-overlay"></div>
+      </div>
+      
+      <!-- Slide 2 with img tag -->
+      <div class="carousel-slide">
+        <img class="slide-img" src="img/17.jpg" alt="Hero Image 2">
+        <div class="slide-overlay"></div>
+      </div>
+      
+      <!-- Slide 3 with img tag -->
+      <div class="carousel-slide">
+        <img class="slide-img" src="img/16.jpg" alt="Hero Image 3">
+        <div class="slide-overlay"></div>
+      </div>
+    </div>
     
-    <img src="img1/601480327_18413543515185175_460167586831623179_n.jpg">
-    <img src="img1/601535463_18413543533185175_609770353545231565_n.jpg">
-    <img src="img1/602316095_18413543473185175_3267007622855000580_n.jpg">
-    <img src="img1/603062498_18413543491185175_8014934311372986872_n.jpg">
-    <img src="img1/603847657_18413543509185175_5980625938808404541_n.jpg">
-    <img src="img1/612028820_1310843801059394_4599872441305555557_n.jpg">
-    <img src="img1/612047048_1310843781059396_8653549484233734535_n.jpg">
-    <img src="img1/612111194_1310843891059385_3784478367940769975_n.jpg">
-    <img src="img1/612216412_1310843921059382_1698921091556216973_n.jpg">
-    <img src="img1/612503920_1310843807726060_2743055175299144534_n.jpg">
-    <img src="img1/613143951_1310843957726045_4733460948881353548_n.jpg">
+    <!-- Navigation Buttons -->
+    <button class="carousel-btn prev-btn">❮</button>
+    <button class="carousel-btn next-btn">❯</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const carouselTrack = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.nav-dot');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+      let slideInterval;
+      
+      // Update carousel position
+      function updateCarousel() {
+        const slideWidth = 100 / totalSlides;
+        const translateX = -(currentSlide * slideWidth);
+        carouselTrack.style.transform = `translateX(${translateX}%)`;
+        
+        slides.forEach((slide, index) => {
+          slide.classList.toggle('active', index === currentSlide);
+        });
+        
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentSlide);
+        });
+        
+        const activeDot = document.querySelector('.nav-dot.active');
+        activeDot.style.animation = 'none';
+        setTimeout(() => {
+          activeDot.style.animation = 'dotProgress 5s linear forwards';
+        }, 10);
+      }
+      
+      // Next slide function
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+      
+      // Previous slide function
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+      
+      // Go to specific slide
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+      }
+      
+      // Start auto slide
+      function startAutoSlide() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+      
+      // Stop auto slide
+      function stopAutoSlide() {
+        clearInterval(slideInterval);
+      }
+      
+      // Event listeners
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoSlide();
+        startAutoSlide();
+      });
+      
+      dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+          const slideIndex = parseInt(this.getAttribute('data-slide'));
+          goToSlide(slideIndex);
+          stopAutoSlide();
+          startAutoSlide();
+        });
+      });
+      
+      // Button click events
+      document.querySelectorAll('.slide-btn').forEach((btn, index) => {
+        btn.addEventListener('click', function() {
+          const messages = [
+            "Get Started button clicked!",
+            "Learn More button clicked!",
+            "Meet Our Team button clicked!"
+          ];
+          alert(messages[index]);
+        });
+      });
+      
+      // Pause on hover
+      const carouselContainer = document.querySelector('.carousel-container');
+      carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+      carouselContainer.addEventListener('mouseleave', startAutoSlide);
+      
+      // Touch swipe support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carouselContainer.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      carouselContainer.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+          stopAutoSlide();
+          startAutoSlide();
+        }
+      }
+      
+      // Initialize
+      updateCarousel();
+      startAutoSlide();
+      
+      // Lazy loading for images (optional)
+      const imgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src || img.src;
+            imgObserver.unobserve(img);
+          }
+        });
+      });
+      
+    });
+  </script>
+</section>
+<section class="apple-category">
+  <div class="category-list">
+    
+    <div class="category-item">
+      <img src="img/macbook_ (1).jpg">
+      <span>Mac</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/iPhone_.jpg">
+      <span>iPhone</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/ipad-.jpg">
+      <span>iPad</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/apple_watch_1.jpg">
+      <span>Apple Watch</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/image_2025-09-03_153234743.jpg">
+      <span>AirPods</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/image_2025-09-03_153254957.jpg">
+      <span>AirTag</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/10.jpg">
+      <span>Apple TV 4K</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/image_2025-09-03_153358062.jpg">
+      <span>HomePod</span>
+    </div>
+
+    <div class="category-item">
+      <img src="img/9.jpg">
+      <span>Accessories</span>
+    </div>
+
   </div>
 </section>
 
-<script>
-// Optional: Add hover play/pause functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const videos = document.querySelectorAll('.grid video');
+<h2 class="section-title">Explore What's New</h2>
+<p class="section-sub">Get latest updates on trending products!</p>
+
+<section class="custom-gallery">
+  <div class="container">
+    <div class="left-img">
+      <img src="img/banner_1757488150_8184.jpg" alt="Left Image">
+    </div>
+    <div class="right-imgs">
+      <div class="top-img">
+        <img src="img/banner_1757488242_5384.jpg" alt="Right Top Image">
+      </div>
+      <div class="bottom-imgs">
+        <img src="img/banner_1757506099_9257.jpg" alt="Bottom Left">
+        <img src="img/banner_1757488398_7781.jpg" alt="Bottom Right">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="product-carousel-abc">
+  <div class="carousel-header-abc">
+    <h2>The latest. Take a look at what's new right now.</h2>
+  </div>
   
-  videos.forEach(video => {
-    // Pause video when not in viewport (optional)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play().catch(e => console.log("Auto-play prevented:", e));
-        } else {
-          video.pause();
-        }
-      });
-    }, { threshold: 0.5 });
+  <div class="carousel-wrapper-abc">
+    <button class="nav-btn-abc prev-btn-abc">
+      <i class="fas fa-chevron-left"></i>
+    </button>
     
-    observer.observe(video);
+    <div class="carousel-inner-abc">
+      <div class="slides-container-abc">
+        <!-- Slide 1 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="img/store-card-40-iphone-17-pro-202509.jpg" alt="Product 1">
+            <div class="image-text-overlay">
+              <h3>iPhone 17 Pro</h3>
+              <p>All out Pro.</p>
+              <div class="price">From ₹134900.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="img/store-card-40-macbook-pro-2025109.jpg" alt="Product 2">
+            <div class="image-text-overlay">
+              <h3>MacBook Pro</h3>
+              <p>Supercharged by M3 Pro</p>
+              <div class="price">From ₹199900.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="img/store-card-40-ipad-pro-202510.jpg" alt="Product 3">
+            <div class="image-text-overlay">
+              <h3>iPad Air</h3>
+              <p>Powerful. Colourful. Wonderful.</p>
+              <div class="price">From ₹59900.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="img/store-card-40-watch-ultra-202509_GEO_IN.jpg" alt="Product 4">
+            <div class="image-text-overlay">
+              <h3>Apple Watch</h3>
+              <p>Healthy leap ahead.</p>
+              <div class="price">From ₹41900.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 5">
+            <div class="image-text-overlay">
+              <h3>AirPods Pro</h3>
+              <p>Adaptive Audio. Now playing.</p>
+              <div class="price">From ₹26900.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 6">
+            <div class="image-text-overlay">
+              <h3>iPhone 16</h3>
+              <p>A camera. A battery. A design.</p>
+              <div class="price">From ₹79900.00<sup>†</sup></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 7 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 7">
+            <div class="image-text-overlay">
+              <h3>HomePod mini</h3>
+              <p>Fill your home with sound.</p>
+              <div class="price">From ₹10900.00<sup>†</sup></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 8 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 8">
+            <div class="image-text-overlay">
+              <h3>iPad Pro</h3>
+              <p>Out of this world.</p>
+              <div class="price">From ₹119900.00<sup>†</sup></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 9">
+            <div class="image-text-overlay">
+              <h3>AirTag</h3>
+              <p>Lose your knack for losing things.</p>
+              <div class="price">From ₹3290.00<sup>†</sup></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Slide 10 -->
+        <div class="product-cart-abc">
+          <div class="img-box-abc">
+            <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Product 10">
+            <div class="image-text-overlay">
+              <h3>Mac Studio</h3>
+              <p>Supercharged by M2 Ultra.</p>
+              <div class="price">From ₹229900.00<sup>†</sup></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    // Add click to toggle mute
-    video.addEventListener('click', function() {
-      this.muted = !this.muted;
-      if (this.muted) {
-        this.setAttribute('data-muted', 'true');
-      } else {
-        this.removeAttribute('data-muted');
-      }
-    });
+    <button class="nav-btn-abc next-btn-abc">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+<style>
+.product-carousel-abc {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f8f9fa;
+}
+
+.carousel-header-abc {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.carousel-header-abc h2 {
+  font-size: 36px;
+  color: #222;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.carousel-wrapper-abc {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carousel-inner-abc {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.slides-container-abc {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 20px;
+}
+
+.product-cart-abc {
+  flex: 0 0 calc(33.333% - 14px);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-cart-abc:hover {
+
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.img-box-abc {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-grow: 1;
+}
+
+.img-box-abc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-cart-abc:hover .img-box-abc img {
+  transform: scale(1.08);
+}
+
+/* Text Overlay Styles */
+.image-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 25px;
+  color: white;
+  text-align: left;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.image-text-overlay h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.image-text-overlay p {
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.image-text-overlay .price {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 15px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.image-text-overlay .price sup {
+  font-size: 12px;
+  vertical-align: super;
+}
+
+.nav-btn-abc {
+  background: black;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: all 0.3s ease;
+  font-size: 22px;
+  color: white;
+  flex-shrink: 0;
+}
+
+
+
+.nav-btn-abc:active {
+  transform: scale(0.95);
+}
+
+.prev-btn-abc {
+  order: 1;
+}
+
+.next-btn-abc {
+  order: 3;
+}
+
+.carousel-inner-abc {
+  order: 2;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .product-cart-abc {
+    flex: 0 0 calc(50% - 10px);
+    min-height: 350px;
+  }
+  
+  .image-text-overlay {
+    padding: 20px;
+  }
+  
+  .image-text-overlay h3 {
+    font-size: 24px;
+  }
+  
+  .nav-btn-abc {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper-abc {
+    gap: 5px;
+  }
+  
+  .nav-btn-abc {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+  
+  .product-cart-abc {
+    min-height: 300px;
+  }
+  
+  .image-text-overlay {
+    padding: 15px;
+  }
+  
+  .image-text-overlay h3 {
+    font-size: 22px;
+  }
+  
+  .image-text-overlay p {
+    font-size: 14px;
+  }
+  
+  .image-text-overlay .price {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-cart-abc {
+    flex: 0 0 100%;
+    min-height: 280px;
+  }
+  
+  .carousel-header-abc h2 {
+    font-size: 28px;
+  }
+  
+  .image-text-overlay h3 {
+    font-size: 20px;
+  }
+  
+  .image-text-overlay .price {
+    font-size: 15px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Select elements with unique names
+  const slidesContainerAbc = document.querySelector('.slides-container-abc');
+  const productCartsAbc = document.querySelectorAll('.product-cart-abc');
+  const prevBtnAbc = document.querySelector('.prev-btn-abc');
+  const nextBtnAbc = document.querySelector('.next-btn-abc');
+  
+  // Calculate how many products fit in viewport
+  let visibleCountAbc = 3;
+  if (window.innerWidth <= 992) visibleCountAbc = 2;
+  if (window.innerWidth <= 576) visibleCountAbc = 1;
+  
+  // Set initial position
+  let currentPositionAbc = 0;
+  const totalSlidesAbc = productCartsAbc.length;
+  
+  // Function to update carousel position
+  function updateCarouselAbc() {
+    const slideWidthAbc = productCartsAbc[0].offsetWidth + 20; // width + gap
+    const translateXAbc = -(currentPositionAbc * slideWidthAbc);
+    slidesContainerAbc.style.transform = `translateX(${translateXAbc}px)`;
     
-    // Add mute indicator
-    video.setAttribute('data-muted', 'true');
-    video.style.cursor = 'pointer';
+    // Disable/enable buttons based on position
+    prevBtnAbc.disabled = currentPositionAbc === 0;
+    nextBtnAbc.disabled = currentPositionAbc >= totalSlidesAbc - visibleCountAbc;
+    
+    // Update button styles
+    prevBtnAbc.style.opacity = prevBtnAbc.disabled ? '0.5' : '1';
+    nextBtnAbc.style.opacity = nextBtnAbc.disabled ? '0.5' : '1';
+    prevBtnAbc.style.cursor = prevBtnAbc.disabled ? 'not-allowed' : 'pointer';
+    nextBtnAbc.style.cursor = nextBtnAbc.disabled ? 'not-allowed' : 'pointer';
+  }
+  
+  // Next button click - moves ONE cart at a time
+  nextBtnAbc.addEventListener('click', function() {
+    if (currentPositionAbc < totalSlidesAbc - visibleCountAbc) {
+      currentPositionAbc++;
+      updateCarouselAbc();
+    }
   });
   
-  // Add hover play for mobile (touch devices)
-  if ('ontouchstart' in window) {
-    videos.forEach(video => {
-      let isPlaying = false;
-      
-      video.addEventListener('touchstart', function() {
-        if (!isPlaying && this.paused) {
-          this.play();
-          isPlaying = true;
-        } else if (isPlaying && !this.paused) {
-          this.pause();
-          isPlaying = false;
-        }
-      });
-    });
-  }
+  // Previous button click - moves ONE cart at a time
+  prevBtnAbc.addEventListener('click', function() {
+    if (currentPositionAbc > 0) {
+      currentPositionAbc--;
+      updateCarouselAbc();
+    }
+  });
+  
+  // Update visible count on window resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth <= 992 && window.innerWidth > 576) {
+      visibleCountAbc = 2;
+    } else if (window.innerWidth <= 576) {
+      visibleCountAbc = 1;
+    } else {
+      visibleCountAbc = 3;
+    }
+    
+    // Adjust position if needed
+    if (currentPositionAbc > totalSlidesAbc - visibleCountAbc) {
+      currentPositionAbc = Math.max(0, totalSlidesAbc - visibleCountAbc);
+    }
+    
+    updateCarouselAbc();
+  });
+  
+  // Initialize
+  updateCarouselAbc();
 });
 </script>
+<section class="ihdm-advantages">
+    <style>
+        .ihdm-advantages {
+            padding: 100px 20px;
+            background: #ffffff;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            position: relative;
+        }
+        
+        .ihdm-advantages::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #000, transparent);
+        }
+        
+        .ihdm-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .ihdm-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .ihdm-main-title {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            color: #000;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .ihdm-main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: #000;
+        }
+        
+        .ihdm-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 40px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .ihdm-features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .ihdm-feature-card {
+            background: #fff;
+            border: 1px solid #000;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .ihdm-feature-card:hover {
+            background: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ihdm-feature-card:hover .ihdm-feature-title,
+        .ihdm-feature-card:hover .ihdm-feature-desc,
+        .ihdm-feature-card:hover .ihdm-feature-number,
+        .ihdm-feature-card:hover .ihdm-divider,
+        .ihdm-feature-card:hover .ihdm-feature-icon {
+            color: #fff;
+        }
+        
+        .ihdm-feature-card:hover .ihdm-divider {
+            background: #fff;
+        }
+        
+        .ihdm-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .ihdm-feature-icon {
+            font-size: 28px;
+            color: #000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+        
+        .ihdm-feature-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .ihdm-feature-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 0;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+        
+        .ihdm-feature-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #999;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .ihdm-divider {
+            width: 30px;
+            height: 1px;
+            background: #000;
+            margin: 20px auto;
+            transition: all 0.3s ease;
+        }
+        
+        .ihdm-feature-card:hover .ihdm-divider {
+            width: 50px;
+        }
+        
+        /* Specific card variations */
+        .ihdm-genuine-card {
+            border-top: 3px solid #000;
+        }
+        
+        .ihdm-authorized-card {
+            border-top: 3px solid #333;
+        }
+        
+        .ihdm-emi-card {
+            border-top: 3px solid #666;
+        }
+        
+        .ihdm-delivery-card {
+            border-top: 3px solid #999;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .ihdm-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .ihdm-advantages {
+                padding: 60px 20px;
+            }
+            
+            .ihdm-main-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .ihdm-features-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .ihdm-feature-card {
+                padding: 30px 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ihdm-main-title {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .ihdm-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    
+    <div class="ihdm-container">
+        <div class="ihdm-header">
+            <h2 class="ihdm-main-title">Why iHDM</h2>
+            <p class="ihdm-subtitle">
+                Excellence in every repair, precision in every part. We redefine device service with uncompromising quality standards.
+            </p>
+        </div>
+        
+        <div class="ihdm-features-grid">
+            <div class="ihdm-feature-card ihdm-genuine-card">
+                <div class="ihdm-feature-number">01</div>
+                <div class="ihdm-icon-wrapper">
+                    <div class="ihdm-feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                </div>
+                <h3 class="ihdm-feature-title">Genuine Spares</h3>
+                <div class="ihdm-divider"></div>
+                <p class="ihdm-feature-desc">Only authentic manufacturer parts ensuring original performance and longevity</p>
+            </div>
+            
+            <div class="ihdm-feature-card ihdm-authorized-card">
+                <div class="ihdm-feature-number">02</div>
+                <div class="ihdm-icon-wrapper">
+                    <div class="ihdm-feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+                <h3 class="ihdm-feature-title">Authorized Service</h3>
+                <div class="ihdm-divider"></div>
+                <p class="ihdm-feature-desc">Certified technicians with official brand authorization and training</p>
+            </div>
+            
+            <div class="ihdm-feature-card ihdm-emi-card">
+                <div class="ihdm-feature-number">03</div>
+                <div class="ihdm-icon-wrapper">
+                    <div class="ihdm-feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                </div>
+                <h3 class="ihdm-feature-title">Easy EMI</h3>
+                <div class="ihdm-divider"></div>
+                <p class="ihdm-feature-desc">Flexible payment options with zero-cost EMI for your convenience</p>
+            </div>
+            
+            <div class="ihdm-feature-card ihdm-delivery-card">
+                <div class="ihdm-feature-number">04</div>
+                <div class="ihdm-icon-wrapper">
+                    <div class="ihdm-feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                </div>
+                <h3 class="ihdm-feature-title">Same-Day Delivery</h3>
+                <div class="ihdm-divider"></div>
+                <p class="ihdm-feature-desc">Rapid service with same-day delivery across Delhi NCR region</p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="apple-support-slider">
+    <style>
+        .apple-support-slider {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .apple-support-slider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .slider-container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .slider-header-main {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 10px;
+        }
+        
+        .slider-badge-main {
+            display: inline-block;
+            background: linear-gradient(90deg, #000000, #333333);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 16px;
+            letter-spacing: 1.2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .slider-title-main {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+        
+        .slider-title-gradient {
+            background: linear-gradient(135deg, #1d1d1f 0%, #6e6e73 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .slider-subtitle-main {
+            font-size: 1.1rem;
+            color: #86868b;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
+        /* Slider Container */
+        .slider-wrapper-main {
+            position: relative;
+            margin-bottom: 50px;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        
+        .slider-viewport-main {
+            overflow: hidden;
+            width: 100%;
+            padding: 0 15px;
+        }
+        
+        .slider-track-main {
+            display: flex;
+            gap: 15px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: fit-content;
+        }
+        
+        /* Slider Cards - Small width for 3 cards */
+        .slider-card-main {
+            flex: 0 0 calc(33.333% - 10px);
+            min-width: calc(33.333% - 10px);
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e5e7;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        .slider-card-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: #d2d2d7;
+        }
+        
+        .slider-card-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #000000, #333333);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slider-card-main:hover::before {
+            opacity: 1;
+        }
+        
+        .slider-card-header-main {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .slider-icon-main {
+            width: 50px;
+            height: 50px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e5e7;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+            flex-shrink: 0;
+        }
+        
+        .slider-icon-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .slider-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .slider-card-desc {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #86868b;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        
+        .slider-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px;
+        }
+        
+        .slider-features-list li {
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+            color: #515154;
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        
+        .slider-features-list li i {
+            color: #007aff;
+            font-size: 0.75rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        
+        .slider-card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: black;
+            border: 1.5px solid black;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+        
+        .slider-card-btn:hover {
+            background: black;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .slider-card-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .slider-card-btn:hover i {
+            transform: translateX(3px);
+        }
+        
+        /* Navigation Buttons */
+        .slider-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            border: 1px solid #e5e5e7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: none;
+            outline: none;
+        }
+        
+        .slider-nav-btn:hover {
+            background: #f5f5f7;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+        
+        .slider-nav-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .slider-nav-btn.prev-slider {
+            left: 0;
+        }
+        
+        .slider-nav-btn.next-slider {
+            right: 0;
+        }
+        
+        .slider-nav-btn i {
+            font-size: 1rem;
+            color: #1d1d1f;
+        }
+        
+        /* Dots Indicator */
+        .slider-dots-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
+        }
+        
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            background: #d2d2d7;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active-dot {
+            background: #1d1d1f;
+            transform: scale(1.2);
+            width: 20px;
+            border-radius: 4px;
+        }
+        
+        /* Bottom CTA */
+        .slider-bottom-cta {
+            background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
+            color: #ffffff;
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        
+        .slider-bottom-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.3px;
+        }
+        
+        .slider-bottom-text {
+            font-size: 0.95rem;
+            color: #a1a1a6;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            line-height: 1.6;
+        }
+        
+        .slider-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            color: #1d1d1f;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .slider-cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+        }
+        
+        .slider-cta-btn i {
+            font-size: 1.2rem;
+            color: #007aff;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slider-card-main {
+                flex: 0 0 calc(33.333% - 10px);
+                min-width: calc(33.333% - 10px);
+            }
+            
+            .slider-title-main {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .apple-support-slider {
+                padding: 70px 15px;
+            }
+            
+            .slider-title-main {
+                font-size: 1.8rem;
+            }
+            
+            .slider-subtitle-main {
+                font-size: 1rem;
+            }
+            
+            .slider-card-main {
+                flex: 0 0 calc(50% - 8px);
+                min-width: calc(50% - 8px);
+                padding: 20px 16px;
+            }
+            
+            .slider-nav-btn {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .slider-nav-btn.prev-slider {
+                left: -5px;
+            }
+            
+            .slider-nav-btn.next-slider {
+                right: -5px;
+            }
+            
+            .slider-bottom-cta {
+                padding: 40px 25px;
+            }
+            
+            .slider-bottom-title {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .slider-card-main {
+                flex: 0 0 calc(100% - 10px);
+                min-width: calc(100% - 10px);
+                padding: 20px;
+            }
+            
+            .slider-title-main {
+                font-size: 1.5rem;
+            }
+            
+            .slider-subtitle-main {
+                font-size: 0.9rem;
+            }
+            
+            .slider-card-header-main {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .slider-icon-main {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .slider-nav-btn {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .slider-nav-btn.prev-slider {
+                left: -8px;
+            }
+            
+            .slider-nav-btn.next-slider {
+                right: -8px;
+            }
+            
+            .slider-cta-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    
+    <div class="slider-container-main">
+        <div class="slider-header-main">
+            <div class="slider-badge-main">Apple Premium Support</div>
+            <h2 class="slider-title-main">
+                Expert <span class="slider-title-gradient">Device Care</span>
+            </h2>
+            <p class="slider-subtitle-main">
+                Professional maintenance and optimization services for your complete Apple ecosystem
+            </p>
+        </div>
+        
+        <div class="slider-wrapper-main">
+            <!-- Navigation Buttons -->
+            <button class="slider-nav-btn prev-slider" id="prevSliderBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="slider-nav-btn next-slider" id="nextSliderBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Slider Viewport -->
+            <div class="slider-viewport-main">
+                <div class="slider-track-main" id="sliderTrack">
+                    <!-- iPhone Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-iphone-nav_2x.jpg" alt="iPhone" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">iPhone Support</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Comprehensive iPhone maintenance and optimization services.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> Battery Health</li>
+                            <li><i class="fas fa-check-circle"></i> Display Calibration</li>
+                            <li><i class="fas fa-check-circle"></i> iOS Tuning</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- MacBook Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-mac-nav_2x.jpg" alt="MacBook" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">MacBook Support</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Professional maintenance for peak MacBook performance.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> macOS Optimization</li>
+                            <li><i class="fas fa-check-circle"></i> Thermal Management</li>
+                            <li><i class="fas fa-check-circle"></i> Storage Performance</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- iPad Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-ipad-tn_2x.jpg" alt="iPad" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">iPad Support</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Specialized care for iPad productivity and creativity.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> iPadOS Management</li>
+                            <li><i class="fas fa-check-circle"></i> Pencil Calibration</li>
+                            <li><i class="fas fa-check-circle"></i> Display Optimization</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Watch Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-watch_2x.jpg" alt="Apple Watch" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">Apple Watch</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Complete maintenance for health and fitness tracking.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> watchOS Optimization</li>
+                            <li><i class="fas fa-check-circle"></i> Battery Management</li>
+                            <li><i class="fas fa-check-circle"></i> Health Systems</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- AirPods Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-airpods_2x.jpg" alt="AirPods" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">AirPods & Audio</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Expert support for immersive audio experiences.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> Audio Calibration</li>
+                            <li><i class="fas fa-check-circle"></i> Connectivity Fix</li>
+                            <li><i class="fas fa-check-circle"></i> Firmware Updates</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- TV Card -->
+                    <div class="slider-card-main">
+                        <div class="slider-card-header-main">
+                            <div class="slider-icon-main">
+                                <img src="img/image-grid-tv_2x.jpg" alt="Apple TV" class="slider-icon-img">
+                            </div>
+                            <h3 class="slider-card-title">TV & Home</h3>
+                        </div>
+                        <p class="slider-card-desc">
+                            Seamless integration across all Apple devices.
+                        </p>
+                        <ul class="slider-features-list">
+                            <li><i class="fas fa-check-circle"></i> tvOS Setup</li>
+                            <li><i class="fas fa-check-circle"></i> HomeKit Setup</li>
+                            <li><i class="fas fa-check-circle"></i> Device Sync</li>
+                        </ul>
+                        <a href="#" class="slider-card-btn">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="slider-bottom-cta">
+            <h3 class="slider-bottom-title">24/7 Premium Support Hotline</h3>
+            <p class="slider-bottom-text">
+                Connect with Apple-certified specialists for immediate assistance and personalized support.
+            </p>
+            <a href="tel:+911112223333" class="slider-cta-btn">
+                <i class="fas fa-phone-alt"></i>
+                <span>Call Now: +91 111 222 3333</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderTrack = document.getElementById('sliderTrack');
+            const prevBtn = document.getElementById('prevSliderBtn');
+            const nextBtn = document.getElementById('nextSliderBtn');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            if (!sliderTrack || !prevBtn || !nextBtn) return;
+            
+            const cards = sliderTrack.querySelectorAll('.slider-card-main');
+            let currentPosition = 0;
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            
+            function updateSlider() {
+                const cardWidth = cards[0].offsetWidth + 15; // width + gap
+                
+                // Calculate max position
+                const visibleCards = window.innerWidth >= 768 ? 3 : window.innerWidth >= 480 ? 2 : 1;
+                const maxPosition = (totalCards - visibleCards) * cardWidth;
+                
+                // Ensure position is within bounds
+                currentPosition = Math.max(0, Math.min(currentPosition, maxPosition));
+                
+                sliderTrack.style.transform = `translateX(-${currentPosition}px)`;
+                
+                // Update dots
+                const activeDot = Math.floor(currentPosition / (cardWidth * visibleCards));
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active-dot', index === activeDot);
+                });
+                
+                currentIndex = Math.floor(currentPosition / cardWidth);
+            }
+            
+            function slideNext() {
+                const cardWidth = cards[0].offsetWidth + 15;
+                const visibleCards = window.innerWidth >= 768 ? 3 : window.innerWidth >= 480 ? 2 : 1;
+                const maxPosition = (totalCards - visibleCards) * cardWidth;
+                
+                // Move by 1 card width
+                if (currentPosition + cardWidth <= maxPosition) {
+                    currentPosition += cardWidth;
+                } else {
+                    currentPosition = 0; // Loop back to start
+                }
+                updateSlider();
+            }
+            
+            function slidePrev() {
+                const cardWidth = cards[0].offsetWidth + 15;
+                const visibleCards = window.innerWidth >= 768 ? 3 : window.innerWidth >= 480 ? 2 : 1;
+                
+                // Move by 1 card width
+                if (currentPosition - cardWidth >= 0) {
+                    currentPosition -= cardWidth;
+                } else {
+                    // Calculate max position for loop back
+                    const maxPosition = (totalCards - visibleCards) * cardWidth;
+                    currentPosition = maxPosition;
+                }
+                updateSlider();
+            }
+            
+            // Event Listeners
+            prevBtn.addEventListener('click', slidePrev);
+            nextBtn.addEventListener('click', slideNext);
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const cardWidth = cards[0].offsetWidth + 15;
+                    const visibleCards = window.innerWidth >= 768 ? 3 : window.innerWidth >= 480 ? 2 : 1;
+                    
+                    currentPosition = index * cardWidth * visibleCards;
+                    updateSlider();
+                });
+            });
+            
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    updateSlider();
+                }, 250);
+            });
+            
+            // Auto slide
+            let autoSlide = setInterval(slideNext, 4000);
+            
+            // Pause on hover
+            sliderTrack.addEventListener('mouseenter', () => {
+                clearInterval(autoSlide);
+            });
+            
+            sliderTrack.addEventListener('mouseleave', () => {
+                autoSlide = setInterval(slideNext, 4000);
+            });
+            
+            // Initialize
+            updateSlider();
+            
+            // Clean up
+            window.addEventListener('beforeunload', function() {
+                clearInterval(autoSlide);
+            });
+        });
+    </script>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<section class="ihdm-reviews">
+    <style>
+        .ihdm-reviews {
+            padding: 100px 20px;
+            background: #ffffff;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ihdm-reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #000, transparent);
+        }
+        
+        .ihdm-reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .ihdm-reviews-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .ihdm-reviews-title {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            color: #000;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .ihdm-reviews-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background: #000;
+        }
+        
+        .ihdm-reviews-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 40px auto 0;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .ihdm-reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .ihdm-review-card {
+            background: #fff;
+            border: 1px solid #000;
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .ihdm-review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ihdm-review-rating {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 25px;
+        }
+        
+        .ihdm-review-star {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        
+        .ihdm-review-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 30px;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .ihdm-review-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: -25px;
+            left: -10px;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .ihdm-reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-top: 25px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .ihdm-reviewer-avatar {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .ihdm-reviewer-details h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        
+        .ihdm-reviewer-details p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
+        .ihdm-review-date {
+            position: absolute;
+            top: 40px;
+            right: 30px;
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 300;
+        }
+        
+        .ihdm-reviews-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 80px;
+        }
+        
+        .ihdm-stat-card {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        
+        .ihdm-stat-card:hover {
+            border-color: #000;
+        }
+        
+        .ihdm-stat-number {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #000;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .ihdm-stat-label {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ihdm-review-quote {
+            color: #000;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+        
+        .ihdm-new-badge {
+            display: inline-block;
+            background: #000;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        /* Product tags */
+        .ihdm-product-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+            margin-top: 5px;
+            color: #333;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .ihdm-reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .ihdm-reviews-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .ihdm-reviews {
+                padding: 60px 20px;
+            }
+            
+            .ihdm-reviews-title {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .ihdm-reviews-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto 50px;
+            }
+            
+            .ihdm-review-card {
+                padding: 30px 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ihdm-reviews-title {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            
+            .ihdm-reviews-subtitle {
+                font-size: 1rem;
+            }
+            
+            .ihdm-reviews-stats {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 60px auto 0;
+            }
+        }
+    </style>
+    
+    <div class="ihdm-reviews-container">
+        <div class="ihdm-reviews-header">
+            <h2 class="ihdm-reviews-title">Trusted by New Users</h2>
+            <p class="ihdm-reviews-subtitle">
+                Fresh perspectives from customers who chose iHDM for their latest devices. Experience the quality that new generation users appreciate.
+            </p>
+        </div>
+        
+        <div class="ihdm-reviews-grid">
+            <div class="ihdm-review-card">
+                <div class="ihdm-review-date">Today</div>
+                <div class="ihdm-review-rating">
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                </div>
+                <p class="ihdm-review-text">
+                    Just bought my new device and immediately came to iHDM for protection. Their service feels as premium as the product itself. <span class="ihdm-review-quote">Perfect for new purchases</span>.
+                </p>
+                <div class="ihdm-reviewer-info">
+                    <div class="ihdm-reviewer-avatar">A</div>
+                    <div class="ihdm-reviewer-details">
+                        <h4>Arjun Patel <span class="ihdm-new-badge">New User</span></h4>
+                        <div class="ihdm-product-tag">Latest iPhone 15 Series</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ihdm-review-card">
+                <div class="ihdm-review-date">2 days ago</div>
+                <div class="ihdm-review-rating">
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                </div>
+                <p class="ihdm-review-text">
+                    First-time customer with a brand new device. iHDM's care made me feel confident about my investment. <span class="ihdm-review-quote">Modern service for modern tech</span>.
+                </p>
+                <div class="ihdm-reviewer-info">
+                    <div class="ihdm-reviewer-avatar">P</div>
+                    <div class="ihdm-reviewer-details">
+                        <h4>Priya Nair <span class="ihdm-new-badge">First Time</span></h4>
+                        <div class="ihdm-product-tag">New MacBook Air</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ihdm-review-card">
+                <div class="ihdm-review-date">This week</div>
+                <div class="ihdm-review-rating">
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                    <span class="ihdm-review-star">★</span>
+                </div>
+                <p class="ihdm-review-text">
+                    Upgraded to the newest model and found iHDM. Their approach matches the innovation of latest devices. <span class="ihdm-review-quote">Fresh perspective</span> on device care.
+                </p>
+                <div class="ihdm-reviewer-info">
+                    <div class="ihdm-reviewer-avatar">R</div>
+                    <div class="ihdm-reviewer-details">
+                        <h4>Rohan Mehta <span class="ihdm-new-badge">Recent Upgrade</span></h4>
+                        <div class="ihdm-product-tag">Latest Samsung Flagship</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ihdm-reviews-stats">
+            <div class="ihdm-stat-card">
+                <div class="ihdm-stat-number">95%</div>
+                <div class="ihdm-stat-label">New Customers</div>
+            </div>
+            <div class="ihdm-stat-card">
+                <div class="ihdm-stat-number">4.8/5</div>
+                <div class="ihdm-stat-label">New User Rating</div>
+            </div>
+            <div class="ihdm-stat-card">
+                <div class="ihdm-stat-number">2024</div>
+                <div class="ihdm-stat-label">Latest Models</div>
+            </div>
+            <div class="ihdm-stat-card">
+                <div class="ihdm-stat-number">0-7 days</div>
+                <div class="ihdm-stat-label">New Purchase Service</div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<footer class="ihdm-footer">
+    <style>
+        .ihdm-footer {
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            padding: 80px 0 40px;
+            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-brand {
+            text-align: left;
+        }
+        
+        .footer-logo {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .footer-tagline {
+            font-size: 1.1rem;
+            color: #aaa;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .footer-apple-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .apple-icon {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        
+        .apple-text {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: #fff;
+        }
+        
+        .footer-links a i {
+            font-size: 0.9rem;
+            width: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+        
+        .contact-icon {
+            color: #fff;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .contact-text {
+            line-height: 1.6;
+        }
+        
+        .contact-text a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-text a:hover {
+            color: #fff;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-legal a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-legal a:hover {
+            color: #fff;
+        }
+        
+        .apple-preserve {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .apple-preserve h5 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .apple-preserve p {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .ihdm-footer {
+                padding: 60px 0 30px;
+            }
+            
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-logo {
+                font-size: 2.5rem;
+                letter-spacing: 6px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-legal {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-logo {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+            
+            .footer-tagline {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    
+    
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">iHDM</div>
+                <p class="footer-tagline">
+                    Preserving the Apple experience. We don't repair, we preserve. Ensuring your Apple devices maintain their original excellence and performance.
+                </p>
+                <div class="footer-apple-info">
+                    <i class="fas fa-apple apple-icon"></i>
+                    <span class="apple-text">Apple Preservation Specialists</span>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Preservation Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-mobile-alt"></i> iPhone Preservation</a></li>
+                    <li><a href="#"><i class="fas fa-laptop"></i> MacBook Care</a></li>
+                    <li><a href="#"><i class="fas fa-tablet-alt"></i> iPad Maintenance</a></li>
+                    <li><a href="#"><i class="fas fa-watch"></i> Apple Watch Care</a></li>
+                    <li><a href="#"><i class="fas fa-headphones"></i> Accessory Preservation</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div class="contact-text">
+                            Apple Preservation Centers<br>
+                            Across Delhi NCR
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div class="contact-text">
+                            <a href="tel:+911112223333">+91 111 222 3333</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div class="contact-text">
+                            <a href="mailto:preserve@ihdm.com">preserve@ihdm.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <div class="contact-text">
+                            10AM - 8PM Daily<br>
+                            By Appointment Only
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="apple-preserve">
+            <h5><i class="fas fa-shield-alt"></i> Apple Preservation Promise</h5>
+            <p>We specialize in preserving the Apple ecosystem experience. Using only genuine Apple components and approved preservation techniques to maintain your device's original integrity, performance, and value.</p>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2024 iHDM Apple Preservation. All preservation methods respect Apple's guidelines.
+            </div>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Apple Guidelines</a>
+                <a href="#">Preservation Warranty</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
 </html>
