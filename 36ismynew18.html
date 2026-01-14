@@ -1359,7 +1359,7 @@ body{
     </div>
   </div>
 </section>
-<!-- PRODUCT CAROUSEL SECTION - UNIQUE NAMES -->
+<!-- PRODUCT CAROUSEL SECTION - MOBILE FIXED -->
 <div class="product-carousel-section-unique" id="productCarouselSection">
   <section class="product-carousel-unique">
     <div class="carousel-header-unique">
@@ -1367,10 +1367,12 @@ body{
     </div>
     
     <div class="carousel-wrapper-unique">
+      <!-- Left Button - Desktop Only -->
       <button class="nav-btn-unique prev-btn-unique" id="prevBtnUnique">
         <i class="fas fa-chevron-left"></i>
       </button>
       
+      <!-- Carousel Container -->
       <div class="carousel-inner-unique">
         <div class="slides-container-unique" id="slidesContainerUnique">
           <!-- Slide 1 -->
@@ -1495,6 +1497,7 @@ body{
         </div>
       </div>
       
+      <!-- Right Button - Desktop Only -->
       <button class="nav-btn-unique next-btn-unique" id="nextBtnUnique">
         <i class="fas fa-chevron-right"></i>
       </button>
@@ -1530,12 +1533,15 @@ body{
   font-weight: 600;
 }
 
+/* FIXED: Carousel wrapper with proper positioning */
 .carousel-wrapper-unique {
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   overflow: visible;
+  width: 100%;
 }
 
 .carousel-inner-unique {
@@ -1546,12 +1552,39 @@ body{
   flex: 1;
 }
 
+/* Desktop - Slides container */
 .slides-container-unique {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 20px;
   width: auto;
   min-width: 100%;
+}
+
+/* FIXED: Mobile view - Scrollable container */
+@media (max-width: 768px) {
+  .slides-container-unique {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    gap: 15px;
+    padding: 0 10px 20px 10px;
+    margin: 0 -10px;
+    width: calc(100% + 20px);
+    transition: none !important; /* Remove transition for mobile */
+    transform: none !important; /* Remove transform for mobile */
+  }
+  
+  .slides-container-unique::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for Firefox */
+  .slides-container-unique {
+    scrollbar-width: none;
+  }
 }
 
 .product-card-unique {
@@ -1566,6 +1599,27 @@ body{
   display: flex;
   flex-direction: column;
   position: relative;
+}
+
+/* FIXED: Mobile view - Single card */
+@media (max-width: 768px) {
+  .product-card-unique {
+    flex: 0 0 calc(100% - 20px) !important;
+    min-width: calc(100% - 20px) !important;
+    min-height: 350px;
+    scroll-snap-align: center;
+    margin: 0 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  /* First and last card margin adjustment */
+  .product-card-unique:first-child {
+    margin-left: 10px;
+  }
+  
+  .product-card-unique:last-child {
+    margin-right: 10px;
+  }
 }
 
 .product-card-unique:hover {
@@ -1630,6 +1684,26 @@ body{
   vertical-align: super;
 }
 
+/* Mobile adjustments for text */
+@media (max-width: 768px) {
+  .image-text-overlay-unique {
+    padding: 20px;
+  }
+  
+  .image-text-overlay-unique h3 {
+    font-size: 1.4rem;
+  }
+  
+  .image-text-overlay-unique p {
+    font-size: 0.9rem;
+  }
+  
+  .price-unique {
+    font-size: 1rem;
+  }
+}
+
+/* FIXED: Navigation buttons positioning */
 .nav-btn-unique {
   background: black;
   border: none;
@@ -1646,30 +1720,38 @@ body{
   font-size: 22px;
   color: white;
   flex-shrink: 0;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .nav-btn-unique:hover {
   background: #333;
-  transform: scale(1.1);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .nav-btn-unique:active {
-  transform: scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 
 .nav-btn-unique:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none !important;
+  transform: translateY(-50%) !important;
 }
 
+/* FIXED: Button positions */
 .prev-btn-unique {
-  order: 1;
+  left: -28px; /* Half of button width to position outside */
 }
 
 .next-btn-unique {
-  order: 3;
+  right: -28px; /* Half of button width to position outside */
+}
+
+/* Ensure buttons are above the carousel */
+.carousel-wrapper-unique {
+  position: relative;
 }
 
 /* ==================== RESPONSIVE STYLES ==================== */
@@ -1678,69 +1760,110 @@ body{
     flex: 0 0 calc(50% - 10px) !important;
     min-width: calc(50% - 10px) !important;
   }
+  
+  /* Adjust button positions for tablet */
+  .prev-btn-unique {
+    left: -20px;
+  }
+  
+  .next-btn-unique {
+    right: -20px;
+  }
 }
 
+/* FIXED: Mobile styles */
 @media (max-width: 768px) {
   .product-carousel-section-unique {
-    padding: 30px 15px;
+    padding: 30px 10px;
   }
   
   .carousel-header-unique h2 {
     font-size: 1.5rem;
+    padding: 0 10px;
   }
   
-  .image-text-overlay-unique h3 {
-    font-size: 1.3rem;
+  .carousel-inner-unique {
+    overflow: visible; /* Allow scrolling */
   }
   
-  .image-text-overlay-unique p {
-    font-size: 0.9rem;
+  .carousel-wrapper-unique {
+    overflow: visible;
   }
   
-  .nav-btn-unique {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-  
-  .product-card-unique {
-    flex: 0 0 100% !important;
-    min-width: 100% !important;
-    min-height: 350px;
-  }
-  
-  .slides-container-unique {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    transition: none;
-  }
-  
-  .slides-container-unique::-webkit-scrollbar {
-    display: none;
-  }
-  
+  /* Hide buttons on mobile completely */
   .nav-btn-unique {
     display: none !important;
   }
+  
+  /* Add scroll indicators for mobile */
+  .slides-container-unique::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, rgba(248, 249, 250, 0.9));
+    pointer-events: none;
+  }
+  
+  .slides-container-unique::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to left, transparent, rgba(248, 249, 250, 0.9));
+    pointer-events: none;
+    z-index: 1;
+  }
 }
 
-/* Hide carousel buttons on mobile */
+/* Adjust for smaller screens */
+@media (max-width: 1200px) {
+  .prev-btn-unique {
+    left: -20px;
+  }
+  
+  .next-btn-unique {
+    right: -20px;
+  }
+}
+
+/* Adjust for very wide screens */
+@media (min-width: 1400px) {
+  .prev-btn-unique {
+    left: -40px;
+  }
+  
+  .next-btn-unique {
+    right: -40px;
+  }
+}
+
+/* Mobile horizontal scroll fix */
 @media (max-width: 768px) {
-  .nav-btn-unique {
-    display: none;
+  .product-carousel-section-unique {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Ensure cards don't shrink */
+  .product-card-unique {
+    flex-shrink: 0;
   }
 }
 </style>
 
 <script>
-// PRODUCT CAROUSEL UNIQUE JAVASCRIPT
+// PRODUCT CAROUSEL UNIQUE JAVASCRIPT - MOBILE FIXED
 document.addEventListener('DOMContentLoaded', function() {
   // Get elements using unique IDs
   const slidesContainer = document.getElementById('slidesContainerUnique');
   const prevBtn = document.getElementById('prevBtnUnique');
   const nextBtn = document.getElementById('nextBtnUnique');
   const productCards = document.querySelectorAll('.product-card-unique');
+  const carouselWrapper = document.querySelector('.carousel-wrapper-unique');
   
   // Check if elements exist
   if (!slidesContainer || !prevBtn || !nextBtn || productCards.length === 0) {
@@ -1750,26 +1873,81 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('Carousel initialized with', productCards.length, 'cards');
   
+  // Detect if mobile
+  const isMobile = window.innerWidth <= 768;
+  
   // Carousel variables
   let currentSlideIndex = 0;
-  let cardsPerView = 3;
+  let cardsPerView = isMobile ? 1 : 3;
   
   // Function to calculate cards per view based on screen size
   function calculateCardsPerView() {
     const screenWidth = window.innerWidth;
     
     if (screenWidth <= 768) {
-      return 1; // Mobile
+      return 1; // Mobile - single card
     } else if (screenWidth <= 992) {
-      return 2; // Tablet
+      return 2; // Tablet - 2 cards
     } else {
-      return 3; // Desktop
+      return 3; // Desktop - 3 cards
     }
   }
   
-  // Function to update carousel position
+  // Function to setup mobile scrolling
+  function setupMobileScrolling() {
+    if (window.innerWidth > 768) return;
+    
+    // Remove desktop behavior
+    slidesContainer.style.transform = 'none';
+    slidesContainer.style.transition = 'none';
+    
+    // Setup scroll snapping
+    let isScrolling = false;
+    let scrollTimeout;
+    
+    // Handle scroll events for mobile
+    slidesContainer.addEventListener('scroll', function() {
+      if (!isScrolling) {
+        isScrolling = true;
+      }
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function() {
+        isScrolling = false;
+        snapToNearestCard();
+      }, 100);
+    });
+    
+    // Function to snap to nearest card
+    function snapToNearestCard() {
+      const containerWidth = slidesContainer.offsetWidth;
+      const scrollLeft = slidesContainer.scrollLeft;
+      const cardWidth = productCards[0].offsetWidth + 15; // Width + margin
+      
+      // Calculate which card is closest
+      const nearestIndex = Math.round(scrollLeft / cardWidth);
+      
+      // Snap to that card
+      slidesContainer.scrollTo({
+        left: nearestIndex * cardWidth,
+        behavior: 'smooth'
+      });
+      
+      // Update current index
+      currentSlideIndex = Math.min(nearestIndex, productCards.length - 1);
+      console.log('Mobile scroll to index:', currentSlideIndex);
+    }
+  }
+  
+  // Function to update carousel position (Desktop only)
   function updateCarouselPosition() {
-    // Update cards per view
+    // If mobile, don't use transform
+    if (window.innerWidth <= 768) {
+      setupMobileScrolling();
+      return;
+    }
+    
+    // Update cards per view for desktop/tablet
     cardsPerView = calculateCardsPerView();
     
     // Calculate maximum slide index
@@ -1793,15 +1971,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Apply transform
     slidesContainer.style.transform = `translateX(-${translateX}px)`;
+    slidesContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
     
     // Update button states
     updateButtonStates(maxSlideIndex);
     
-    console.log('Carousel updated - Index:', currentSlideIndex, 'Max:', maxSlideIndex, 'Translate:', translateX);
+    console.log('Desktop updated - Index:', currentSlideIndex, 'Max:', maxSlideIndex, 'Translate:', translateX);
   }
   
-  // Function to update button states
+  // Function to update button states (Desktop only)
   function updateButtonStates(maxSlideIndex) {
+    if (window.innerWidth <= 768) return;
+    
     const isAtStart = currentSlideIndex === 0;
     const isAtEnd = currentSlideIndex >= maxSlideIndex;
     
@@ -1816,8 +1997,10 @@ document.addEventListener('DOMContentLoaded', function() {
     nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
   }
   
-  // Function to go to next slide
+  // Function to go to next slide (Desktop only)
   function goToNextSlide() {
+    if (window.innerWidth <= 768) return;
+    
     cardsPerView = calculateCardsPerView();
     const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
     
@@ -1827,15 +2010,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Function to go to previous slide
+  // Function to go to previous slide (Desktop only)
   function goToPrevSlide() {
+    if (window.innerWidth <= 768) return;
+    
     if (currentSlideIndex > 0) {
       currentSlideIndex--;
       updateCarouselPosition();
     }
   }
   
-  // Event listeners for navigation buttons
+  // Event listeners for navigation buttons (Desktop only)
   nextBtn.addEventListener('click', goToNextSlide);
   prevBtn.addEventListener('click', goToPrevSlide);
   
@@ -1844,13 +2029,28 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
-      // Reset to first slide on resize
-      currentSlideIndex = 0;
-      updateCarouselPosition();
+      const isNowMobile = window.innerWidth <= 768;
+      
+      if (isNowMobile) {
+        // Switch to mobile mode
+        slidesContainer.style.transform = 'none';
+        slidesContainer.style.transition = 'none';
+        slidesContainer.style.overflowX = 'auto';
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        setupMobileScrolling();
+      } else {
+        // Switch to desktop mode
+        slidesContainer.style.overflowX = 'hidden';
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+        currentSlideIndex = 0;
+        updateCarouselPosition();
+      }
     }, 250);
   });
   
-  // Auto-slide functionality
+  // Auto-slide functionality (Desktop only)
   let autoSlideInterval;
   
   function startAutoSlide() {
@@ -1877,49 +2077,30 @@ document.addEventListener('DOMContentLoaded', function() {
     clearInterval(autoSlideInterval);
   }
   
-  // Start auto-slide
-  startAutoSlide();
+  // Start auto-slide if desktop
+  if (window.innerWidth > 768) {
+    startAutoSlide();
+  }
   
-  // Pause auto-slide on hover
-  const carouselWrapper = document.querySelector('.carousel-wrapper-unique');
-  if (carouselWrapper) {
+  // Pause auto-slide on hover (Desktop only)
+  if (carouselWrapper && window.innerWidth > 768) {
     carouselWrapper.addEventListener('mouseenter', stopAutoSlide);
     carouselWrapper.addEventListener('mouseleave', startAutoSlide);
   }
   
-  // Initialize carousel
-  updateCarouselPosition();
-  
-  // Touch/swipe support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  slidesContainer.addEventListener('touchstart', function(e) {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
-  
-  slidesContainer.addEventListener('touchend', function(e) {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipe();
-  }, { passive: true });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    const swipeDistance = touchStartX - touchEndX;
-    
-    if (Math.abs(swipeDistance) > swipeThreshold) {
-      if (swipeDistance > 0) {
-        // Swipe left - next slide
-        goToNextSlide();
-      } else {
-        // Swipe right - previous slide
-        goToPrevSlide();
-      }
-    }
+  // Initialize based on screen size
+  if (window.innerWidth <= 768) {
+    // Mobile initialization
+    setupMobileScrolling();
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+  } else {
+    // Desktop initialization
+    updateCarouselPosition();
   }
   
   // Log initialization
-  console.log('Product carousel initialized successfully');
+  console.log('Product carousel initialized successfully - Mode:', window.innerWidth <= 768 ? 'Mobile' : 'Desktop');
 });
 </script>
 </div><!-- ADVANTAGES SECTION - ORIGINAL -->
