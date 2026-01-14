@@ -1769,12 +1769,10 @@ body{
         </div>
     </div>
 </section>
-
-<!-- SUPPORT SLIDER SECTION - ORIGINAL -->
 <div class="apple-support-slider">
     <style>
         .apple-support-slider {
-            padding: 100px 20px;
+            padding: 80px 20px;
             background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
             position: relative;
@@ -1804,7 +1802,7 @@ body{
         
         .slider-header-main {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             padding: 0 10px;
         }
         
@@ -1817,15 +1815,15 @@ body{
             padding: 6px 16px;
             border-radius: 16px;
             letter-spacing: 1.2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
         .slider-title-main {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
             color: #1d1d1f;
             letter-spacing: -0.5px;
             line-height: 1.1;
@@ -1839,26 +1837,26 @@ body{
         }
         
         .slider-subtitle-main {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #86868b;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
             line-height: 1.5;
             font-weight: 400;
         }
         
-        /* Slider Container */
+        /* Slider Container - Improved for mobile */
         .slider-wrapper-main {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             overflow: hidden;
-            padding: 10px 0;
+            padding: 10px 5px;
         }
         
         .slider-viewport-main {
             overflow: hidden;
             width: 100%;
-            padding: 0 15px;
+            padding: 0 5px;
         }
         
         .slider-track-main {
@@ -1868,7 +1866,7 @@ body{
             width: fit-content;
         }
         
-        /* Slider Cards - Small width for 3 cards */
+        /* Slider Cards - Optimized for mobile */
         .slider-card-main {
             flex: 0 0 calc(33.333% - 10px);
             min-width: calc(33.333% - 10px);
@@ -2032,11 +2030,11 @@ body{
         }
         
         .slider-nav-btn.prev-slider {
-            left: 0;
+            left: -5px;
         }
         
         .slider-nav-btn.next-slider {
-            right: 0;
+            right: -5px;
         }
         
         .slider-nav-btn i {
@@ -2072,7 +2070,7 @@ body{
         .slider-bottom-cta {
             background: linear-gradient(135deg, #1d1d1f 0%, #000000 100%);
             color: #ffffff;
-            padding: 50px 30px;
+            padding: 40px 25px;
             border-radius: 20px;
             text-align: center;
             position: relative;
@@ -2081,17 +2079,17 @@ body{
         }
         
         .slider-bottom-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             letter-spacing: -0.3px;
         }
         
         .slider-bottom-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #a1a1a6;
-            max-width: 600px;
-            margin: 0 auto 25px;
+            max-width: 500px;
+            margin: 0 auto 20px;
             line-height: 1.6;
         }
         
@@ -2120,35 +2118,43 @@ body{
             color: #007aff;
         }
         
-        /* Responsive */
+        /* Responsive Design - Improved */
         @media (max-width: 1024px) {
             .slider-card-main {
-                flex: 0 0 calc(33.333% - 10px);
-                min-width: calc(33.333% - 10px);
+                flex: 0 0 calc(50% - 12px);
+                min-width: calc(50% - 12px);
             }
             
             .slider-title-main {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+            
+            .slider-subtitle-main {
+                font-size: 0.95rem;
+                max-width: 450px;
             }
         }
         
         @media (max-width: 768px) {
             .apple-support-slider {
-                padding: 70px 15px;
+                padding: 60px 15px;
             }
             
             .slider-title-main {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
+                margin-bottom: 12px;
             }
             
             .slider-subtitle-main {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                max-width: 400px;
             }
             
             .slider-card-main {
-                flex: 0 0 calc(50% - 8px);
-                min-width: calc(50% - 8px);
-                padding: 20px 16px;
+                flex: 0 0 calc(100% - 20px);
+                min-width: calc(100% - 20px);
+                padding: 20px;
+                margin: 0 5px;
             }
             
             .slider-nav-btn {
@@ -2157,27 +2163,37 @@ body{
             }
             
             .slider-nav-btn.prev-slider {
-                left: -5px;
+                left: -10px;
             }
             
             .slider-nav-btn.next-slider {
-                right: -5px;
+                right: -10px;
             }
             
             .slider-bottom-cta {
-                padding: 40px 25px;
+                padding: 30px 20px;
+                margin-top: 30px;
             }
             
             .slider-bottom-title {
-                font-size: 1.6rem;
+                font-size: 1.4rem;
+                margin-bottom: 10px;
+            }
+            
+            .slider-bottom-text {
+                font-size: 0.85rem;
+                margin-bottom: 18px;
+            }
+            
+            .slider-cta-btn {
+                padding: 10px 24px;
+                font-size: 0.9rem;
             }
         }
         
         @media (max-width: 480px) {
-            .slider-card-main {
-                flex: 0 0 calc(100% - 10px);
-                min-width: calc(100% - 10px);
-                padding: 20px;
+            .apple-support-slider {
+                padding: 50px 12px;
             }
             
             .slider-title-main {
@@ -2185,7 +2201,100 @@ body{
             }
             
             .slider-subtitle-main {
+                font-size: 0.85rem;
+                max-width: 320px;
+            }
+            
+            .slider-card-main {
+                flex: 0 0 calc(100% - 16px);
+                min-width: calc(100% - 16px);
+                padding: 18px 16px;
+                margin: 0 3px;
+            }
+            
+            .slider-card-header-main {
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .slider-icon-main {
+                width: 42px;
+                height: 42px;
+            }
+            
+            .slider-icon-img {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .slider-card-title {
+                font-size: 1rem;
+            }
+            
+            .slider-card-desc {
+                font-size: 0.8rem;
+                margin-bottom: 12px;
+                min-height: 36px;
+            }
+            
+            .slider-features-list li {
+                font-size: 0.75rem;
+                margin-bottom: 5px;
+            }
+            
+            .slider-card-btn {
+                padding: 7px 14px;
+                font-size: 0.75rem;
+            }
+            
+            .slider-nav-btn {
+                width: 32px;
+                height: 32px;
+                opacity: 0.9;
+            }
+            
+            .slider-nav-btn.prev-slider {
+                left: -12px;
+            }
+            
+            .slider-nav-btn.next-slider {
+                right: -12px;
+            }
+            
+            .slider-nav-btn i {
                 font-size: 0.9rem;
+            }
+            
+            .slider-bottom-cta {
+                padding: 25px 18px;
+                margin-top: 25px;
+            }
+            
+            .slider-bottom-title {
+                font-size: 1.3rem;
+            }
+            
+            .slider-bottom-text {
+                font-size: 0.8rem;
+            }
+            
+            .slider-cta-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+            
+            .slider-dots-container {
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .slider-card-main {
+                flex: 0 0 calc(100% - 12px);
+                min-width: calc(100% - 12px);
+                padding: 16px 14px;
             }
             
             .slider-card-header-main {
@@ -2195,26 +2304,27 @@ body{
             }
             
             .slider-icon-main {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
             
+            .slider-title-main {
+                font-size: 1.3rem;
+            }
+            
+            .slider-subtitle-main {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Hide navigation buttons on very small screens */
+        @media (max-width: 320px) {
             .slider-nav-btn {
-                width: 32px;
-                height: 32px;
+                display: none;
             }
             
-            .slider-nav-btn.prev-slider {
-                left: -8px;
-            }
-            
-            .slider-nav-btn.next-slider {
-                right: -8px;
-            }
-            
-            .slider-cta-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            .slider-viewport-main {
+                padding: 0;
             }
         }
     </style>
@@ -2408,85 +2518,122 @@ body{
             
             const cards = sliderTrack.querySelectorAll('.slider-card-main');
             let currentPosition = 0;
+            let cardsToShow = 3;
+            let isTransitioning = false;
+            
+            function getCardsToShow() {
+                const width = window.innerWidth;
+                if (width <= 480) return 1;
+                if (width <= 768) return 1;
+                if (width <= 1024) return 2;
+                return 3;
+            }
             
             function updateSlider() {
-                const cardWidth = cards[0].offsetWidth + 15;
-                const isMobile = window.innerWidth <= 768;
-                const cardsToShow = isMobile ? 1 : (window.innerWidth <= 1024 ? 2 : 3);
-                const maxPosition = (cards.length - cardsToShow) * cardWidth;
+                if (isTransitioning || cards.length === 0) return;
                 
-                currentPosition = Math.max(0, Math.min(currentPosition, maxPosition));
+                const card = cards[0];
+                const cardStyle = window.getComputedStyle(card);
+                const marginRight = parseFloat(cardStyle.marginRight || 0);
+                const cardWidth = card.offsetWidth + marginRight;
+                
+                cardsToShow = getCardsToShow();
+                const maxPosition = Math.max(0, (cards.length - cardsToShow) * cardWidth);
+                
+                currentPosition = Math.min(currentPosition, maxPosition);
                 sliderTrack.style.transform = `translateX(-${currentPosition}px)`;
                 
                 // Update dots
-                const activeDot = Math.floor(currentPosition / (cardWidth * cardsToShow));
+                const activeDotIndex = Math.floor(currentPosition / (cardWidth * cardsToShow));
                 dots.forEach((dot, index) => {
-                    dot.classList.toggle('active-dot', index === activeDot);
+                    dot.classList.toggle('active-dot', index === activeDotIndex);
                 });
             }
             
             function slideNext() {
-                const cardWidth = cards[0].offsetWidth + 15;
-                const isMobile = window.innerWidth <= 768;
-                const cardsToShow = isMobile ? 1 : (window.innerWidth <= 1024 ? 2 : 3);
-                const maxPosition = (cards.length - cardsToShow) * cardWidth;
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                const card = cards[0];
+                const cardStyle = window.getComputedStyle(card);
+                const marginRight = parseFloat(cardStyle.marginRight || 0);
+                const cardWidth = card.offsetWidth + marginRight;
+                
+                cardsToShow = getCardsToShow();
+                const maxPosition = Math.max(0, (cards.length - cardsToShow) * cardWidth);
                 
                 if (currentPosition + cardWidth <= maxPosition) {
                     currentPosition += cardWidth;
                 } else {
                     currentPosition = 0;
                 }
+                
                 updateSlider();
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 400);
             }
             
             function slidePrev() {
-                const cardWidth = cards[0].offsetWidth + 15;
-                const isMobile = window.innerWidth <= 768;
-                const cardsToShow = isMobile ? 1 : (window.innerWidth <= 1024 ? 2 : 3);
+                if (isTransitioning) return;
+                
+                isTransitioning = true;
+                const card = cards[0];
+                const cardStyle = window.getComputedStyle(card);
+                const marginRight = parseFloat(cardStyle.marginRight || 0);
+                const cardWidth = card.offsetWidth + marginRight;
+                
+                cardsToShow = getCardsToShow();
+                const maxPosition = Math.max(0, (cards.length - cardsToShow) * cardWidth);
                 
                 if (currentPosition - cardWidth >= 0) {
                     currentPosition -= cardWidth;
                 } else {
-                    const maxPosition = (cards.length - cardsToShow) * cardWidth;
                     currentPosition = maxPosition;
                 }
+                
                 updateSlider();
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 400);
             }
             
+            // Event Listeners
             prevBtn.addEventListener('click', slidePrev);
             nextBtn.addEventListener('click', slideNext);
             
             dots.forEach(dot => {
                 dot.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    const cardWidth = cards[0].offsetWidth + 15;
-                    const isMobile = window.innerWidth <= 768;
-                    const cardsToShow = isMobile ? 1 : (window.innerWidth <= 1024 ? 2 : 3);
+                    if (isTransitioning) return;
                     
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const card = cards[0];
+                    const cardStyle = window.getComputedStyle(card);
+                    const marginRight = parseFloat(cardStyle.marginRight || 0);
+                    const cardWidth = card.offsetWidth + marginRight;
+                    
+                    cardsToShow = getCardsToShow();
                     currentPosition = index * cardWidth * cardsToShow;
                     updateSlider();
                 });
             });
             
+            // Handle window resize
+            let resizeTimeout;
             window.addEventListener('resize', function() {
-                setTimeout(updateSlider, 250);
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    cardsToShow = getCardsToShow();
+                    currentPosition = 0;
+                    updateSlider();
+                }, 150);
             });
             
-            let autoSlide = setInterval(slideNext, 4000);
-            
-            sliderTrack.addEventListener('mouseenter', () => {
-                clearInterval(autoSlide);
-            });
-            
-            sliderTrack.addEventListener('mouseleave', () => {
-                autoSlide = setInterval(slideNext, 4000);
-            });
-            
+            // Initialize
             updateSlider();
         });
     </script>
 </div>
-
 <!-- REVIEWS SECTION - ORIGINAL -->
 <section class="ihdm-reviews">
     <style>
