@@ -3,1112 +3,713 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>The Ackar – Contact Us</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- ✅ SEO -->
+    <meta name="description" content="Contact The Ackar for luxury digital branding consultations, content creation, and premium brand strategy." />
+    <link rel="canonical" href="https://theackar.com/contact" />
+
+    <!-- ✅ Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            color: #333;
-        }
-        
-        /* Birthday Message Section */
-        .birthday-section {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px 15px;
-            min-height: 100vh;
-            background: #d63a4c;
-        }
-        
-        .birthday-container {
-            max-width: 800px;
-            width: 100%;
-            padding: 25px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-            margin: 10px;
-        }
-        
-        /* Decorative Hearts */
-        .heart {
-            position: absolute;
-            color: #ff6b6b;
-            font-size: 24px;
-            animation: float 6s infinite linear;
-            opacity: 0.6;
-            z-index: 1;
-        }
-        
-        .heart-1 {
-            top: 15px;
-            left: 15px;
-            animation-delay: 0s;
-        }
-        
-        .heart-2 {
-            top: 25px;
-            right: 20px;
-            animation-delay: 1s;
-        }
-        
-        .heart-3 {
-            bottom: 40px;
-            left: 25px;
-            animation-delay: 2s;
-        }
-        
-        .heart-4 {
-            bottom: 20px;
-            right: 30px;
-            animation-delay: 3s;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translateY(-15px) rotate(180deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg);
-                opacity: 0.6;
-            }
-        }
-        
-        /* Typing Container */
-        .typing-container {
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Cursor Styling */
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            background-color: #ff6b6b;
-            animation: blink 1s infinite;
-            margin-left: 5px;
-            height: 1.2em;
-            vertical-align: middle;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        /* Message Styling */
-        .message-line {
-            margin-bottom: 20px;
-            min-height: 26px;
-            line-height: 1.5;
-            overflow: hidden;
-        }
-        
-        .message-1 {
-            font-size: 2.2rem;
-            color: #ff6b6b;
-            font-weight: 900;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .message-2 {
-            font-size: 1.7rem;
-            color: #667eea;
-            font-weight: 700;
-        }
-        
-        .message-3 {
-            font-size: 1.5rem;
-            color: #764ba2;
-            font-weight: 600;
-            font-style: italic;
-        }
-        
-        .message-4 {
-            font-size: 1.4rem;
-            color: #ff9a3c;
-            font-weight: 600;
-        }
-        
-        .message-5 {
-            font-size: 1.3rem;
-            color: #4ecdc4;
-            font-weight: 500;
-        }
-        
-        .message-6 {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.7;
-        }
-        
-        .emoji {
-            font-size: 1.2em;
-            margin: 0 3px;
-        }
-        
-        /* Footer */
-        .footer {
-            margin-top: 30px;
-            text-align: center;
-            padding-top: 15px;
-            border-top: 2px dashed #ff6b6b;
-        }
-        
-        .signature {
-            font-size: 1.5rem;
-            color: #ff6b6b;
-            font-family: 'Brush Script MT', cursive;
-            font-weight: bold;
-        }
-        
-        .date {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 8px;
-        }
-        
-        /* Replay Button */
-        .replay-btn {
-            display: block;
-            margin: 25px auto 0;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #ff6b6b, #ff9a3c);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .replay-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
-        }
-        
-        /* Hidden Class */
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        /* PRODUCT CAROUSEL SECTION */
-        .product-carousel-section-unique {
-            padding: 40px 15px;
-            max-width: 1400px;
-            margin: 0 auto;
-background: #d63a4c; 
-            overflow: hidden;
-            position: relative;
-        }
+    
+<style>
+:root {
+    --color-arctic: #D3D1CE;
+    --color-apres-ski: #6C6D74;
+    --color-slopes: #B3B7BA;
+    --color-midnight: #090F15;
+    --color-mountainside: #262E36;
 
-        .product-carousel-unique {
-            width: 100%;
-        }
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
 
-        .carousel-header-unique {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+    --transition: all 0.3s ease-in-out;
+}
 
-        .carousel-header-unique h2 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Carousel wrapper */
-        .carousel-wrapper-unique {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            overflow: visible;
-            width: 100%;
-        }
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
 
-        .carousel-inner-unique {
-            overflow: hidden;
-            width: 100%;
-            border-radius: 16px;
-            position: relative;
-            flex: 1;
-        }
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-arctic);
+    color: var(--color-midnight);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        /* Slides container */
-        .slides-container-unique {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            gap: 15px;
-            width: auto;
-            min-width: 100%;
-            padding: 0 5px;
-        }
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.2;
+}
 
-        /* Mobile view - Scrollable container */
-        @media (max-width: 768px) {
-            .slides-container-unique {
-                display: flex;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scroll-behavior: smooth;
-                gap: 15px;
-                padding: 0 10px 20px 10px;
-                margin: 0 -5px;
-                width: calc(100% + 10px);
-                transition: none !important;
-                transform: none !important;
-                scrollbar-width: none;
-            }
-            
-            .slides-container-unique::-webkit-scrollbar {
-                display: none;
-            }
-        }
+h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+}
 
-        .product-card-unique {
-            flex: 0 0 calc(33.333% - 10px);
-            min-width: calc(33.333% - 10px);
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
 
-        /* Mobile view - Single card */
-        @media (max-width: 768px) {
-            .product-card-unique {
-                flex: 0 0 calc(100% - 20px) !important;
-                min-width: calc(100% - 20px) !important;
-                min-height: 320px;
-                scroll-snap-align: center;
-                margin: 0 5px;
-            }
-        }
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
 
-        /* Tablet view - 2 cards */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .product-card-unique {
-                flex: 0 0 calc(50% - 10px) !important;
-                min-width: calc(50% - 10px) !important;
-            }
-        }
+p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+}
 
-        .product-card-unique:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
 
-        .img-box-unique {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            flex-grow: 1;
-        }
+ul {
+    list-style: none;
+}
 
-        .img-box-unique img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-        .product-card-unique:hover .img-box-unique img {
-            transform: scale(1.08);
-        }
+.section-contact {
+    padding: 6rem 0;
+    min-height: calc(100vh - 80px - 200px);
+}
 
-        .image-text-overlay-unique {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px;
-            color: white;
-            text-align: left;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
-        }
+.text-center {
+    text-align: center;
+}
 
-        /* Navigation buttons */
-        .nav-btn-unique {
-            background: rgba(0, 0, 0, 0.7);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 10;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: white;
-            flex-shrink: 0;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+.sub-heading {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--color-apres-ski);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
 
-        .nav-btn-unique:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: var(--transition);
+}
 
-        .nav-btn-unique:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            transform: translateY(-50%) !important;
-        }
+.btn-nav-cta {
+    border-color: var(--color-slopes);
+    color: var(--color-slopes);
+}
 
-        /* Button positions */
-        .prev-btn-unique {
-            left: -25px;
-        }
+.btn-nav-cta:hover {
+    background-color: var(--color-mountainside);
+    border-color: var(--color-mountainside);
+    color: var(--color-arctic);
+}
 
-        .next-btn-unique {
-            right: -25px;
-        }
+.btn-primary-cta {
+    background-color: var(--color-mountainside);
+    color: var(--color-arctic);
+    border-color: var(--color-mountainside);
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+}
 
-        /* Mobile responsive adjustments */
-        @media (max-width: 768px) {
-            /* Birthday message adjustments */
-            .birthday-container {
-                padding: 20px 15px;
-            }
-            
-            .typing-container {
-                min-height: 280px;
-            }
-            
-            .message-1 {
-                font-size: 1.8rem;
-            }
-            
-            .message-2 {
-                font-size: 1.4rem;
-            }
-            
-            .message-3 {
-                font-size: 1.3rem;
-            }
-            
-            .message-4 {
-                font-size: 1.2rem;
-            }
-            
-            .message-5 {
-                font-size: 1.1rem;
-            }
-            
-            .message-6 {
-                font-size: 1rem;
-                line-height: 1.6;
-            }
-            
-            .heart {
-                font-size: 18px;
-            }
-            
-            .signature {
-                font-size: 1.3rem;
-            }
-            
-            .replay-btn {
-                padding: 10px 25px;
-                font-size: 0.9rem;
-            }
-            
-            /* Carousel adjustments */
-            .product-carousel-section-unique {
-                padding: 30px 10px;
-            }
-            
-            .carousel-header-unique h2 {
-                font-size: 1.5rem;
-            }
-            
-            .product-card-unique {
-                min-height: 300px;
-            }
-            
-            /* Hide buttons on mobile */
-            .nav-btn-unique {
-                display: none !important;
-            }
-            
-            .image-text-overlay-unique {
-                padding: 12px;
-            }
-        }
+.btn-primary-cta:hover {
+    background-color: var(--color-apres-ski);
+    border-color: var(--color-apres-ski);
+}
 
-        @media (max-width: 480px) {
-            .message-1 {
-                font-size: 1.6rem;
-            }
-            
-            .message-2 {
-                font-size: 1.3rem;
-            }
-            
-            .message-3 {
-                font-size: 1.1rem;
-            }
-            
-            .birthday-container {
-                padding: 15px 12px;
-            }
-            
-            .message-line {
-                margin-bottom: 15px;
-            }
-            
-            .product-carousel-section-unique {
-                padding: 25px 8px;
-            }
-            
-            .product-card-unique {
-                min-height: 280px;
-            }
-        }
+/* --- Navbar --- */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-midnight);
+    color: var(--color-arctic);
+    z-index: 1000;
+    transition: var(--transition);
+}
 
-        /* Scroll down indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            color: white;
-            z-index: 10;
-            cursor: pointer;
-        }
-        
-        .scroll-indicator p {
-            margin-bottom: 8px;
-            font-size: 1rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            font-weight: 500;
-        }
-        
-        .scroll-down {
-            width: 25px;
-            height: 40px;
-            border: 2px solid white;
-            border-radius: 50px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .scroll-down::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            animation: scroll 2s infinite;
-        }
-        
-        @keyframes scroll {
-            0% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-50%) translateY(15px);
-                opacity: 0;
-            }
-        }
-        
-        /* Loading placeholder for images */
-        .img-box-unique {
-            background-color: #f0f0f0;
-            background-image: linear-gradient(90deg, #f0f0f0 0%, #fafafa 50%, #f0f0f0 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-    </style>
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--color-slopes);
+}
+
+.nav-menu a:hover {
+    color: var(--color-arctic);
+}
+
+.navbar.scrolled {
+    background-color: rgba(9, 15, 21, 0.95);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* --- Contact Grid --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Contact Header */
+.contact-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    grid-column: 1 / -1;
+}
+
+.contact-header h1 {
+    margin-bottom: 1rem;
+}
+
+.contact-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--color-apres-ski);
+}
+
+/* Contact Form */
+.contact-form-container {
+    background-color: var(--color-mountainside);
+    padding: 3rem;
+    border-radius: 2px;
+}
+
+.contact-form-container h2 {
+    color: var(--color-arctic);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-form-container h2 i {
+    color: var(--color-slopes);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--color-arctic);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-apres-ski);
+    color: var(--color-arctic);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-slopes);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Contact Info */
+.contact-info h2 {
+    color: var(--color-midnight);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-info h2 i {
+    color: var(--color-mountainside);
+}
+
+.contact-methods {
+    margin-bottom: 3rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-slopes);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    color: var(--color-mountainside);
+    min-width: 40px;
+    background-color: rgba(38, 46, 54, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-details h3 {
+    color: var(--color-midnight);
+    margin-bottom: 0.5rem;
+}
+
+.contact-details p {
+    color: var(--color-apres-ski);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.contact-details a {
+    color: var(--color-mountainside);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-details a:hover {
+    color: var(--color-midnight);
+}
+
+/* Business Hours */
+.business-hours h3 {
+    color: var(--color-midnight);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.business-hours p {
+    color: var(--color-apres-ski);
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+}
+
+.business-hours span {
+    font-weight: 500;
+    color: var(--color-midnight);
+}
+
+/* Social Connect */
+.social-connect {
+    margin-top: 3rem;
+}
+
+.social-connect h3 {
+    color: var(--color-midnight);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--color-mountainside);
+    color: var(--color-arctic);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background-color: var(--color-midnight);
+    transform: translateY(-3px);
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--color-midnight);
+    color: var(--color-apres-ski);
+    padding-top: 4rem;
+    font-size: 0.9rem;
+}
+
+.footer .grid-three-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: flex-start;
+}
+
+.footer-logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-arctic);
+}
+
+.footer-links li,
+.footer-socials li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+    color: var(--color-arctic);
+}
+
+.footer-socials {
+    text-align: right;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-mountainside);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .btn-nav-cta {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    
+    .section-contact {
+        padding: 4rem 0;
+    }
+
+    .contact-form-container {
+        padding: 2rem;
+    }
+
+    .contact-form-container h2,
+    .contact-info h2 {
+        font-size: 1.8rem;
+    }
+
+    .contact-method {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-icon {
+        margin-bottom: 1rem;
+    }
+
+    .footer .grid-three-cols {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-socials {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+</style>
 </head>
+
 <body>
-    <!-- Birthday Message Section -->
-    <section class="birthday-section" id="birthdaySection">
-        <div class="birthday-container">
-            <!-- Floating Hearts -->
-            <div class="heart heart-1">❤️</div>
-            <div class="heart heart-2">❤️</div>
-            <div class="heart heart-3">❤️</div>
-            <div class="heart heart-4">❤️</div>
-            
-            <!-- Typing Message Container -->
-            <div class="typing-container">
-                <div class="message-line">
-                    <span id="message1" class="message-1"></span>
-                    <span class="cursor"></span>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="nav-logo">THE ACKAR</a>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">The Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-nav-cta">Schedule Consultation</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="contact" class="section-contact">
+            <div class="container">
+                <div class="contact-header">
+                    <span class="sub-heading">GET IN TOUCH</span>
+                    <h1>Contact The Ackar</h1>
+                    <p>Schedule a consultation with our luxury branding experts to transform your digital presence.</p>
                 </div>
-                
-                <div class="message-line">
-                    <span id="message2" class="message-2"></span>
-                </div>
-                
-                <div class="message-line">
-                    <span id="message3" class="message-3"></span>
-                </div>
-                
-                <div class="message-line">
-                    <span id="message4" class="message-4"></span>
-                </div>
-                
-                <div class="message-line">
-                    <span id="message5" class="message-5"></span>
-                </div>
-                
-                <div class="message-line">
-                    <span id="message6" class="message-6"></span>
+
+                <div class="contact-grid">
+                    <!-- Left: Contact Form -->
+                    <div class="contact-form-container">
+                        <h2><i class="fas fa-pen-fancy"></i> Schedule a Consultation</h2>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Company / Brand</label>
+                                <input type="text" id="company" name="company" placeholder="Enter your company name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">Service Interest</label>
+                                <select id="service" name="service">
+                                    <option value="">Select a service</option>
+                                    <option value="content">Curated Content Creation</option>
+                                    <option value="audience">Elite Audience Cultivation</option>
+                                    <option value="branding">Digital Brand Guardianship</option>
+                                    <option value="full-package">Full Brand Strategy</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" required placeholder="Tell us about your brand, goals, and vision..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary-cta" style="width: 100%;">Submit Request</button>
+                        </form>
+                    </div>
+
+                    <!-- Right: Contact Information with Icons -->
+                    <div class="contact-info">
+                        <h2><i class="fas fa-address-card"></i> Connect With Us</h2>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope-open-text"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Email Us</h3>
+                                    <p>For general inquiries and consultations</p>
+                                    <a href="mailto:contact@theackar.com">
+                                        <i class="fas fa-envelope"></i> contact@theackar.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-volume"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Call Us</h3>
+                                    <p>Available during business hours</p>
+                                    <a href="tel:+919836063021">
+                                        <i class="fas fa-phone-alt"></i> +91 98360 63021
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Based In</h3>
+                                    <p>Kolkata, India</p>
+                                    <p>Serving luxury brands globally</p>
+                                    <a href="https://maps.google.com/?q=Kolkata,India" target="_blank">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="business-hours">
+                            <h3><i class="fas fa-clock"></i> Business Hours</h3>
+                            <p>Monday - Friday <span>9:00 AM - 6:00 PM</span></p>
+                            <p>Saturday <span>10:00 AM - 4:00 PM</span></p>
+                            <p>Sunday <span>By Appointment Only</span></p>
+                        </div>
+
+                        <div class="social-connect">
+                            <h3><i class="fas fa-share-alt"></i> Follow Our Journey</h3>
+                            <p>See our latest work and insights</p>
+                            <div class="social-icons">
+                                <a href="https://instagram.com/theackar" class="social-icon" target="_blank" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-icon" target="_blank" title="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-icon" target="_blank" title="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-icon" target="_blank" title="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Footer -->
-            <div class="footer">
-                <div class="signature" id="signature">From Someone Special</div>
-                <div class="date" id="date">Today</div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container grid-three-cols">
+            <div class="footer-col">
+                <a href="/" class="footer-logo">THE ACKAR</a>
             </div>
-            
-            <!-- Replay Button -->
-            <button class="replay-btn hidden" id="replayBtn">Play Again</button>
-        </div>
-        
-        <!-- Scroll Down Indicator -->
-        
-    </section>
 
-    <!-- PRODUCT CAROUSEL SECTION -->
-    <div class="product-carousel-section-unique" id="productCarouselSection">
-      <section class="product-carousel-unique">
-        <div class="carousel-header-unique">
-<h2 style="color:white;">Our Beautiful Memories</h2>
-
-        </div>
-        
-        <div class="carousel-wrapper-unique">
-          <!-- Left Button - Desktop Only -->
-          <button class="nav-btn-unique prev-btn-unique" id="prevBtnUnique">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          
-          <!-- Carousel Container -->
-          <div class="carousel-inner-unique">
-            <div class="slides-container-unique" id="slidesContainerUnique">
-              <!-- Slide 1 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214142_066.jpg" alt="Memory 1" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 2 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214120_915.jpg" alt="Memory 2" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
- 
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 3 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214144_968.jpg" alt="Memory 3" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-                    
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 4 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214146_773.jpg" alt="Memory 4" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-                  
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 5 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214151_348.jpg" alt="Memory 5" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-                   
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 6 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214204_193.jpg" alt="Memory 6" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-                   
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Slide 7 -->
-              <div class="product-card-unique">
-                <div class="img-box-unique">
-                  <img src="hb/IMG_20260116_214201_727.jpg" alt="Memory 7" onerror="this.style.display='none';">
-                  <div class="image-text-overlay-unique">
-                   
-                  </div>
-                </div>
-              </div>
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                </ul>
             </div>
-          </div>
-          
-          <!-- Right Button - Desktop Only -->
-          <button class="nav-btn-unique next-btn-unique" id="nextBtnUnique">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+
+            <div class="footer-col">
+                <ul class="footer-socials">
+                    <li><a href="mailto:contact@theackar.com">Email</a></li>
+                    <li><a href="https://instagram.com/theackar">Instagram</a></li>
+                    <li><a href="tel:+919836063021">Phone</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
         </div>
-      </section>
-    </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 The Ackar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Birthday Message Script
-        const birthdayMessages = [
-            {
-                id: 'message1',
-                text: "🎂 Happy Birthday! 🎉",
-                speed: 80,
-                class: 'message-1'
-            },
-            {
-                id: 'message2',
-                text: "To My Mooon Light ❤️ ",
-                speed: 60,
-                class: 'message-2',
-                delay: 500
-            },
-            {
-                id: 'message3',
-                text: "On this special day, I want you to know...",
-                speed: 40,
-                class: 'message-3',
-                delay: 800
-            },
-            {
-                id: 'message4',
-                text: "You are the most amazing person I know! ✨",
-                speed: 40,
-                class: 'message-4',
-                delay: 300
-            },
-            {
-                id: 'message5',
-                text: "May all your dreams come true 🌟",
-                speed: 50,
-                class: 'message-5',
-                delay: 400
-            },
-            {
-                id: 'message6',
-                text: "Wishing you endless joy, laughter, and happiness today and always. Hamesha khush rhe tu or meko teko ye btane ki zrurat toh hai nahi ki tu kitni special hai mere liye kyu k tu sab janti hai or ager btane bhi bethu toh mere pass word kam padh jayege ye btate huve ki ur so special for me nd ye 3 saal literally bhot zyda ache the like bhot hiii zyda.. kya hii btau me ab toh literally hamene kitni sari memorys bnayi hai vc pr ek dsure ko ghanto tak dekhna call pr bhot zyda bate karna itni bat toh aaj tak mene kabhi kisise nahi ki mene toh apne recharge k pase terese baat karte huve hii vasul kare hai heheh jo bhi hai meri life ka best part ho ap naina sabse acha part sabse Khubsurat part Thank you meri life mein aane k liye meri life ko itna acha or itni khushiya dene k liye thank you so much for everything",
-                speed: 30,
-                class: 'message-6',
-                delay: 600
-            }
-        ];
-
-        // Signature and date
-        const signature = "Happy Birthday Moon light ❤️";
-        const today = new Date().toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Typewriter function
-        function typeWriter(elementId, text, speed, delay = 0) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    const element = document.getElementById(elementId);
-                    let i = 0;
-                    
-                    function type() {
-                        if (i < text.length) {
-                            element.innerHTML += text.charAt(i);
-                            i++;
-                            setTimeout(type, speed);
-                        } else {
-                            resolve();
-                        }
-                    }
-                    
-                    type();
-                }, delay);
-            });
-        }
-
-        // Start typing animation
-        async function startTyping() {
-            // Reset all messages
-            birthdayMessages.forEach(msg => {
-                document.getElementById(msg.id).innerHTML = '';
-            });
-            document.getElementById('signature').innerHTML = '';
-            document.getElementById('date').innerHTML = '';
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Hide replay button
-            document.getElementById('replayBtn').classList.add('hidden');
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             
-            // Type each message sequentially
-            for (const msg of birthdayMessages) {
-                await typeWriter(msg.id, msg.text, msg.speed, msg.delay);
-            }
+            // Show success message
+            alert(`Thank you, ${name}! Your consultation request has been submitted. We will contact you at ${email} within 24 hours.`);
             
-            // After all messages are typed, show signature and date
-            setTimeout(() => {
-                document.getElementById('signature').innerHTML = signature;
-                setTimeout(() => {
-                    document.getElementById('date').innerHTML = today;
-                    setTimeout(() => {
-                        document.getElementById('replayBtn').classList.remove('hidden');
-                    }, 500);
-                }, 300);
-            }, 500);
-        }
-
-        // Initialize birthday message when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            startTyping();
-            
-            // Replay button functionality
-            document.getElementById('replayBtn').addEventListener('click', startTyping);
-            
-            // Add some interactive effects to hearts
-            const hearts = document.querySelectorAll('.heart');
-            hearts.forEach(heart => {
-                heart.addEventListener('click', function() {
-                    this.style.transform = 'scale(1.5)';
-                    this.style.color = '#ff9a3c';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                        this.style.color = '';
-                    }, 300);
-                });
-            });
-            
-            // Add ripple effect to birthday container
-            const birthdayContainer = document.querySelector('.birthday-container');
-            birthdayContainer.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    const x = e.offsetX;
-                    const y = e.offsetY;
-                    
-                    const ripple = document.createElement('div');
-                    ripple.style.position = 'absolute';
-                    ripple.style.width = '10px';
-                    ripple.style.height = '10px';
-                    ripple.style.backgroundColor = 'rgba(255, 107, 107, 0.3)';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.style.transform = 'translate(-50%, -50%)';
-                    ripple.style.pointerEvents = 'none';
-                    ripple.style.zIndex = '1';
-                    
-                    this.appendChild(ripple);
-                    
-                    ripple.animate([
-                        { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
-                        { transform: 'translate(-50%, -50%) scale(20)', opacity: 0 }
-                    ], {
-                        duration: 1000,
-                        easing: 'ease-out'
-                    });
-                    
-                    setTimeout(() => ripple.remove(), 1000);
-                }
-            });
-            
-            // Initialize product carousel
-            initializeProductCarousel();
-            
-            // Scroll to carousel when clicking indicator
-            document.getElementById('scrollIndicator').addEventListener('click', () => {
-                document.getElementById('productCarouselSection').scrollIntoView({ 
-                    behavior: 'smooth' 
-                });
-            });
+            // Reset form
+            this.reset();
         });
-
-        // PRODUCT CAROUSEL SCRIPT
-        function initializeProductCarousel() {
-            const slidesContainer = document.getElementById('slidesContainerUnique');
-            const prevBtn = document.getElementById('prevBtnUnique');
-            const nextBtn = document.getElementById('nextBtnUnique');
-            const productCards = document.querySelectorAll('.product-card-unique');
-            
-            if (!slidesContainer || !prevBtn || !nextBtn || productCards.length === 0) {
-                console.error('Carousel elements not found');
-                return;
-            }
-            
-            // Detect if mobile
-            const isMobile = window.innerWidth <= 768;
-            let currentSlideIndex = 0;
-            let cardsPerView = isMobile ? 1 : calculateCardsPerView();
-            
-            // Function to calculate cards per view based on screen size
-            function calculateCardsPerView() {
-                const screenWidth = window.innerWidth;
-                
-                if (screenWidth <= 768) {
-                    return 1;
-                } else if (screenWidth <= 1024) {
-                    return 2;
-                } else {
-                    return 3;
-                }
-            }
-            
-            // Function to setup mobile scrolling
-            function setupMobileScrolling() {
-                if (window.innerWidth > 768) return;
-                
-                // Remove desktop behavior
-                slidesContainer.style.transform = 'none';
-                slidesContainer.style.transition = 'none';
-                
-                // Setup scroll snapping
-                let isScrolling = false;
-                let scrollTimeout;
-                
-                // Handle scroll events for mobile
-                slidesContainer.addEventListener('scroll', function() {
-                    if (!isScrolling) {
-                        isScrolling = true;
-                    }
-                    
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(function() {
-                        isScrolling = false;
-                        snapToNearestCard();
-                    }, 100);
-                });
-                
-                // Function to snap to nearest card
-                function snapToNearestCard() {
-                    const containerWidth = slidesContainer.offsetWidth;
-                    const scrollLeft = slidesContainer.scrollLeft;
-                    const cardWidth = productCards[0].offsetWidth + 15;
-                    
-                    // Calculate which card is closest
-                    const nearestIndex = Math.round(scrollLeft / cardWidth);
-                    
-                    // Snap to that card
-                    slidesContainer.scrollTo({
-                        left: nearestIndex * cardWidth,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update current index
-                    currentSlideIndex = Math.min(nearestIndex, productCards.length - 1);
-                }
-            }
-            
-            // Function to update carousel position (Desktop only)
-            function updateCarouselPosition() {
-                if (window.innerWidth <= 768) {
-                    setupMobileScrolling();
-                    return;
-                }
-                
-                // Update cards per view
-                cardsPerView = calculateCardsPerView();
-                
-                // Calculate maximum slide index
-                const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
-                
-                // Ensure current index is within bounds
-                if (currentSlideIndex > maxSlideIndex) {
-                    currentSlideIndex = maxSlideIndex;
-                }
-                
-                // Get first card to calculate dimensions
-                const firstCard = productCards[0];
-                if (!firstCard) return;
-                
-                // Calculate card width including gap
-                const cardWidth = firstCard.offsetWidth;
-                const gap = 15;
-                
-                // Calculate translation
-                const translateX = currentSlideIndex * (cardWidth + gap);
-                
-                // Apply transform
-                slidesContainer.style.transform = `translateX(-${translateX}px)`;
-                slidesContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-                
-                // Update button states
-                updateButtonStates(maxSlideIndex);
-            }
-            
-            // Function to update button states (Desktop only)
-            function updateButtonStates(maxSlideIndex) {
-                if (window.innerWidth <= 768) return;
-                
-                const isAtStart = currentSlideIndex === 0;
-                const isAtEnd = currentSlideIndex >= maxSlideIndex;
-                
-                // Update buttons
-                prevBtn.disabled = isAtStart;
-                prevBtn.style.opacity = isAtStart ? '0.3' : '1';
-                prevBtn.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
-                
-                nextBtn.disabled = isAtEnd;
-                nextBtn.style.opacity = isAtEnd ? '0.3' : '1';
-                nextBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
-            }
-            
-            // Function to go to next slide (Desktop only)
-            function goToNextSlide() {
-                if (window.innerWidth <= 768) return;
-                
-                cardsPerView = calculateCardsPerView();
-                const maxSlideIndex = Math.max(0, productCards.length - cardsPerView);
-                
-                if (currentSlideIndex < maxSlideIndex) {
-                    currentSlideIndex++;
-                    updateCarouselPosition();
-                }
-            }
-            
-            // Function to go to previous slide (Desktop only)
-            function goToPrevSlide() {
-                if (window.innerWidth <= 768) return;
-                
-                if (currentSlideIndex > 0) {
-                    currentSlideIndex--;
-                    updateCarouselPosition();
-                }
-            }
-            
-            // Event listeners for navigation buttons (Desktop only)
-            nextBtn.addEventListener('click', goToNextSlide);
-            prevBtn.addEventListener('click', goToPrevSlide);
-            
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    const isNowMobile = window.innerWidth <= 768;
-                    
-                    if (isNowMobile) {
-                        // Switch to mobile mode
-                        slidesContainer.style.transform = 'none';
-                        slidesContainer.style.transition = 'none';
-                        slidesContainer.style.overflowX = 'auto';
-                        prevBtn.style.display = 'none';
-                        nextBtn.style.display = 'none';
-                        setupMobileScrolling();
-                    } else {
-                        // Switch to desktop mode
-                        slidesContainer.style.overflowX = 'hidden';
-                        prevBtn.style.display = 'flex';
-                        nextBtn.style.display = 'flex';
-                        currentSlideIndex = 0;
-                        updateCarouselPosition();
-                    }
-                }, 250);
-            });
-            
-            // Initialize based on screen size
-            if (window.innerWidth <= 768) {
-                // Mobile initialization
-                setupMobileScrolling();
-                prevBtn.style.display = 'none';
-                nextBtn.style.display = 'none';
-            } else {
-                // Desktop initialization
-                updateCarouselPosition();
-            }
-            
-            // Handle image loading errors
-            const images = document.querySelectorAll('.img-box-unique img');
-            images.forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const parent = this.parentElement;
-                    const errorMsg = document.createElement('div');
-                    errorMsg.style.position = 'absolute';
-                    errorMsg.style.top = '50%';
-                    errorMsg.style.left = '50%';
-                    errorMsg.style.transform = 'translate(-50%, -50%)';
-                    errorMsg.style.textAlign = 'center';
-                    errorMsg.style.color = '#666';
-                    errorMsg.style.fontSize = '14px';
-                    errorMsg.innerHTML = 'Image not available<br><small>Memory in heart ❤️</small>';
-                    parent.appendChild(errorMsg);
-                });
-            });
-        }
     </script>
+
 </body>
 </html>
