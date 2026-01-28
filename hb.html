@@ -508,6 +508,11 @@ ul {
         justify-content: center;
     }
 }
+.only-mobile { display: none; }
+@media (max-width: 768px) {
+  .only-mobile { display: inline; }
+}
+
 
 </style>
 </head>
@@ -532,7 +537,9 @@ ul {
             <div class="container">
                 <div class="contact-header">
                     <span class="sub-heading">GET IN TOUCH</span>
-                <h1 style="white-space: nowrap;">Contact The Ackar</h1>
+                  <h1 class="mobile-title-break">
+  Contact <span class="only-mobile"><br></span>The Ackar
+</h1>
 
                     <p>Schedule a consultation with our luxury branding experts to transform your digital presence.</p>
                 </div>
@@ -624,7 +631,7 @@ ul {
                                 </div>
                                 <div class="contact-details">
                                     <h3>Based In</h3>
-                                    <p>Kolkata, India</p>
+                                    <p>Kolkata|Mumbai</p>
                                     <p>Serving luxury brands globally</p>
                                     <a href="https://maps.google.com/?q=Kolkata,India" target="_blank">
                                         <i class="fas fa-directions"></i> Get Directions
