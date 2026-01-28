@@ -507,12 +507,28 @@ ul {
     .social-icons {
         justify-content: center;
     }
-}
-.only-mobile { display: none; }
-@media (max-width: 768px) {
-  .only-mobile { display: inline; }
+}.only-mobile {
+  display: none;
 }
 
+@media (max-width: 768px) {
+  .only-mobile {
+    display: inline;
+  }
+
+  .mobile-title-break {
+    text-align: center;
+  }
+
+  /* Contact ka size kam (first word) */
+  .mobile-title-break {
+    font-size: 32px; /* The Ackar */
+  }
+
+  .mobile-title-break::first-line {
+    font-size: 24px; /* Contact */
+  }
+}
 
 </style>
 </head>
@@ -726,3 +742,4 @@ ul {
 
 </body>
 </html>
+
