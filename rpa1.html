@@ -37,7 +37,7 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-/* EXACT SAME NAVBAR AS YOUR INDEX */
+/* NAVBAR - EXACT SAME AS YOUR INDEX */
 .navbar {
     width: 100%;
     padding: 22px 50px;
@@ -75,6 +75,8 @@ body {
     width: 120px;
     height: 40px;
     border-radius: 5px;
+    object-fit: contain;
+    background: transparent;
 }
 
 .slot-menu {
@@ -894,7 +896,7 @@ body {
 
 .carousel-item:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(184, 148, 126, 0.3);
+
 }
 
 .carousel-track img {
@@ -1249,88 +1251,188 @@ body {
     transform: translateY(0);
 }
 
-/* EXACT SAME FOOTER AS YOUR INDEX */
+/* FOOTER - FIXED AND ENHANCED */
 .oh-footer {
-    background: var(--bg-color);
-    padding: 60px 0;
-    font-family: Georgia, serif;
-    color: #333;
-    border-top: 4px solid var(--primary-color);
+    background: var(--secondary-color);
+    padding: 80px 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.oh-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #d4a574, var(--primary-color));
 }
 
 .footer-container {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    gap: 50px;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    gap: 60px;
     align-items: flex-start;
-    justify-content: space-between;
-    flex-wrap: wrap;
 }
 
 .footer-left {
-    flex: 1;
-    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.footer-left-img {
-    width: 50%;
-    max-width: 280px;
+.footer-logo-img {
+    width: 180px;
     height: auto;
-    object-fit: contain;
-    display: block;
-    margin-left: 120px;
+    margin-bottom: 30px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    max-width: 280px;
 }
 
 .footer-middle {
-    flex: 1;
-    min-width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-section-title {
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 14px;
-    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 12px;
+    letter-spacing: 3px;
     color: var(--primary-color);
+    text-transform: uppercase;
 }
 
 .footer-nav {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .footer-nav li {
-    margin-bottom: 10px;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
-    color: var(--secondary-color);
-    transition: color 0.3s ease;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+}
+
+.footer-nav li::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
 .footer-nav li:hover {
     color: var(--primary-color);
+    padding-left: 15px;
+}
+
+.footer-nav li:hover::before {
+    width: 10px;
 }
 
 .footer-right {
-    flex: 1;
-    min-width: 250px;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-text {
     font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    color: #333;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-text strong {
     color: var(--primary-color);
+    font-weight: 600;
 }
 
-.footer-logo {
-    width: 120px;
+.footer-contact-info {
     margin-top: 10px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact-item i {
+    color: var(--primary-color);
+    margin-top: 4px;
+    font-size: 14px;
+    width: 16px;
+}
+
+.footer-bottom {
+    width: 90%;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 /* PRELOADER */
@@ -1375,6 +1477,21 @@ body {
     
     .design-image {
         height: 500px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-left {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-tagline {
+        max-width: 400px;
     }
 }
 
@@ -1436,21 +1553,38 @@ body {
     }
     
     .footer-container {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .footer-left {
         align-items: center;
     }
     
-    .footer-middle, .footer-right, .footer-left {
+    .footer-middle {
+        align-items: center;
+    }
+    
+    .footer-right {
+        align-items: center;
+    }
+    
+    .footer-nav {
+        align-items: center;
+    }
+    
+    .footer-nav li::before {
+        display: none;
+    }
+    
+    .footer-nav li:hover {
+        padding-left: 0;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
         text-align: center;
-    }
-    
-    .footer-nav li {
-        display: inline-block;
-        margin: 0 10px 10px 10px;
-    }
-    
-    .footer-left-img {
-        margin: 0 auto;
     }
 }
 
@@ -1519,9 +1653,8 @@ body {
         font-size: 18px;
     }
     
-    .footer-left-img {
-        margin: 40px auto;
-        width: 60%;
+    .oh-footer {
+        padding: 60px 0 30px;
     }
 }
 
@@ -1598,17 +1731,6 @@ body {
         font-size: 16px;
     }
     
-    .footer-left-img {
-        margin: 30px auto;
-        width: 80%;
-        height: auto;
-    }
-    
-    .footer-nav li {
-        font-size: 16px;
-        margin: 0 8px 8px 8px;
-    }
-    
     .mobile-menu-btn {
         font-size: 22px;
     }
@@ -1620,6 +1742,10 @@ body {
     .mobile-contact-btn {
         padding: 15px 30px;
         font-size: 16px;
+    }
+    
+    .footer-logo-img {
+        width: 150px;
     }
 }
 
@@ -1648,6 +1774,10 @@ body {
     
     .fs-img {
         height: 300px;
+    }
+    
+    .footer-contact-item {
+        font-size: 13px;
     }
 }
 </style>
@@ -1967,15 +2097,16 @@ body {
         </div>
     </section>
 
-    <!-- FOOTER - EXACT SAME AS YOUR INDEX -->
+    <!-- FOOTER - FIXED AND ENHANCED -->
     <footer class="oh-footer">
         <div class="footer-container">
             <div class="footer-left">
-                <img src="img/WhatsApp_Image_2025-12-12_at_22.26.16_1d885e4c-removebg-preview.png" alt="OH Architecture" class="footer-left-img">
+                <img src="img/WhatsApp_Image_2025-12-12_at_22.26.16_1d885e4c-removebg-preview.png" alt="OH Architecture" class="footer-logo-img">
+                <p class="footer-tagline">Creating timeless spaces that inspire, comfort, and elevate the human experience since 2009.</p>
             </div>
 
             <div class="footer-middle">
-                <p class="footer-section-title">(NAVIGATION)</p>
+                <p class="footer-section-title">(Navigation)</p>
                 <ul class="footer-nav">
                     <li>Home</li>
                     <li>Works</li>
@@ -1989,18 +2120,40 @@ body {
             </div>
 
             <div class="footer-right">
-                <p class="footer-section-title">(ACKNOWLEDGEMENT)</p>
+                <p class="footer-section-title">(Acknowledgement)</p>
                 <p class="footer-text">
-                    We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present, and acknowledge their continuing connection to land, sea and community.
+                    We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present.
                 </p>
 
-                <p class="footer-section-title">(INFO)</p>
-                <p class="footer-text">
-                    <strong>A:</strong> 101 Days Rd, Grange QLD 4051<br>
-                    <strong>E:</strong> info@oharchitecture.com.au<br>
-                    <strong>P:</strong> 07 3110 1031<br>
-                    <strong>H:</strong> Monday to Friday, 8:30am - 5:00pm
-                </p>
+                <p class="footer-section-title">(Contact Info)</p>
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>101 Days Rd, Grange QLD 4051</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@oharchitecture.com.au</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>07 3110 1031</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Fri: 8:30am - 5:00pm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2024 OH Architecture. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
             </div>
         </div>
     </footer>
