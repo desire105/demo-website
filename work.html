@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OH Architecture</title>
+<title>OH Architecture — Process</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -26,15 +26,16 @@
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html, body {
-    overflow-x: hidden;
+html {
     scroll-behavior: smooth;
 }
 
 body {
-    position: relative;
-    background-color: var(--bg-color);
     font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* NAVBAR - EXACT SAME AS YOUR INDEX */
@@ -58,17 +59,8 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-.navbar.scrolled .logo {
-    color: var(--secondary-color);
-}
-
 .navbar.scrolled .nav-text span {
     color: var(--secondary-color);
-}
-
-.navbar.scrolled .contact-btn {
-    background: var(--primary-color);
-    border: none;
 }
 
 .logo img {
@@ -156,7 +148,7 @@ body {
     background: #a5836d;
 }
 
-/* MOBILE HAMBURGER MENU - EXACT SAME */
+/* MOBILE HAMBURGER MENU */
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -237,1021 +229,353 @@ body {
     transform: translateY(-2px);
 }
 
-/* HERO SECTION - CINEMATIC UPGRADE */
+/* Hero Section */
 .hero {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    overflow: hidden;
-    transition: opacity 0.8s ease;
+    padding: 140px 40px 0;
+    max-width: 1600px;
+    margin: 0 auto;
+    background: var(--bg-color);
+    padding-top: 140px;
 }
 
-.hero.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.hero-image-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-image-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.18);
-    z-index: 2;
-}
-
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform: scale(1.1);
-    animation: heroZoom 20s ease-in-out infinite alternate;
-    filter: brightness(0.65);
-}
-
-@keyframes heroZoom {
-    0% { transform: scale(1.1); }
-    100% { transform: scale(1.2); }
-}
-
-/* FEATURED PROJECT - ENHANCED */
-.featured-project {
-    position: absolute;
-    top: 50%;
-    left: 50px;
-    transform: translateY(-50%);
-    color: white;
-    z-index: 10;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    font-size: 16px;
-    font-weight: 500;
-    transition: opacity 0.8s ease;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.featured-project .divider {
-    color: rgba(255, 255, 255, 0.4);
-    font-weight: 300;
-}
-
-.view-project-btn {
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 14px 32px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50px;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    transition: all 0.4s var(--transition-smooth);
-    white-space: nowrap;
-    letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-.view-project-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-color);
-    transition: left 0.4s ease;
-    z-index: -1;
-}
-
-.view-project-btn:hover::before {
-    left: 0;
-}
-
-.view-project-btn:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-/* MOBILE FEATURED PROJECT */
-.mobile-featured-project {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    z-index: 10;
-    text-align: center;
-    width: 90%;
-    transition: opacity 0.8s ease;
-}
-
-.mobile-featured-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    letter-spacing: 2px;
-}
-
-.mobile-featured-title .divider {
-    color: rgba(255, 255, 255, 0.6);
-    margin: 0 15px;
-}
-
-.mobile-view-project-btn {
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 14px 35px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50px;
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-    display: inline-block;
-    margin-top: 10px;
-    letter-spacing: 1px;
-}
-
-.mobile-view-project-btn:hover {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.architecture-style {
-    position: absolute;
-    bottom: 100px;
-    left: 50px;
-    color: white;
-    max-width: 450px;
-    text-align: left;
-    font-size: 17px;
-    line-height: 1.8;
-    font-weight: 300;
-    opacity: 0.95;
-    background: rgba(37, 66, 36, 0.6);
-    backdrop-filter: blur(20px);
-    padding: 30px 35px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: opacity 0.8s ease;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.5px;
-}
-
-/* SCROLL DOWN - ENHANCED */
-.scroll-down {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
+.section-tag {
     font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    text-transform: uppercase;
-}
-
-.scroll-down.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.scroll-down::after {
-    content: '';
-    width: 1px;
-    height: 50px;
-    background: linear-gradient(to bottom, white, transparent);
-    animation: scrollPulse 2s infinite;
-}
-
-@keyframes scrollPulse {
-    0%, 100% { transform: scaleY(1); opacity: 1; }
-    50% { transform: scaleY(0.6); opacity: 0.5; }
-}
-
-/* MAIN CONTENT */
-.main-content {
-    position: relative;
-    z-index: 3;
-    background: var(--bg-color);
-}
-
-/* EXPERIENCE SECTION - UPGRADED */
-.experience-section {
-    width: 100%;
-    background: var(--bg-color);
-    padding: 150px 0;
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    transform: translateY(100vh);
-    opacity: 0;
-    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.8s ease;
-    margin-top: 100vh;
-}
-
-.experience-section.revealed {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.exp-container {
-    width: 85%;
-    margin: auto;
-    max-width: 1400px;
-}
-
-.exp-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    margin-bottom: 80px;
-}
-
-.exp-title {
-    font-size: 72px;
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--secondary-color);
-    text-transform: uppercase;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 4px;
-}
-
-.exp-title span {
-    color: var(--primary-color);
-    display: block;
-}
-
-.exp-intro {
-    font-size: 18px;
-    line-height: 2;
-    color: var(--text-light);
-    font-weight: 400;
-}
-
-.exp-image-box {
-    position: relative;
-    margin: 60px 0;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 40px 80px rgba(37, 66, 36, 0.2);
-}
-
-.exp-image-box img {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-    display: block;
-    transition: transform 1.5s var(--transition-smooth);
-}
-
-.exp-image-box:hover img {
-    transform: scale(1.05);
-}
-
-.exp-image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(37, 66, 36, 0.4), transparent);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.exp-image-box:hover .exp-image-overlay {
-    opacity: 1;
-}
-
-.zoom-btn {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--secondary-color);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.exp-image-box:hover .zoom-btn {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.zoom-btn:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-5px);
-}
-
-.exp-features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin: 60px 0;
-}
-
-.exp-feature {
-    text-align: center;
-    padding: 40px 30px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 16px;
-    transition: all 0.4s ease;
-    border: 1px solid transparent;
-}
-
-.exp-feature:hover {
-    transform: translateY(-10px);
-    background: white;
-    box-shadow: 0 20px 40px rgba(37, 66, 36, 0.1);
-    border-color: rgba(184, 148, 126, 0.3);
-}
-
-.exp-feature-icon {
-    font-size: 36px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.exp-feature h3 {
-    font-size: 20px;
-    color: var(--secondary-color);
-    margin-bottom: 15px;
     font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.exp-feature p {
-    font-size: 15px;
-    color: var(--text-light);
-    line-height: 1.7;
-}
-
-.exp-text {
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 60px;
-}
-
-.exp-text .line {
-    font-size: 17px;
-    line-height: 1.9;
-    color: var(--text-dark);
-    position: relative;
-    padding-left: 30px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-}
-
-.exp-text .line.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.exp-text .line::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10px;
-    width: 8px;
-    height: 8px;
-    background: var(--primary-color);
-    border-radius: 50%;
-}
-
-.exp-btn-wrapper {
-    margin-top: 60px;
-    text-align: center;
-}
-
-.exp-btn {
-    font-size: 16px;
     text-transform: uppercase;
-    padding: 18px 50px;
-    color: var(--secondary-color);
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.4s ease;
-    letter-spacing: 2px;
-    font-weight: 600;
-    border: 2px solid var(--secondary-color);
-    border-radius: 50px;
-    position: relative;
-    overflow: hidden;
-}
-
-.exp-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(--secondary-color);
-    transition: left 0.4s ease;
-    z-index: -1;
-}
-
-.exp-btn:hover::before {
-    left: 0;
-}
-
-.exp-btn:hover {
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(37, 66, 36, 0.2);
-}
-
-/* DESIGN PHILOSOPHY SECTION - UPGRADED */
-.design-section {
-    padding: 150px 0;
-    width: 90%;
-    margin: auto;
-    max-width: 1400px;
-}
-
-.design-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.design-label {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.design-title {
-    font-size: 56px;
-    color: var(--secondary-color);
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 3px;
-}
-
-.design-content {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.design-text-content {
-    order: 2;
-}
-
-.design-text {
+    letter-spacing: 0.15em;
     margin-bottom: 40px;
-}
-
-.design-text p {
-    font-size: 18px;
-    line-height: 2;
-    color: var(--text-light);
-    margin-bottom: 25px;
-    position: relative;
-    padding-left: 30px;
-}
-
-.design-text p::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 12px;
-    width: 10px;
-    height: 2px;
-    background: var(--primary-color);
-}
-
-.design-stats {
-    display: flex;
-    gap: 50px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(184, 148, 126, 0.3);
-}
-
-.design-stat {
-    text-align: center;
-}
-
-.design-stat-number {
-    font-size: 48px;
+    display: block;
     color: var(--primary-color);
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    display: block;
-    line-height: 1;
 }
 
-.design-stat-label {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    margin-top: 10px;
-    display: block;
+.hero-title {
+    font-size: clamp(36px, 6.5vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 1000px;
+    margin-bottom: 80px;
+    color: var(--secondary-color);
+    font-family: 'Cormorant Garamond', serif;
 }
 
-.design-image-wrapper {
-    position: relative;
-    order: 1;
-    border-radius: 20px;
+.hero-image-wrap {
+    width: 100%;
+    height: 70vh;
     overflow: hidden;
+    margin-bottom: -10vh;
+    border-radius: 20px;
     box-shadow: 0 40px 80px rgba(37, 66, 36, 0.15);
 }
 
-.design-image {
+.hero-image {
     width: 100%;
-    height: 600px;
+    height: 100%;
     object-fit: cover;
-    transition: transform 1.5s var(--transition-smooth);
+    transition: transform 1.5s ease;
 }
 
-.design-image-wrapper:hover .design-image {
+.hero-image-wrap:hover .hero-image {
     transform: scale(1.05);
 }
 
-.design-image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 40px;
-    background: linear-gradient(to top, rgba(37, 66, 36, 0.8), transparent);
-}
-
-.design-image-text {
-    color: white;
-    font-size: 24px;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 2px;
-}
-
-/* INFINITE CAROUSEL - UPGRADED */
-.infinite-carousel {
-    overflow: hidden;
-    width: 100%;
-    padding: 80px 0;
-    position: relative;
-    background: linear-gradient(to bottom, transparent, rgba(184, 148, 126, 0.05), transparent);
-}
-
-.carousel-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.carousel-label {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.carousel-title {
-    font-size: 48px;
-    color: var(--secondary-color);
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 3px;
-}
-
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-    padding: 20px 0;
-}
-
-.carousel-track {
-    display: flex;
-    width: max-content;
-    animation: scroll 40s linear infinite;
-}
-
-.carousel-track:hover {
-    animation-play-state: paused;
-}
-
-.carousel-item {
-    position: relative;
-    margin: 0 20px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(37, 66, 36, 0.15);
-    transition: all 0.4s ease;
-}
-
-.carousel-item:hover {
-    transform: translateY(-10px) scale(1.02);
-
-}
-
-.carousel-track img {
-    height: 320px;
-    width: 450px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.carousel-item:hover img {
-    transform: scale(1.1);
-}
-
-.carousel-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px;
-    background: linear-gradient(to top, rgba(37, 66, 36, 0.9), transparent);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-}
-
-.carousel-item:hover .carousel-overlay {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.carousel-overlay h4 {
-    color: white;
-    font-size: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 1px;
-}
-
-.carousel-overlay p {
-    color: var(--primary-color);
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 5px;
-}
-
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* FEATURED WORKS - UPGRADED */
-.fs-section {
-    width: 90%;
-    margin: 150px auto;
-    max-width: 1400px;
-}
-
-.fs-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.fs-label {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.fs-title {
-    font-size: 64px;
-    color: var(--secondary-color);
-    font-weight: 300;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 4px;
-}
-
-.fs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-}
-
-.fs-box {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(37, 66, 36, 0.15);
-    transition: all 0.5s ease;
-}
-
-.fs-box:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 40px 80px rgba(37, 66, 36, 0.25);
-}
-
-.fs-image-wrapper {
-    position: relative;
-    overflow: hidden;
-}
-
-.fs-img {
-    width: 100%;
-    height: 550px;
-    object-fit: cover;
-    transition: transform 1.5s var(--transition-smooth);
-}
-
-.fs-box:hover .fs-img {
-    transform: scale(1.1);
-}
-
-.fs-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(37, 66, 36, 0.7);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fs-box:hover .fs-overlay {
-    opacity: 1;
-}
-
-.fs-view-btn {
-    color: white;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 18px 40px;
-    border: 1px solid white;
-    border-radius: 50px;
-    text-decoration: none;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: all 0.4s ease 0.1s;
-    font-weight: 500;
-}
-
-.fs-box:hover .fs-view-btn {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.fs-view-btn:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.fs-info {
-    padding: 35px;
-    background: white;
-    position: relative;
-}
-
-.fs-info::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 4px;
-    background: var(--primary-color);
-    transition: width 0.5s ease;
-}
-
-.fs-box:hover .fs-info::before {
-    width: 100%;
-}
-
-.fs-name {
-    font-size: 28px;
-    color: var(--secondary-color);
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-.fs-category {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-/* CLIENT TESTIMONIAL - UPGRADED */
-.fs-client-section {
-    width: 90%;
-    margin: 150px auto;
-    max-width: 1400px;
-    padding: 100px;
-    background: linear-gradient(135deg, var(--secondary-color), #1a3a1a);
-    border-radius: 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.fs-client-section::before {
-    content: '"';
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    font-size: 200px;
-    color: rgba(184, 148, 126, 0.1);
-    font-family: 'Cormorant Garamond', serif;
-    line-height: 1;
-}
-
-.fs-client-row {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 80px;
-    align-items: center;
+/* Approach Section */
+.approach {
+    background: var(--bg-color);
+    padding: 160px 40px;
     position: relative;
     z-index: 2;
 }
 
-.fs-client-left {
+.approach-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.approach-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+    color: var(--primary-color);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.approach-content {
+    max-width: 600px;
+}
+
+.approach-text {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+    color: var(--text-dark);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Process Section - Sticky Cards */
+.process-intro {
+    height: 100vh;
+    background: var(--secondary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.process-intro-content {
+    text-align: center;
+}
+
+.process-intro h2 {
+    font-size: clamp(48px, 10vw, 140px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 64px;
+    height: 64px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce 2s infinite;
     color: white;
 }
 
-.fs-client-label {
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-weight: 600;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* Process Cards Container */
+.process-stack {
+    position: relative;
+    z-index: 2;
+}
+
+.process-card {
+    min-height: 100vh;
+    background: var(--light-color);
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
-    gap: 15px;
+    padding: 100px 40px;
+    border-bottom: 1px solid rgba(184, 148, 126, 0.2);
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.05);
 }
 
-.fs-client-label::before {
-    content: '';
-    width: 50px;
-    height: 1px;
-    background: var(--primary-color);
+.process-card:nth-child(even) {
+    background: var(--bg-color);
 }
 
-.fs-client-text {
-    font-size: 22px;
-    line-height: 2;
+.process-card-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.process-number {
+    font-size: clamp(80px, 12vw, 160px);
     font-weight: 300;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    opacity: 1;
+    color: var(--primary-color);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.process-info h3 {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
     margin-bottom: 40px;
+    line-height: 1;
+    color: var(--secondary-color);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.process-img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    margin-bottom: 30px;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(37, 66, 36, 0.1);
+}
+
+.process-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 600px;
+}
+
+/* Testimonial */
+.testimonial {
+    padding: 160px 40px;
+    background: var(--bg-color);
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.testimonial-content {
+    padding-right: 40px;
+}
+
+.testimonial-text {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: 400;
+    color: var(--text-dark);
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    letter-spacing: 0.5px;
 }
 
-.fs-client-name {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 1px;
-}
-
-.fs-client-role {
+.testimonial-author {
     font-size: 14px;
-    color: var(--primary-color);
-    letter-spacing: 2px;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+    color: var(--secondary-color);
 }
 
-.fs-client-right {
+.project-showcase {
     position: relative;
 }
 
-.fs-client-image-wrapper {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-    transform: rotate(3deg);
-    transition: transform 0.5s ease;
-}
-
-.fs-client-section:hover .fs-client-image-wrapper {
-    transform: rotate(0deg);
-}
-
-.fs-client-right-img {
+.project-img {
     width: 100%;
-    height: 500px;
+    height: 600px;
     object-fit: cover;
-    display: block;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(37, 66, 36, 0.15);
 }
 
-/* POPUP - UPGRADED */
-.popup {
-    display: none;
-    position: fixed;
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.project-meta a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-meta a:hover {
+    color: var(--secondary-color);
+}
+
+/* CTA */
+.cta-section {
+    padding: 200px 40px;
+    text-align: center;
+    background: var(--secondary-color);
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.cta-title {
+    font-size: clamp(48px, 10vw, 120px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.cta-btn {
+    position: relative;
+    padding: 18px 40px;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.cta-btn::before {
+    content: '';
+    position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 99999;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(10px);
-}
-
-.popup img {
-    max-width: 90%;
-    max-height: 85%;
-    border-radius: 10px;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-.closePopup {
-    position: absolute;
-    top: 40px;
-    right: 50px;
-    font-size: 50px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.1);
-}
-
-.closePopup:hover {
     background: var(--primary-color);
-    transform: rotate(90deg);
+    transition: left 0.4s ease;
+    z-index: -1;
 }
 
-/* SMOOTH REVEAL ANIMATION */
-.smooth-reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s var(--transition-smooth);
+.cta-btn:hover::before {
+    left: 0;
 }
 
-.smooth-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
+.cta-btn:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* FOOTER - FIXED AND ENHANCED */
+/* FOOTER - HORIZONTAL LAYOUT */
 .oh-footer {
     background: var(--secondary-color);
     padding: 80px 0 40px;
@@ -1259,6 +583,7 @@ body {
     color: #fff;
     position: relative;
     overflow: hidden;
+    z-index: 2;
 }
 
 .oh-footer::before {
@@ -1435,50 +760,28 @@ body {
     transform: translateY(-3px);
 }
 
-/* PRELOADER */
-#gif-preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-}
-
-#gif-preloader img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 1200px) {
-    .exp-title {
-        font-size: 56px;
-    }
-    
-    .fs-title {
-        font-size: 48px;
-    }
-    
-    .exp-header {
+    .approach-grid,
+    .process-card-inner,
+    .testimonial-grid,
+    .footer-container {
         grid-template-columns: 1fr;
-        gap: 40px;
     }
-    
-    .design-content {
-        grid-template-columns: 1fr;
-        gap: 60px;
+
+    .process-card-inner {
+        gap: 30px;
     }
-    
-    .design-image {
-        height: 500px;
+
+    .process-number {
+        font-size: 60px;
     }
-    
+
+    .approach-label {
+        position: relative;
+        top: auto;
+    }
+
     .footer-container {
         grid-template-columns: 1fr 1fr;
         gap: 40px;
@@ -1496,60 +799,32 @@ body {
 }
 
 @media (max-width: 992px) {
-    .navbar {
-        padding: 15px 30px;
-    }
-    
     .slot-menu {
         display: none;
     }
-    
+
     .contact-btn {
         display: none;
     }
-    
+
     .mobile-menu-btn {
         display: block;
     }
-    
-    .featured-project {
-        display: none;
+
+    .navbar {
+        padding: 15px 30px;
     }
-    
-    .mobile-featured-project {
-        display: block;
+
+    .hero {
+        padding: 100px 30px 0;
     }
-    
-    .architecture-style {
-        left: 30px;
-        right: 30px;
-        max-width: none;
-        bottom: 100px;
-    }
-    
-    .exp-features {
-        grid-template-columns: 1fr;
-    }
-    
-    .exp-text {
-        grid-template-columns: 1fr;
-    }
-    
-    .fs-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .fs-client-section {
-        padding: 60px 40px;
-    }
-    
-    .fs-client-row {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-    
-    .fs-client-image-wrapper {
-        transform: none;
+
+    .approach,
+    .testimonial,
+    .process-card,
+    .cta-section {
+        padding-left: 30px;
+        padding-right: 30px;
     }
     
     .footer-container {
@@ -1592,512 +867,294 @@ body {
     .navbar {
         padding: 12px 20px;
     }
-    
+
     .navbar.scrolled {
         padding: 10px 20px;
     }
-    
+
     .logo img {
         width: 100px;
         height: 35px;
     }
-    
-    .mobile-featured-title {
-        font-size: 18px;
-    }
-    
-    .exp-title {
-        font-size: 42px;
-    }
-    
-    .exp-container {
-        width: 90%;
-    }
-    
-    .exp-image-box img {
-        height: 400px;
-    }
-    
-    .design-title {
-        font-size: 42px;
-    }
-    
-    .design-image {
-        height: 400px;
-    }
-    
-    .carousel-title {
-        font-size: 36px;
-    }
-    
-    .carousel-track img {
-        height: 250px;
-        width: 350px;
-    }
-    
-    .fs-title {
-        font-size: 42px;
-    }
-    
-    .fs-img {
-        height: 400px;
-    }
-    
-    .fs-client-section::before {
-        font-size: 120px;
-        top: 20px;
-        left: 20px;
-    }
-    
-    .fs-client-text {
-        font-size: 18px;
-    }
-    
-    .oh-footer {
-        padding: 60px 0 30px;
-    }
-}
 
-@media (max-width: 576px) {
-    .navbar {
-        padding: 10px 15px;
+    .hero {
+        padding: 90px 20px 0;
     }
-    
-    .mobile-featured-title {
-        font-size: 16px;
-        line-height: 1.3;
+
+    .approach,
+    .testimonial,
+    .process-card,
+    .cta-section {
+        padding-left: 20px;
+        padding-right: 20px;
     }
-    
-    .mobile-view-project-btn {
-        padding: 12px 28px;
-        font-size: 13px;
+
+    .process-img {
+        height: 40vh;
     }
-    
-    .exp-title {
-        font-size: 32px;
+
+    .project-img {
+        height: 400px;
     }
-    
-    .experience-section {
-        padding: 100px 0;
+
+    .footer-container {
+        text-align: center;
+        gap: 50px;
     }
-    
-    .exp-image-box img {
-        height: 300px;
+
+    .footer-left {
+        align-items: center;
     }
-    
-    .design-title {
-        font-size: 32px;
+
+    .footer-middle {
+        align-items: center;
     }
-    
-    .design-image {
-        height: 350px;
+
+    .footer-right {
+        align-items: center;
     }
-    
-    .design-stats {
+
+    .footer-nav {
+        align-items: center;
+    }
+
+    .footer-nav li::before {
+        display: none;
+    }
+
+    .footer-nav li:hover {
+        padding-left: 0;
+    }
+
+    .footer-bottom {
         flex-direction: column;
-        gap: 30px;
-    }
-    
-    .carousel-title {
-        font-size: 28px;
-    }
-    
-    .carousel-track img {
-        height: 200px;
-        width: 280px;
-    }
-    
-    .fs-title {
-        font-size: 32px;
-    }
-    
-    .fs-img {
-        height: 350px;
-    }
-    
-    .fs-info {
-        padding: 25px;
-    }
-    
-    .fs-name {
-        font-size: 22px;
-    }
-    
-    .fs-client-section {
-        padding: 50px 25px;
-    }
-    
-    .fs-client-text {
-        font-size: 16px;
-    }
-    
-    .mobile-menu-btn {
-        font-size: 22px;
-    }
-    
-    .mobile-menu-items .nav-text span {
-        font-size: 20px;
-    }
-    
-    .mobile-contact-btn {
-        padding: 15px 30px;
-        font-size: 16px;
-    }
-    
-    .footer-logo-img {
-        width: 150px;
+        text-align: center;
     }
 }
 
-@media (max-width: 400px) {
-    .exp-title {
-        font-size: 28px;
-    }
-    
-    .mobile-featured-title {
-        font-size: 14px;
-    }
-    
-    .exp-image-box img {
-        height: 250px;
-    }
-    
-    .architecture-style {
-        font-size: 15px;
-        padding: 20px;
-    }
-    
-    .carousel-track img {
-        height: 180px;
-        width: 250px;
-    }
-    
-    .fs-img {
-        height: 300px;
-    }
-    
-    .footer-contact-item {
-        font-size: 13px;
-    }
+/* Smooth reveal animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Preloader */
+#gif-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease;
+}
+
+#gif-preloader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#gif-preloader img {
+    width: 200px;
+    height: auto;
 }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR - EXACT SAME AS YOUR INDEX -->
-<nav class="navbar" id="navbar">
-    <div class="logo">
-        <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
-    </div>
-    
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
-    </button>
-    
-    <div class="slot-menu">
-        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
-    </div>
-    <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
-</nav>
 
-<!-- MOBILE MENU OVERLAY - EXACT SAME -->
-<div class="mobile-menu-overlay" id="mobileMenuOverlay">
-    <button class="mobile-menu-close" id="mobileMenuClose">
-        <i class="fas fa-times"></i>
-    </button>
-    
-    <div class="mobile-menu-items">
-        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
-    </div>
-    
-    <a href="#" class="mobile-contact-btn">Get in Touch</a>
-</div>
-
-<!-- HERO SECTION - ENHANCED -->
-<section class="hero" id="hero">
-    <div class="hero-image-container">
-        <img src="img/WhatsApp Image 2025-12-12 at 22.39.40_b63c47dd.jpg" alt="Architecture project">
-    </div>
-
-    <!-- DESKTOP VERSION -->
-    <div class="featured-project" id="featuredProject">
-        <span>Featured Project</span>
-        <span class="divider">|</span>
-        <span>Myrtle Pool House</span>
-        <span class="divider">|</span>
-        <span>2024</span>
-        <span class="divider">|</span>
-        <a href="#" class="view-project-btn">View Project</a>
-    </div>
-
-    <!-- MOBILE VERSION -->
-    <div class="mobile-featured-project" id="mobileFeaturedProject">
-        <div class="mobile-featured-title">
-            Featured Project <span class="divider">||</span> Myrtle Pool House
+    <!-- Navbar - EXACT SAME AS YOUR INDEX -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
         </div>
-        <a href="#" class="mobile-view-project-btn">View Project</a>
+        
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="slot-menu">
+            <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+        </div>
+        <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="mobile-menu-items">
+            <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
+            <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+        </div>
+        
+        <a href="#" class="mobile-contact-btn">Get in Touch</a>
     </div>
 
-    <div class="architecture-style" id="architectureStyle">
-        The RPA style is defined by strong, solid forms with subtle elegance, natural balance and enduring appeal
-    </div>
+    <!-- Hero -->
+    <section class="hero">
+        <span class="section-tag reveal">(Process)</span>
+        <h1 class="hero-title reveal">Great architecture isn't just about talent and experience, but collaborations and relationships.</h1>
+        <div class="hero-image-wrap reveal">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&auto=format&fit=crop&q=80" alt="Architecture" class="hero-image">
+        </div>
+    </section>
 
-    <div class="scroll-down" id="scrollDown">(SCROLL DOWN)</div>
-</section>
+    <!-- Approach -->
+    <section class="approach">
+        <div class="approach-grid">
+            <div class="approach-label">(Our Approach)</div>
+            <div class="approach-content reveal">
+                <p class="approach-text">You can expect our team to expertly guide your project and work closely with you at every stage from delivering the initial design concepts to achieving a final build that goes beyond your aspirations</p>
+                <button class="contact-btn" style="background-color:#254224; color:#ffffff; border:2px solid #254224;">
+    <div><span>Send Us an Enquiry</span></div>
+</button>
 
-<!-- MAIN CONTENT -->
-<div class="main-content">
-
-    <!-- EXPERIENCE SECTION - UPGRADED -->
-    <section class="experience-section" id="experienceSection">
-        <div class="exp-container">
-            <div class="exp-header smooth-reveal">
-                <h2 class="exp-title">Experience <span>Focused</span> Design</h2>
-                <p class="exp-intro">We create spaces that inspire, comfort, and elevate the human experience. Every project is a journey of discovery, collaboration, and meticulous craftsmanship.</p>
-            </div>
-
-            <div class="exp-image-box smooth-reveal">
-                <img id="mainImage" src="img/IMG-20251126-WA0209.jpg" alt="Experience Focused Design">
-                <div class="exp-image-overlay"></div>
-                <div class="zoom-btn" onclick="openFull()">
-                    <i class="fas fa-expand-alt"></i>
-                </div>
-            </div>
-
-            <div class="exp-features">
-                <div class="exp-feature smooth-reveal">
-                    <i class="fas fa-users exp-feature-icon"></i>
-                    <h3>Client First</h3>
-                    <p>We listen deeply to understand your vision, lifestyle, and aspirations before putting pen to paper.</p>
-                </div>
-                <div class="exp-feature smooth-reveal">
-                    <i class="fas fa-leaf exp-feature-icon"></i>
-                    <h3>Sustainable</h3>
-                    <p>Eco-conscious design that minimizes environmental impact while maximizing comfort and beauty.</p>
-                </div>
-                <div class="exp-feature smooth-reveal">
-                    <i class="fas fa-gem exp-feature-icon"></i>
-                    <h3>Timeless</h3>
-                    <p>Designs that transcend trends, creating spaces that remain relevant and inspiring for generations.</p>
-                </div>
-            </div>
-
-            <div class="exp-text">
-                <p class="line">We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
-                <p class="line">We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
-                <p class="line">Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces.</p>
-                <p class="line">We work closely with clients right from the start, with clear communication and expert guidance along the way.</p>
-                <p class="line">We collaborate with builders, consultants, and partners to ensure every project runs smoothly.</p>
-                <p class="line">Each project evolves with its own shape and character, guided by aspirations and creative vision.</p>
-            </div>
-
-            <div class="exp-btn-wrapper smooth-reveal">
-                <a href="#" class="exp-btn">Learn More About Our Studio</a>
             </div>
         </div>
     </section>
 
-    <!-- DESIGN PHILOSOPHY SECTION - UPGRADED -->
-    <section class="design-section">
-        <div class="design-header smooth-reveal">
-            <p class="design-label">Our Approach</p>
-            <h2 class="design-title">Design Philosophy</h2>
-        </div>
-        
-        <div class="design-content">
-            <div class="design-image-wrapper smooth-reveal">
-                <img src="img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg" class="design-image" onclick="openImage(this.src)">
-                <div class="design-image-overlay">
-                    <span class="design-image-text">Where Vision Meets Reality</span>
-                </div>
+    <!-- Process Stack -->
+    <div class="process-container">
+        <!-- Intro Card -->
+        <div class="process-intro">
+            <div class="process-intro-content">
+                <h2>Overview of<br>Our 6-Stage<br>Process</h2>
             </div>
+            <div class="scroll-hint">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Process Cards -->
+        <div class="process-stack">
             
-            <div class="design-text-content smooth-reveal">
-                <div class="design-text">
-                    <p>We design spaces for people. No matter the scale of the projects, our down-to-earth approach stays the same.</p>
-                    <p>We listen first, design second. We take the time to understand how you live, work, and move through your space.</p>
-                    <p>Then, we bring your vision to life. Drawing from real experience, we create contemporary, aspirational spaces that feel effortless and truly yours.</p>
+            <!-- Card 1 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(01)</div>
+                    <div class="process-info">
+                        <h3>Sketch Design</h3>
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&auto=format&fit=crop&q=80" alt="Sketch" class="process-img">
+                        <p class="process-desc">We kick off with a site visit and creative consultation to define your vision, style, and functional needs. We'll also uncover new opportunities and potential limitations. Based on this, we craft a series of hand-drawn design sketches to provide an initial visual concept that reflects your brief. Through collaboration and refinement, we shape the concept to align with your goals, timeline, and budget.</p>
+                    </div>
                 </div>
-                
-                <div class="design-stats">
-                    <div class="design-stat">
-                        <span class="design-stat-number">15+</span>
-                        <span class="design-stat-label">Years Experience</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(02)</div>
+                    <div class="process-info">
+                        <h3>Design Development</h3>
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1000&auto=format&fit=crop&q=80" alt="Design Development" class="process-img">
+                        <p class="process-desc">Here we take the initial sketches and fill in all the glorious details, including building material selections, inside-to-outside interfaces, floor plans, layouts, indicative joinery design and spatial flow. Our team will craft detailed digital 2D drawings and a 3D model that bring the look, feel and layout of your home to life.</p>
                     </div>
-                    <div class="design-stat">
-                        <span class="design-stat-number">200+</span>
-                        <span class="design-stat-label">Projects Done</span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(03)</div>
+                    <div class="process-info">
+                        <h3>Development Application</h3>
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&auto=format&fit=crop&q=80" alt="Development" class="process-img">
+                        <p class="process-desc">Not all projects will require a development application with Council. If yours does, we will coordinate the entire process, including sourcing input from Town Planners, gathering documentation and information from consultants, preparing and submitting the application.</p>
                     </div>
-                    <div class="design-stat">
-                        <span class="design-stat-number">24</span>
-                        <span class="design-stat-label">Awards Won</span>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(04)</div>
+                    <div class="process-info">
+                        <h3>Interior Design</h3>
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&auto=format&fit=crop&q=80" alt="Interior" class="process-img">
+                        <p class="process-desc">Here we craft an interior design concept that creates flow, contrast and balance with the architectural design and overall vision of your home. Our interior design team will develop a 3D model of your home and include all the details from joinery, cabinetry and storage to hard finishes, fixtures and fittings.</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(05)</div>
+                    <div class="process-info">
+                        <h3>Building Approval Plans + Documentation</h3>
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1000&auto=format&fit=crop&q=80" alt="Plans" class="process-img" style="filter: grayscale(100%) brightness(1.1);">
+                        <p class="process-desc">All architectural projects require Building Approval from a private certifier before construction can begin. Our team will advise, guide, coordinate and manage all your building approval plans and applications, including coordinating consultants, creating documentation packages.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="process-card">
+                <div class="process-card-inner">
+                    <div class="process-number">(06)</div>
+                    <div class="process-info">
+                        <h3>Construction Plans + Documentation</h3>
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000&auto=format&fit=crop&q=80" alt="Construction" class="process-img">
+                        <p class="process-desc">With all the design details finalised and building approvals squared away, we turn our attention to creating construction plans, drawings and documents that will guide your builders and tradespeople in bringing the intended designs to life. We'll collaborate and coordinate with the entire team to ensure every element is fully resolved and communicated in detail.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-grid">
+            <div class="testimonial-content reveal">
+                <div class="section-tag" style="margin-bottom: 30px; color: var(--primary-color);">(Hear from our Client)</div>
+                <p class="testimonial-text">"From the initial meeting I was impressed by the genuine enthusiasm and willingness to engage with the ideas in my brief. Johnny Hyde and the OH Architecture team engendered confidence. They cared about the project; throughout the design process they listened and interacted in a positive and professional, but relaxed, way.</p>
+                <p class="testimonial-text">As they explored design ideas, they welcomed my contributions and encouraged feedback. Consequently, I had no doubt that OH Architecture would deliver a design to meet my dreams and also my budget. And in fact, the award-winning outcome eminently attests to their skill and achievement on both counts!"</p>
+                <div class="testimonial-author">
+                    Carmen<br>
+                    Homeowner of Sidney
+                </div>
+            </div>
+            <div class="project-showcase reveal">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format&fit=crop&q=80" alt="Sidney House" class="project-img">
+                <div class="project-meta">
+                    <span>(2023) Sidney House</span>
+                    <a href="#">View Project →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- INFINITE CAROUSEL - UPGRADED -->
-    <section class="infinite-carousel">
-        <div class="carousel-header smooth-reveal">
-            <p class="carousel-label">Portfolio</p>
-            <h2 class="carousel-title">Selected Works</h2>
-        </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <div class="carousel-item">
-                    <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Pool House">
-                    <div class="carousel-overlay">
-                        <h4>Myrtle Pool House</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="OG Haig">
-                    <div class="carousel-overlay">
-                        <h4>OG Haig Residence</h4>
-                        <p>Commercial</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Interior">
-                    <div class="carousel-overlay">
-                        <h4>Modern Interior</h4>
-                        <p>Interior Design</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Pool House">
-                    <div class="carousel-overlay">
-                        <h4>Luxury Villa</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Architecture">
-                    <div class="carousel-overlay">
-                        <h4>Urban Retreat</h4>
-                        <p>Architecture</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Project">
-                    <div class="carousel-overlay">
-                        <h4>Coastal Haven</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <!-- Duplicate for infinite scroll -->
-                <div class="carousel-item">
-                    <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Pool House">
-                    <div class="carousel-overlay">
-                        <h4>Myrtle Pool House</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="OG Haig">
-                    <div class="carousel-overlay">
-                        <h4>OG Haig Residence</h4>
-                        <p>Commercial</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Interior">
-                    <div class="carousel-overlay">
-                        <h4>Modern Interior</h4>
-                        <p>Interior Design</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Pool House">
-                    <div class="carousel-overlay">
-                        <h4>Luxury Villa</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Architecture">
-                    <div class="carousel-overlay">
-                        <h4>Urban Retreat</h4>
-                        <p>Architecture</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Project">
-                    <div class="carousel-overlay">
-                        <h4>Coastal Haven</h4>
-                        <p>Residential</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title reveal">Focused on Quality<br>Driven by Creativity</h2>
+        <a href="#" class="cta-btn reveal">
+            <span>Tell Us About Your Project</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
     </section>
 
-    <!-- FEATURED WORKS - UPGRADED -->
-    <section class="fs-section">
-        <div class="fs-header smooth-reveal">
-            <p class="fs-label">Portfolio</p>
-            <h2 class="fs-title">Featured Works</h2>
-        </div>
-
-        <div class="fs-grid">
-            <div class="fs-box smooth-reveal">
-                <div class="fs-image-wrapper">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
-                    <div class="fs-overlay">
-                        <a href="#" class="fs-view-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="fs-info">
-                    <h3 class="fs-name">OG Haig Residence</h3>
-                    <p class="fs-category">Residential Architecture</p>
-                </div>
-            </div>
-
-            <div class="fs-box smooth-reveal">
-                <div class="fs-image-wrapper">
-                    <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" class="fs-img" onclick="fsOpenImage(this.src)">
-                    <div class="fs-overlay">
-                        <a href="#" class="fs-view-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="fs-info">
-                    <h3 class="fs-name">Myrtle Pool House</h3>
-                    <p class="fs-category">Leisure Architecture</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CLIENT TESTIMONIAL - UPGRADED -->
-    <section class="fs-client-section">
-        <div class="fs-client-row">
-            <div class="fs-client-left smooth-reveal">
-                <h3 class="fs-client-label">Testimonial</h3>
-                <p class="fs-client-text">
-                    "From the initial meeting I was impressed by the genuine enthusiasm and willingness to engage with the ideas in my brief. Johnny Hyde and the OH Architecture team engendered confidence. They cared about the project; throughout the design process they listened and interacted in a positive and professional, but relaxed, way. As they explored design ideas, they welcomed my contributions and encouraged feedback. Consequently, I had no doubt that OH Architecture would deliver a design to meet my dreams and also my budget."
-                </p>
-                <p class="fs-client-name">Carmen</p>
-                <p class="fs-client-role">Homeowner of Sidney</p>
-            </div>
-
-            <div class="fs-client-right smooth-reveal">
-                <div class="fs-client-image-wrapper">
-                    <img src="img/67c5504fd3e1172ffe17548f_OH_SIDNEYANDYMACPHERSON-19_EDIT.jpg" alt="Client Interior" class="fs-client-right-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER - FIXED AND ENHANCED -->
+    <!-- Footer - DARK GREEN EXACT FROM INDEX -->
     <footer class="oh-footer">
         <div class="footer-container">
             <div class="footer-left">
@@ -2157,192 +1214,100 @@ body {
             </div>
         </div>
     </footer>
-</div>
 
-<div id="gif-preloader">
-    <img src="img/WhatsAppVideo2025-12-12at20.21.09_57fdc230-ezgif.com-video-to-gif-converter.gif" alt="Loading..." id="loadingGif">
-</div>
-
-<!-- POPUPS -->
-<div id="fullImagePopup" class="popup">
-    <span class="closePopup" onclick="closeFull()">×</span>
-    <img id="popupImage">
-</div>
-
-<div id="imgPopup" class="popup" onclick="closeImage()">
-    <span class="closePopup" onclick="closeImage()">×</span>
-    <img id="popupImg" class="popup-img">
-</div>
-
-<div id="fs-popup" class="popup" onclick="fsCloseImage()">
-    <span class="closePopup" onclick="fsCloseImage()">×</span>
-    <img id="fs-popup-img">
-</div>
-
-<script>
-// POPUP FUNCTIONS
-function openFull() {
-    document.getElementById("popupImage").src = document.getElementById("mainImage").src;
-    document.getElementById("fullImagePopup").style.display = "flex";
-}
-
-function closeFull() {
-    document.getElementById("fullImagePopup").style.display = "none";
-}
-
-function openImage(src) {
-    document.getElementById("imgPopup").style.display = "flex";
-    document.getElementById("popupImg").src = src;
-}
-
-function closeImage() {
-    document.getElementById("imgPopup").style.display = "none";
-}
-
-function fsOpenImage(src) {
-    document.getElementById("fs-popup").style.display = "flex";
-    document.getElementById("fs-popup-img").src = src;
-}
-
-function fsCloseImage() {
-    document.getElementById("fs-popup").style.display = "none";
-}
-
-// MOBILE MENU FUNCTIONS
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-mobileMenuBtn.addEventListener('click', function() {
-    mobileMenuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-});
-
-mobileMenuClose.addEventListener('click', function() {
-    mobileMenuOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
-
-mobileMenuOverlay.addEventListener('click', function(e) {
-    if (e.target === mobileMenuOverlay) {
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-// SCROLL ANIMATIONS
-let experienceSection = document.getElementById('experienceSection');
-let heroSection = document.getElementById('hero');
-let featuredProject = document.getElementById('featuredProject');
-let architectureStyle = document.getElementById('architectureStyle');
-let isExperienceRevealed = false;
-
-window.addEventListener('scroll', function() {
-    const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
-    
-    // Navbar effect
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    // Hide scroll down when scrolled
-    const scrollDown = document.getElementById('scrollDown');
-    if (window.scrollY > 50) {
-        scrollDown.classList.add('hidden');
-    } else {
-        scrollDown.classList.remove('hidden');
-    }
-    
-    // EXPERIENCE SECTION SLIDE UP ANIMATION
-    const slideStartPoint = windowHeight * 0.2;
-    
-    if (scrollPosition >= slideStartPoint && !isExperienceRevealed) {
-        experienceSection.classList.add('revealed');
-        isExperienceRevealed = true;
-        
-        // Fade out hero elements
-        featuredProject.style.opacity = '0';
-        architectureStyle.style.opacity = '0';
-    }
-    
-    // Hide hero when experience section is fully visible
-    if (scrollPosition >= windowHeight * 0.5) {
-        heroSection.classList.add('hidden');
-    } else {
-        heroSection.classList.remove('hidden');
-        featuredProject.style.opacity = '1';
-        architectureStyle.style.opacity = '0.9';
-    }
-    
-    // Show experience section content when scrolling back up
-    if (scrollPosition < slideStartPoint && isExperienceRevealed) {
-        experienceSection.classList.remove('revealed');
-        isExperienceRevealed = false;
-    }
-    
-    // Smooth reveal animation for experience section content
-    const revealElements = document.querySelectorAll('.smooth-reveal');
-    revealElements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2;
-        
-        if (elementPosition < screenPosition) {
-            element.classList.add('revealed');
-        }
-    });
-    
-    // Line by line animation
-    const lines = document.querySelectorAll('.line');
-    lines.forEach((line, index) => {
-        const linePosition = line.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if (linePosition < screenPosition) {
+    <script>
+        // Preloader
+        window.addEventListener("load", function () {
+            const preloader = document.getElementById("gif-preloader");
             setTimeout(() => {
-                line.classList.add('visible');
-            }, index * 150);
-        }
-    });
-});
+                preloader.classList.add("hidden");
+            }, 1000);
+        });
 
-// SCROLL DOWN CLICK - SMOOTH SCROLL
-document.getElementById('scrollDown').addEventListener('click', function() {
-    window.scrollTo({
-        top: window.innerHeight * 0.3,
-        behavior: 'smooth'
-    });
-});
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
 
-// Initialize on load
-window.addEventListener('load', function() {
-    // Trigger initial scroll event
-    window.dispatchEvent(new Event('scroll'));
-    
-    // Add initial margin to main content
-    document.querySelector('.main-content').style.marginTop = '100vh';
-    
-    // Close mobile menu on window resize to desktop
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 992) {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', function() {
             mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
-        }
-    });
-});
+        });
 
-// Preloader
-window.addEventListener("load", function () {
-    const preloader = document.getElementById("gif-preloader");
-    if (!preloader) return;
-    setTimeout(() => {
-        preloader.style.display = "none";
-    }, 5900);
-});
-</script>
+        mobileMenuOverlay.addEventListener('click', function(e) {
+            if (e.target === mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
 
+        // Reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Process cards scaling effect on scroll
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.process-card');
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                
+                const visibleRatio = Math.max(0, Math.min(1, (viewportHeight - rect.top) / viewportHeight));
+                
+                if (rect.top < viewportHeight && rect.bottom > 0) {
+                    const scale = 0.98 + (visibleRatio * 0.02);
+                    const shadowOpacity = visibleRatio * 0.08;
+                    card.style.transform = `scale(${scale})`;
+                    card.style.boxShadow = `0 -30px 60px rgba(37,66,36,${shadowOpacity})`;
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Close mobile menu on window resize to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
 </body>
 </html>
