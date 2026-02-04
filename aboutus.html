@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | OH Architecture</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #B8947E;
+    --primary-hover: #A5836D;
+    --secondary-color: #254224;
+    --secondary-light: #3d5c3d;
+    --dark-color: #1A1A1A;
+    --light-color: #F8F5F2;
+    --text-dark: #2c2c2c;
+    --text-light: #666666;
+    --bg-color: #F2F0E4;
+    --white: #ffffff;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* EXACT SAME NAVBAR AS INDEX */
+.navbar {
+    width: 100%;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(242, 240, 228, 0.98);
+    padding: 15px 50px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled .logo {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.navbar.scrolled .contact-btn {
+    background: var(--primary-color);
+    border: none;
+}
+
+.logo img {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.slot-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+    height: 26px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.6, 0.01, 0.3, 1);
+}
+
+.nav-text span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 26px;
+    line-height: 26px;
+    transition: color 0.4s ease;
+}
+
+.navbar.scrolled .nav-text span {
+    color: var(--secondary-color);
+}
+
+.nav-item:hover .nav-text {
+    transform: translateY(-26px);
+}
+
+.contact-btn {
+    position: relative;
+    padding: 16px 36px;
+    background: var(--primary-color);
+    color: white !important;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 46px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.contact-btn .nav-text {
+    display: flex;
+    flex-direction: column;
+    height: 56px;
+}
+
+.contact-btn .nav-text span {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 600;
+    height: 56px;
+    line-height: 56px;
+}
+
+.contact-btn:hover .nav-text {
+    transform: translateY(-56px);
+}
+
+.contact-btn:hover {
+    box-shadow: 0 0 20px rgba(184, 148, 126, 0.4);
+    transform: translateY(-2px);
+    background: #a5836d;
+}
+
+/* MOBILE MENU - EXACT SAME AS INDEX */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10002;
+    padding: 10px;
+}
+
+.navbar.scrolled .mobile-menu-btn {
+    color: var(--secondary-color);
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(242, 240, 228, 0.98);
+    z-index: 10001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-menu-overlay.active {
+    display: flex;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mobile-menu-items .nav-item {
+    height: 40px;
+}
+
+.mobile-menu-items .nav-text span {
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--secondary-color);
+}
+
+.mobile-contact-btn {
+    padding: 18px 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.mobile-contact-btn:hover {
+    background: #a5836d;
+    transform: translateY(-2px);
+}
+
+/* HERO SECTION */
+.about-hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+    0% { transform: scale(1.1); }
+    100% { transform: scale(1.2); }
+}
+
+.about-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(37, 66, 36, 0.3), rgba(37, 66, 36, 0.6));
+    z-index: 1;
+}
+
+.about-hero-content {
+    position: relative;
+    text-align: center;
+    color: var(--white);
+    z-index: 10;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.about-label {
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+    display: block;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.about-hero-title {
+    font-size: 90px;
+    font-weight: 300;
+    letter-spacing: 12px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1.2s ease forwards 0.8s;
+    line-height: 1;
+}
+
+.about-hero-subtitle {
+    font-size: 22px;
+    letter-spacing: 4px;
+    opacity: 0;
+    font-weight: 300;
+    animation: fadeInUp 1s ease forwards 1.2s;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 2s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--white), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.5; }
+}
+
+/* STORY SECTION */
+.story-section {
+    width: 100%;
+    padding: 150px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-container {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+}
+
+.story-content {
+    position: relative;
+    z-index: 2;
+}
+
+.story-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.story-label::before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    background: var(--primary-color);
+}
+
+.story-title {
+    font-size: 56px;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    line-height: 1.1;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 2px;
+}
+
+.story-text {
+    font-size: 18px;
+    line-height: 2;
+    color: var(--text-light);
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.story-stats {
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(184, 148, 126, 0.3);
+}
+
+.stat-item {
+    text-align: left;
+}
+
+.stat-number {
+    font-size: 48px;
+    color: var(--primary-color);
+    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    display: block;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.story-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(37, 66, 36, 0.2);
+}
+
+.story-image {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    transition: transform 1.5s var(--transition-smooth);
+}
+
+.story-image-wrapper:hover .story-image {
+    transform: scale(1.05);
+}
+
+.story-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(37, 66, 36, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.story-image-wrapper:hover .story-image-overlay {
+    opacity: 1;
+}
+
+.story-badge {
+    position: absolute;
+    bottom: 30px;
+    right: -30px;
+    background: var(--white);
+    padding: 25px 35px;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transform: translateX(0);
+    transition: transform 0.5s var(--transition-smooth);
+}
+
+.story-image-wrapper:hover .story-badge {
+    transform: translateX(-10px);
+}
+
+.badge-year {
+    font-size: 42px;
+    color: var(--primary-color);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+}
+
+.badge-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 5px;
+    display: block;
+}
+
+/* VALUES SECTION */
+.values-section {
+    background: var(--secondary-color);
+    padding: 150px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.values-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(184, 148, 126, 0.03) 0%, transparent 70%);
+    animation: rotate 60s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.values-container {
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.values-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.values-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.values-title {
+    font-size: 64px;
+    color: var(--white);
+    font-weight: 300;
+    letter-spacing: 6px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.value-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 50px 40px;
+    border-radius: 8px;
+    border: 1px solid rgba(184, 148, 126, 0.2);
+    transition: all 0.5s var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(184, 148, 126, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.value-card:hover::before {
+    opacity: 1;
+}
+
+.value-card:hover {
+    transform: translateY(-15px);
+    border-color: var(--primary-color);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.value-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(184, 148, 126, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.value-card:hover .value-icon-wrapper {
+    background: var(--primary-color);
+    transform: rotateY(360deg);
+}
+
+.value-icon {
+    font-size: 28px;
+    color: var(--primary-color);
+    transition: color 0.5s ease;
+}
+
+.value-card:hover .value-icon {
+    color: var(--white);
+}
+
+.value-number {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 72px;
+    color: rgba(184, 148, 126, 0.1);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.value-title {
+    font-size: 28px;
+    color: var(--white);
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+.value-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* TEAM SECTION */
+.team-section {
+    padding: 150px 0;
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.team-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.team-title {
+    font-size: 64px;
+    color: var(--secondary-color);
+    font-weight: 300;
+    letter-spacing: 6px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.team-member {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s var(--transition-smooth);
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(37, 66, 36, 0.2);
+}
+
+.team-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 450px;
+}
+
+.team-member-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--transition-smooth);
+}
+
+.team-member:hover .team-member-image {
+    transform: scale(1.1);
+}
+
+.team-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(37, 66, 36, 0.9), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.team-member:hover .team-overlay {
+    opacity: 1;
+}
+
+.team-social {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s ease 0.1s;
+}
+
+.team-member:hover .team-social {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.team-social a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.team-social a:hover {
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.team-info {
+    padding: 30px;
+    background: var(--white);
+    position: relative;
+}
+
+.team-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transition: width 0.5s var(--transition-smooth);
+}
+
+.team-member:hover .team-info::before {
+    width: 100%;
+}
+
+.team-member-name {
+    font-size: 26px;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.team-member-role {
+    font-size: 13px;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* TIMELINE SECTION */
+.timeline-section {
+    padding: 150px 0;
+    background: var(--light-color);
+    position: relative;
+}
+
+.timeline-container {
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.timeline-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.timeline-title {
+    font-size: 64px;
+    color: var(--secondary-color);
+    font-weight: 300;
+    letter-spacing: 6px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 50%;
+    position: relative;
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 50%;
+    transform: translateX(50px);
+}
+
+.timeline-item:nth-child(even).visible {
+    transform: translateX(0);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--bg-color);
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.timeline-dot:hover {
+    transform: translateX(-50%) scale(1.5);
+    background: var(--primary-color);
+}
+
+.timeline-content {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 8px;
+    width: 80%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-item:nth-child(even) .timeline-content:hover {
+    transform: translateX(-10px);
+}
+
+.timeline-year {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.timeline-content h3 {
+    color: var(--secondary-color);
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* AWARDS SECTION */
+.awards-section {
+    padding: 150px 0;
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.awards-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.awards-label {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.awards-title {
+    font-size: 64px;
+    color: var(--secondary-color);
+    font-weight: 300;
+    letter-spacing: 6px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.award-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    transition: all 0.5s var(--transition-smooth);
+    border: 1px solid rgba(184, 148, 126, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.award-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: transform 0.4s ease;
+}
+
+.award-card:hover::before {
+    transform: scaleY(1);
+}
+
+.award-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(37, 66, 36, 0.15);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.award-icon-wrapper {
+    min-width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 28px;
+    transition: transform 0.5s var(--transition-bounce);
+}
+
+.award-card:hover .award-icon-wrapper {
+    transform: rotateY(360deg);
+}
+
+.award-content h3 {
+    color: var(--secondary-color);
+    font-size: 22px;
+    margin-bottom: 8px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+
+.award-content p {
+    color: var(--text-light);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* FOOTER - NEW DARK GREEN DESIGN (SAME AS PROCESS PAGE) */
+.oh-footer {
+    background: var(--secondary-color);
+    padding: 80px 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.oh-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #d4a574, var(--primary-color));
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 30px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    max-width: 280px;
+}
+
+.footer-middle {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section-title {
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-nav li {
+    font-size: 15px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+}
+
+.footer-nav li::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-nav li:hover {
+    color: var(--primary-color);
+    padding-left: 15px;
+}
+
+.footer-nav li:hover::before {
+    width: 10px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-text strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.footer-contact-info {
+    margin-top: 10px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact-item i {
+    color: var(--primary-color);
+    margin-top: 4px;
+    font-size: 14px;
+    width: 16px;
+}
+
+.footer-bottom {
+    width: 90%;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* REVEAL ANIMATIONS */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s var(--transition-smooth);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s var(--transition-smooth);
+}
+
+.reveal-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s var(--transition-smooth);
+}
+
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1s var(--transition-smooth);
+}
+
+.reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* STAGGER DELAYS */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-left {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-tagline {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .slot-menu {
+        display: none;
+    }
+    
+    .contact-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .about-hero-title {
+        font-size: 60px;
+    }
+    
+    .story-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    
+    .story-image {
+        height: 500px;
+    }
+    
+    .story-badge {
+        right: 20px;
+        bottom: 20px;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .timeline-line {
+        left: 30px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-left: 80px;
+        padding-right: 0;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        width: 100%;
+    }
+    
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .footer-left {
+        align-items: center;
+    }
+    
+    .footer-middle {
+        align-items: center;
+    }
+    
+    .footer-right {
+        align-items: center;
+    }
+    
+    .footer-nav {
+        align-items: center;
+    }
+    
+    .footer-nav li::before {
+        display: none;
+    }
+    
+    .footer-nav li:hover {
+        padding-left: 0;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+    
+    .navbar.scrolled {
+        padding: 10px 20px;
+    }
+    
+    .logo img {
+        width: 100px;
+        height: 35px;
+    }
+    
+    .about-hero-title {
+        font-size: 42px;
+        letter-spacing: 6px;
+    }
+    
+    .about-hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .story-title,
+    .values-title,
+    .team-title,
+    .timeline-title,
+    .awards-title {
+        font-size: 42px;
+    }
+    
+    .values-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .award-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-container {
+        text-align: center;
+        gap: 50px;
+    }
+
+    .footer-left {
+        align-items: center;
+    }
+
+    .footer-middle {
+        align-items: center;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+
+    .footer-nav {
+        align-items: center;
+    }
+
+    .footer-nav li::before {
+        display: none;
+    }
+
+    .footer-nav li:hover {
+        padding-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-hero-title {
+        font-size: 36px;
+    }
+    
+    .story-title,
+    .values-title,
+    .team-title,
+    .timeline-title,
+    .awards-title {
+        font-size: 36px;
+    }
+    
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        padding-left: 60px;
+    }
+    
+    .timeline-content {
+        padding: 25px;
+    }
+    
+    .mobile-menu-btn {
+        font-size: 22px;
+    }
+    
+    .mobile-menu-items .nav-text span {
+        font-size: 20px;
+    }
+    
+    .mobile-contact-btn {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+}
+.navbar a,
+.mobile-menu-overlay a{
+  text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo">
+    <a href="index.php">
+      <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
+    </a>
+  </div>
+  
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <div class="slot-menu">
+    <a href="work.php" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
+
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="#aboutus.php" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+
+  <a href="contactus.php" class="nav-item contact-btn">
+    <div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div>
+  </a>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <button class="mobile-menu-close" id="mobileMenuClose">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu-items">
+    <a href="#works" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
+
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="#about" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+  
+  <a href="contactus.php" class="mobile-contact-btn">Get in Touch</a>
+</div>
+
+<!-- HERO SECTION -->
+<section class="about-hero">
+    <img src="img/67bea5e36abd92ebf2bbabed_OH_SIDNEYANDYMACPHERSON-23.jpg" alt="OH Architecture Studio" class="about-hero-image">
+    <div class="about-hero-overlay"></div>
+    
+    <div class="about-hero-content">
+        <span class="about-label">Est. 2008</span>
+        <h1 class="about-hero-title">About Us</h1>
+        <p class="about-hero-subtitle">CRAFTING TIMELESS SPACES WITH PURPOSE</p>
+    </div>
+    
+    <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="story-section">
+    <div class="story-container">
+        <div class="story-content reveal-left">
+            <p class="story-label">Our Story</p>
+            <h2 class="story-title">Where Vision Meets Craftsmanship</h2>
+            <p class="story-text">
+                Founded in 2008, OH Architecture emerged from a profound belief that exceptional design should harmonize with human experience. What began as a modest Brisbane studio has evolved into an internationally recognized practice, celebrated for creating spaces that resonate with both aesthetic beauty and functional excellence.
+            </p>
+            <p class="story-text">
+                Our philosophy centers on the dialogue between space and inhabitant. We don't merely design structures; we curate environments that enhance daily rituals, foster connections, and stand as testaments to thoughtful innovation.
+            </p>
+            
+            <div class="story-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15">0</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="200">0</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">0</span>
+                    <span class="stat-label">Design Awards</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="story-image-wrapper reveal-right">
+            <img src="img/67b04e4ed2812e66e1318bce_OH_SIDNEYANDYMACPHERSON-16_EDIT.jpg" alt="OH Architecture Team" class="story-image">
+            <div class="story-image-overlay"></div>
+            <div class="story-badge">
+                <span class="badge-year">15+</span>
+                <span class="badge-text">Years of Excellence</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="values-section">
+    <div class="values-container">
+        <div class="values-header reveal">
+            <p class="values-label">Our Principles</p>
+            <h2 class="values-title">Core Values</h2>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card reveal stagger-1">
+                <span class="value-number">01</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-leaf value-icon"></i>
+                </div>
+                <h3 class="value-title">Sustainability</h3>
+                <p class="value-desc">We integrate eco-conscious materials and energy-efficient solutions, ensuring our designs minimize environmental impact while maximizing comfort and longevity.</p>
+            </div>
+            
+            <div class="value-card reveal stagger-2">
+                <span class="value-number">02</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-users value-icon"></i>
+                </div>
+                <h3 class="value-title">Collaboration</h3>
+                <p class="value-desc">Exceptional architecture emerges from diverse perspectives. We foster deep partnerships with clients, builders, and consultants to realize shared visions.</p>
+            </div>
+            
+            <div class="value-card reveal stagger-3">
+                <span class="value-number">03</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-lightbulb value-icon"></i>
+                </div>
+                <h3 class="value-title">Innovation</h3>
+                <p class="value-desc">We embrace emerging technologies and methodologies, constantly exploring new possibilities to create spaces that are both timeless and forward-thinking.</p>
+            </div>
+            
+            <div class="value-card reveal stagger-4">
+                <span class="value-number">04</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-heart value-icon"></i>
+                </div>
+                <h3 class="value-title">Passion</h3>
+                <p class="value-desc">Architecture is our calling. This profound enthusiasm infuses every project with creativity, care, and an unwavering commitment to excellence.</p>
+            </div>
+            
+            <div class="value-card reveal stagger-5">
+                <span class="value-number">05</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-balance-scale value-icon"></i>
+                </div>
+                <h3 class="value-title">Integrity</h3>
+                <p class="value-desc">Transparency and ethical practice form our foundation. We build lasting relationships through honesty, respect, and consistent delivery on promises.</p>
+            </div>
+            
+            <div class="value-card reveal stagger-6">
+                <span class="value-number">06</span>
+                <div class="value-icon-wrapper">
+                    <i class="fas fa-gem value-icon"></i>
+                </div>
+                <h3 class="value-title">Excellence</h3>
+                <p class="value-desc">We pursue perfection in every detail. From initial concept to final construction, we maintain the highest standards of design and execution.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+    <div class="team-header reveal">
+        <p class="team-label">The People</p>
+        <h2 class="team-title">Leadership Team</h2>
+    </div>
+    
+    <div class="team-grid">
+        <div class="team-member reveal stagger-1">
+            <div class="team-image-wrapper">
+                <img src="img/67be91596f129dc684d4c711_OG HAIG Andy Macpherson 4.jpg" alt="Johnny Hyde" class="team-member-image">
+                <div class="team-overlay">
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-info">
+                <h3 class="team-member-name">Johnny Hyde</h3>
+                <p class="team-member-role">Principal Architect</p>
+            </div>
+        </div>
+        
+        <div class="team-member reveal stagger-2">
+            <div class="team-image-wrapper">
+                <img src="img/68be5afed4c8805edd12506f_OG_HAIG©ANDYMACPHERSON2-9 (1)-p-800.jpg" alt="Sarah Chen" class="team-member-image">
+                <div class="team-overlay">
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-info">
+                <h3 class="team-member-name">Sarah Chen</h3>
+                <p class="team-member-role">Design Director</p>
+            </div>
+        </div>
+        
+        <div class="team-member reveal stagger-3">
+            <div class="team-image-wrapper">
+                <img src="img/67ec89266a30d21bfc54e72a_OH_POOLHOUSE©ANDYMACPHERSON-7 (1).jpg" alt="Michael Torres" class="team-member-image">
+                <div class="team-overlay">
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="team-info">
+                <h3 class="team-member-name">Michael Torres</h3>
+                <p class="team-member-role">Senior Architect</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="timeline-section">
+    <div class="timeline-container">
+        <div class="timeline-header reveal">
+            <p class="timeline-label">Our Journey</p>
+            <h2 class="timeline-title">Studio Evolution</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2008</span>
+                    <h3>The Foundation</h3>
+                    <p>OH Architecture established in Brisbane with a vision to create people-centered, sustainable design solutions for residential and commercial spaces.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2012</span>
+                    <h3>Recognition</h3>
+                    <p>Received the Queensland Architecture Award for Residential Design, marking our emergence as a leading voice in Australian architecture.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2015</span>
+                    <h3>Expansion</h3>
+                    <p>Relocated to our current Grange studio and expanded to a team of 12, enabling us to take on larger, more complex projects across Queensland.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2019</span>
+                    <h3>Sustainability Focus</h3>
+                    <p>Launched our carbon-neutral initiative, committing to sustainable design practices and achieving Green Star certification for all new projects.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">2024</span>
+                    <h3>Global Reach</h3>
+                    <p>Celebrated 15 years with 200+ completed projects, international recognition, and a team of 20 dedicated professionals shaping the future of architecture.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AWARDS SECTION -->
+<section class="awards-section">
+    <div class="awards-header reveal">
+        <p class="awards-label">Recognition</p>
+        <h2 class="awards-title">Awards & Honors</h2>
+    </div>
+    
+    <div class="awards-grid">
+        <div class="award-card reveal stagger-1">
+            <div class="award-icon-wrapper">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="award-content">
+                <h3>Queensland Architecture Award</h3>
+                <p>Residential Architecture - House Award 2023</p>
+            </div>
+        </div>
+        
+        <div class="award-card reveal stagger-2">
+            <div class="award-icon-wrapper">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="award-content">
+                <h3>Australian Institute of Architects</h3>
+                <p>Commendation for Sustainable Design 2022</p>
+            </div>
+        </div>
+        
+        <div class="award-card reveal stagger-3">
+            <div class="award-icon-wrapper">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="award-content">
+                <h3>Brisbane Design Awards</h3>
+                <p>Gold Winner - Architectural Design 2021</p>
+            </div>
+        </div>
+        
+        <div class="award-card reveal stagger-4">
+            <div class="award-icon-wrapper">
+                <i class="fas fa-medal"></i>
+            </div>
+            <div class="award-content">
+                <h3>Houses Awards</h3>
+                <p>Alteration & Addition over 200m² 2020</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER - NEW DARK GREEN DESIGN (SAME AS PROCESS PAGE) -->
+<footer class="oh-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="img/WhatsApp_Image_2025-12-12_at_22.26.16_1d885e4c-removebg-preview.png" alt="OH Architecture" class="footer-logo-img">
+            <p class="footer-tagline">Creating timeless spaces that inspire, comfort, and elevate the human experience since 2008.</p>
+        </div>
+
+        <div class="footer-middle">
+            <p class="footer-section-title">(Navigation)</p>
+            <ul class="footer-nav">
+                <li>Home</li>
+                <li>Works</li>
+                <li>In Progress</li>
+                <li>Archive</li>
+                <li>Studio</li>
+                <li>Process</li>
+                <li>Gallery</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-section-title">(Acknowledgement)</p>
+            <p class="footer-text">
+                We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present.
+            </p>
+
+            <p class="footer-section-title">(Contact Info)</p>
+            <div class="footer-contact-info">
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>101 Days Rd, Grange QLD 4051</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@oharchitecture.com.au</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>07 3110 1031</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon-Fri: 8:30am - 5:00pm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 OH Architecture. All rights reserved.</p>
+        <div class="footer-socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// NAVBAR SCROLL EFFECT - EXACT SAME AS INDEX
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// MOBILE MENU FUNCTIONS - EXACT SAME AS INDEX
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenuClose.addEventListener('click', function() {
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+mobileMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === mobileMenuOverlay) {
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close mobile menu on window resize to desktop
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 992) {
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// SCROLL REVEAL ANIMATION
+const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+const revealOnScroll = () => {
+    revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+// TIMELINE ANIMATION
+const timelineItems = document.querySelectorAll('.timeline-item');
+const animateTimeline = () => {
+    timelineItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (itemTop < windowHeight - 100) {
+            item.classList.add('visible');
+        }
+    });
+};
+
+window.addEventListener('scroll', animateTimeline);
+window.addEventListener('load', animateTimeline);
+
+// NUMBER COUNTER ANIMATION
+const statNumbers = document.querySelectorAll('.stat-number');
+let counted = false;
+
+const countUp = () => {
+    const statsSection = document.querySelector('.story-stats');
+    const sectionTop = statsSection.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    
+    if (sectionTop < windowHeight - 100 && !counted) {
+        counted = true;
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCount = () => {
+                current += increment;
+                if (current < target) {
+                    stat.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCount);
+                } else {
+                    stat.textContent = target + '+';
+                }
+            };
+            
+            updateCount();
+        });
+    }
+};
+
+window.addEventListener('scroll', countUp);
+
+// PARALLAX EFFECT
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const parallax = document.querySelector('.about-hero-image');
+    if (parallax) {
+        parallax.style.transform = `translateY(${scrolled * 0.5}px) scale(1.1)`;
+    }
+});
+</script>
+
+</body>
+</html>
