@@ -968,6 +968,17 @@ body {
     width: 200px;
     height: auto;
 }
+.navbar a:hover,
+.navbar a:focus,
+.mobile-menu-overlay a:hover,
+.mobile-menu-overlay a:focus{
+  text-decoration: none;
+}
+.navbar a,
+.mobile-menu-overlay a{
+  text-decoration: none;
+}
+
 </style>
 </head>
 <body>
@@ -975,38 +986,57 @@ body {
 
     <!-- Navbar - EXACT SAME AS YOUR INDEX -->
     <nav class="navbar" id="navbar">
-        <div class="logo">
-            <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
-        </div>
-        
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="slot-menu">
-            <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
-        </div>
-        <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
-    </nav>
+  <div class="logo">
+    <a href="index.php">
+      <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
+    </a>
+  </div>
+  
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <div class="slot-menu">
+    <a href="work.php" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-        <button class="mobile-menu-close" id="mobileMenuClose">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="mobile-menu-items">
-            <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-            <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
-        </div>
-        
-        <a href="#" class="mobile-contact-btn">Get in Touch</a>
-    </div>
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="aboutus.php" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+
+  <a href="contactus.php" class="nav-item contact-btn">
+    <div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div>
+  </a>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <button class="mobile-menu-close" id="mobileMenuClose">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="mobile-menu-items">
+    <a href="work.php" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
+
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="aboutus.php" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+  
+  <a href="contactus.php" class="mobile-contact-btn">Get in Touch</a>
+</div>
 
     <!-- Hero -->
     <section class="hero">
