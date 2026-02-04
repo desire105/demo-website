@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | OH Architecture</title>
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', Helvetica, sans-serif;
+}
+
+:root {
+    --primary-color: #B8947E;
+    --secondary-color: #254224;
+    --dark-color: #1A1A1A;
+    --light-color: #F8F5F2;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --bg-color: #F2F0E4;
+}
+
+html, body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+/* NAVBAR STYLES */
+.navbar {
+    width: 100%;
+    padding: 22px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(242, 240, 228, 0.98);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo img {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.slot-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    position: relative;
+    height: 26px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.6, 0.01, 0.3, 1);
+}
+
+.nav-text span {
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 600;
+    height: 26px;
+    line-height: 26px;
+    transition: color 0.4s ease;
+}
+
+.nav-item:hover .nav-text {
+    transform: translateY(-26px);
+}
+
+.contact-btn {
+    position: relative;
+    padding: 16px 36px;
+    background: var(--primary-color);
+    color: white !important;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    height: 46px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.contact-btn .nav-text {
+    display: flex;
+    flex-direction: column;
+    height: 56px;
+}
+
+.contact-btn .nav-text span {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 600;
+    height: 56px;
+    line-height: 56px;
+}
+
+.contact-btn:hover .nav-text {
+    transform: translateY(-56px);
+}
+
+.contact-btn:hover {
+    box-shadow: 0 0 20px rgba(184, 148, 126, 0.4);
+    transform: translateY(-2px);
+    background: #a5836d;
+}
+
+/* MOBILE HAMBURGER MENU */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10002;
+    padding: 10px;
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(242, 240, 228, 0.98);
+    z-index: 10001;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobile-menu-overlay.active {
+    display: flex;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.mobile-menu-items .nav-item {
+    height: 40px;
+}
+
+.mobile-menu-items .nav-text span {
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+    color: var(--secondary-color);
+}
+
+.mobile-contact-btn {
+    padding: 18px 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.mobile-contact-btn:hover {
+    background: #a5836d;
+    transform: translateY(-2px);
+}
+
+/* CONTACT HERO SECTION */
+.contact-hero {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(rgba(37, 66, 36, 0.8), rgba(37, 66, 36, 0.6)), 
+                url('img/67c5504fd3e1172ffe17548f_OH_SIDNEYANDYMACPHERSON-19_EDIT.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 90px;
+    color: white;
+}
+
+.contact-hero-content h1 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.contact-hero-content p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    width: 100%;
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.contact-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h2 {
+    font-size: 42px;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 600;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 15px;
+}
+
+.contact-details {
+    margin-bottom: 40px;
+}
+
+.contact-detail-item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(184, 148, 126, 0.2);
+}
+
+.contact-detail-item h3 {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-detail-item p {
+    font-size: 18px;
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.contact-social {
+    margin-top: 40px;
+}
+
+.contact-social h3 {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+/* CONTACT FORM */
+.contact-form-container {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contact-form-container h2 {
+    font-size: 32px;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgba(184, 148, 126, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    color: var(--text-dark);
+    background-color: #fcfbf9;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(184, 148, 126, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background-color: #a5836d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(184, 148, 126, 0.3);
+}
+
+/* MAP SECTION */
+.map-section {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #f9f8f4;
+}
+
+.map-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map-container h2 {
+    font-size: 36px;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.map-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 400px;
+}
+
+/* FAQ SECTION */
+.faq-section {
+    width: 100%;
+    padding: 80px 0;
+    background-color: var(--bg-color);
+}
+
+.faq-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-container h2 {
+    font-size: 36px;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faq-question {
+    background-color: white;
+    padding: 25px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f9f8f4;
+}
+
+.faq-question.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.faq-answer {
+    background-color: white;
+    padding: 0 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.faq-answer.active {
+    padding: 25px 30px;
+    max-height: 500px;
+}
+
+.faq-answer p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+/* FOOTER - MODERN DARK GREEN VERSION */
+.oh-footer {
+    background: var(--secondary-color);
+    padding: 80px 0 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.oh-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #d4a574, var(--primary-color));
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 30px;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.footer-tagline {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    max-width: 280px;
+}
+
+.footer-middle {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-section-title {
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-nav li {
+    font-size: 15px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 0;
+}
+
+.footer-nav li::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 1px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-nav li:hover {
+    color: var(--primary-color);
+    padding-left: 15px;
+}
+
+.footer-nav li:hover::before {
+    width: 10px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-text strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.footer-contact-info {
+    margin-top: 10px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-contact-item i {
+    color: var(--primary-color);
+    margin-top: 4px;
+    font-size: 14px;
+    width: 16px;
+}
+
+.footer-bottom {
+    width: 90%;
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-copyright {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 1200px) {
+    .contact-hero-content h1 {
+        font-size: 50px;
+    }
+    
+    .contact-info h2, .contact-form-container h2 {
+        font-size: 36px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-left {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-tagline {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .slot-menu {
+        display: none;
+    }
+    
+    .contact-btn {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .contact-hero {
+        margin-top: 80px;
+        height: 300px;
+    }
+    
+    .contact-hero-content h1 {
+        font-size: 40px;
+    }
+    
+    .contact-container {
+        flex-direction: column;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 50px;
+    }
+    
+    .footer-left {
+        align-items: center;
+    }
+    
+    .footer-middle {
+        align-items: center;
+    }
+    
+    .footer-right {
+        align-items: center;
+    }
+    
+    .footer-nav {
+        align-items: center;
+    }
+    
+    .footer-nav li::before {
+        display: none;
+    }
+    
+    .footer-nav li:hover {
+        padding-left: 0;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 20px;
+    }
+    
+    .logo img {
+        width: 120px;
+        height: 50px;
+    }
+    
+    .contact-hero {
+        height: 250px;
+        margin-top: 70px;
+    }
+    
+    .contact-hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .contact-hero-content p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    
+    .contact-container {
+        width: 90%;
+    }
+    
+    .contact-form-container {
+        padding: 30px;
+    }
+    
+    .contact-info h2, .contact-form-container h2 {
+        font-size: 28px;
+    }
+    
+    .faq-container h2, .map-container h2 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .contact-hero {
+        height: 200px;
+        margin-top: 60px;
+    }
+    
+    .contact-hero-content h1 {
+        font-size: 28px;
+        padding: 0 15px;
+    }
+    
+    .contact-hero-content p {
+        font-size: 14px;
+    }
+    
+    .contact-section {
+        padding: 60px 0;
+    }
+    
+    .contact-form-container {
+        padding: 25px;
+    }
+    
+    .contact-detail-item h3, .contact-social h3 {
+        font-size: 16px;
+    }
+    
+    .contact-detail-item p {
+        font-size: 16px;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    .faq-question {
+        padding: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .contact-hero-content h1 {
+        font-size: 24px;
+    }
+    
+    .contact-info h2, .contact-form-container h2 {
+        font-size: 24px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+.navbar a,
+.mobile-menu-overlay a{
+  text-decoration: none;
+  color: inherit;
+}
+ 
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <!-- LOGO -->
+  <div class="logo">
+    <a href="index.php">
+      <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
+    </a>
+  </div>
+
+  <!-- MOBILE MENU BUTTON -->
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- DESKTOP MENU -->
+  <div class="slot-menu">
+    <a href="#works" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
+
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="#about" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+
+  <!-- CONTACT BUTTON -->
+  <a href="contactus.php" class="nav-item contact-btn">
+    <div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div>
+  </a>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <button class="mobile-menu-close" id="mobileMenuClose">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="mobile-menu-items">
+    <a href="#works" class="nav-item">
+      <div class="nav-text"><span>Works</span><span>Works</span></div>
+    </a>
+
+    <a href="#gallery" class="nav-item">
+      <div class="nav-text"><span>Gallery</span><span>Gallery</span></div>
+    </a>
+
+    <a href="#about" class="nav-item">
+      <div class="nav-text"><span>About Us</span><span>About Us</span></div>
+    </a>
+  </div>
+
+  <a href="contactus.php" class="mobile-contact-btn">Get in Touch</a>
+</div>
+
+<!-- CONTACT HERO SECTION -->
+<section class="contact-hero">
+    <div class="contact-hero-content">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear about your project and explore how we can bring your architectural vision to life. Reach out to start the conversation.</p>
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Contact Information</h2>
+            
+            <div class="contact-details">
+                <div class="contact-detail-item">
+                    <h3>Address</h3>
+                    <p>101 Days Rd, Grange QLD 4051, Australia</p>
+                </div>
+                
+                <div class="contact-detail-item">
+                    <h3>Email</h3>
+                    <p>info@oharchitecture.com.au</p>
+                </div>
+                
+                <div class="contact-detail-item">
+                    <h3>Phone</h3>
+                    <p>07 3110 1031</p>
+                </div>
+                
+                <div class="contact-detail-item">
+                    <h3>Business Hours</h3>
+                    <p>Monday to Friday: 8:30am - 5:00pm</p>
+                    <p>Saturday & Sunday: By appointment only</p>
+                </div>
+            </div>
+            
+            <div class="contact-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-form-container">
+            <h2>Send us a Message</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="projectType">Project Type</label>
+                    <select id="projectType" name="projectType">
+                        <option value="">Select project type</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="renovation">Renovation</option>
+                        <option value="extension">Extension</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+    <div class="map-container">
+        <h2>Our Location</h2>
+        <div class="map-wrapper">
+            <!-- You would embed your actual Google Maps iframe here -->
+            <div style="width: 100%; height: 400px; background-color: #e9e5d8; display: flex; justify-content: center; align-items: center; color: var(--secondary-color);">
+                <div style="text-align: center;">
+                    <i class="fas fa-map-marker-alt" style="font-size: 60px; margin-bottom: 20px;"></i>
+                    <p style="font-size: 18px;">101 Days Rd, Grange QLD 4051</p>
+                    <p style="font-size: 16px; margin-top: 10px;">Google Maps integration would appear here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="faq-section">
+    <div class="faq-container">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is your typical project timeline?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Project timelines vary depending on the scope and complexity. A typical residential project can take 6-12 months from initial consultation to completion, while larger commercial projects may take 12-24 months. We provide a detailed timeline specific to your project during our initial consultation.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is your design process?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Our design process begins with understanding your vision, needs, and budget. We then move through concept development, detailed design, planning approvals, documentation, and construction administration. We maintain transparent communication throughout every phase to ensure your vision is realized.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Do you work with clients outside of Queensland?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we work on select projects throughout Australia. While we're based in Queensland, we've completed projects in NSW, Victoria, and Western Australia. Initial consultations can be conducted remotely, with site visits scheduled as needed throughout the project.</p>
+            </div>
+</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What are your fees and how are they structured?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Our fees are typically structured as a percentage of the construction cost or as a fixed fee, depending on the project scope. We provide transparent fee proposals after our initial consultation, outlining all services included. We believe in clear, upfront communication about costs to ensure there are no surprises.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I schedule a consultation?</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>You can schedule a consultation by filling out the contact form on this page, calling us at 07 3110 1031, or emailing info@oharchitecture.com.au. We typically respond within 24-48 hours to schedule an initial meeting either in person or via video call.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER - MODERN DARK GREEN VERSION -->
+<footer class="oh-footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <img src="img/WhatsApp_Image_2025-12-12_at_22.26.16_1d885e4c-removebg-preview.png" alt="OH Architecture" class="footer-logo-img">
+            <p class="footer-tagline">Creating timeless spaces that inspire, comfort, and elevate the human experience since 2009.</p>
+        </div>
+
+        <div class="footer-middle">
+            <p class="footer-section-title">(Navigation)</p>
+            <ul class="footer-nav">
+                <li>Home</li>
+                <li>Works</li>
+                <li>In Progress</li>
+                <li>Archive</li>
+                <li>Studio</li>
+                <li>Process</li>
+                <li>Gallery</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-section-title">(Acknowledgement)</p>
+            <p class="footer-text">
+                We respectfully acknowledge the Turrbal people, the Traditional Owners and Custodians of the Country on which we work. We pay our respects to Elders past and present.
+            </p>
+
+            <p class="footer-section-title">(Contact Info)</p>
+            <div class="footer-contact-info">
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>101 Days Rd, Grange QLD 4051</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@oharchitecture.com.au</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>07 3110 1031</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mon-Fri: 8:30am - 5:00pm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p class="footer-copyright">© 2024 OH Architecture. All rights reserved.</p>
+        <div class="footer-socials">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// MOBILE MENU FUNCTIONS
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+mobileMenuBtn.addEventListener('click', function() {
+    mobileMenuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+mobileMenuClose.addEventListener('click', function() {
+    mobileMenuOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Close mobile menu when clicking on overlay
+mobileMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === mobileMenuOverlay) {
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// FAQ TOGGLE FUNCTIONALITY
+const faqQuestions = document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle active class on question
+        question.classList.toggle('active');
+        
+        // Toggle active class on answer
+        answer.classList.toggle('active');
+        
+        // Rotate icon
+        if (question.classList.contains('active')) {
+            icon.style.transform = 'rotate(180deg)';
+        } else {
+            icon.style.transform = 'rotate(0deg)';
+        }
+        
+        // Close other FAQs
+        faqQuestions.forEach(otherQuestion => {
+            if (otherQuestion !== question) {
+                otherQuestion.classList.remove('active');
+                otherQuestion.nextElementSibling.classList.remove('active');
+                otherQuestion.querySelector('i').style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+});
+
+// FORM SUBMISSION HANDLER
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+    
+    // Simple validation
+    if (!name || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+    
+    // In a real implementation, you would send this data to a server
+    // For now, we'll just show a success message
+    alert(`Thank you ${name}! Your message has been sent. We'll get back to you at ${email} within 24-48 hours.`);
+    
+    // Reset form
+    document.getElementById('contactForm').reset();
+});
+
+// NAVBAR SCROLL EFFECT
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    
+    // Add slight shadow on scroll
+    if (window.scrollY > 20) {
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+    } else {
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.08)';
+    }
+});
+
+// Initialize on load
+window.addEventListener('load', function() {
+    // Close mobile menu on window resize to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 992) {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>
+</body>
+</html>
