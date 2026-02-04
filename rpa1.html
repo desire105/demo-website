@@ -1780,6 +1780,11 @@ body {
         font-size: 13px;
     }
 }
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+}
+
 </style>
 </head>
 <body>
@@ -1787,20 +1792,47 @@ body {
 <!-- NAVBAR - EXACT SAME AS YOUR INDEX -->
 <nav class="navbar" id="navbar">
     <div class="logo">
-        <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
-    </div>
-    
+  <a href="index.php">
+    <img src="img/WhatsApp_Image_2025-12-12_at_19.27.59_902bcd98-removebg-preview.png" alt="OH Architecture Logo">
+  </a>
+</div>
+
     <button class="mobile-menu-btn" id="mobileMenuBtn">
         <i class="fas fa-bars"></i>
     </button>
-    
     <div class="slot-menu">
-        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+  <a href="work.php" class="nav-item">
+    <div class="nav-text">
+      <span>Works</span>
+      <span>Works</span>
     </div>
-    <div class="nav-item contact-btn"><div class="nav-text"><span>Get in Touch</span><span>Get in Touch</span></div></div>
+  </a>
+
+
+  <a href="gallery.php" class="nav-item">
+    <div class="nav-text">
+      <span>Gallery</span>
+      <span>Gallery</span>
+    </div>
+  </a>
+  
+  <a href="Aboutus.php" class="nav-item">
+    <div class="nav-text">
+      <span>About Us</span>
+
+            <span>About Us</span>
+
+    </div>
+  </a>
+</div>
+
+<a href="contactus.php" class="nav-item contact-btn">
+  <div class="nav-text">
+    <span>Get in Touch</span>
+    <span>Get in Touch</span>
+  </div>
+</a>
+
 </nav>
 
 <!-- MOBILE MENU OVERLAY - EXACT SAME -->
@@ -1808,15 +1840,34 @@ body {
     <button class="mobile-menu-close" id="mobileMenuClose">
         <i class="fas fa-times"></i>
     </button>
-    
     <div class="mobile-menu-items">
-        <div class="nav-item"><div class="nav-text"><span>Works</span><span>Works</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Studio</span><span>Studio</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Process</span><span>Process</span></div></div>
-        <div class="nav-item"><div class="nav-text"><span>Gallery</span><span>Gallery</span></div></div>
+  <a href="work.php" class="nav-item">
+    <div class="nav-text">
+      <span>Works</span>
+      <span>Works</span>
     </div>
+  </a>
+
+
+
+  <a href="gallery.php" class="nav-item">
+    <div class="nav-text">
+      <span>Gallery</span>
+      <span>Gallery</span>
+    </div>
+  </a>
+    <a href="aboutus.php" class="nav-item">
+    <div class="nav-text">
+      <span>About Us</span>
+      <span>About Us</span>
+      
+    </div>
+  </a>
+
+</div>
+
     
-    <a href="#" class="mobile-contact-btn">Get in Touch</a>
+    <a href="contactus.php" class="mobile-contact-btn">Get in Touch</a>
 </div>
 
 <!-- HERO SECTION - ENHANCED -->
@@ -1845,7 +1896,7 @@ body {
     </div>
 
     <div class="architecture-style" id="architectureStyle">
-RPA style features strong forms, natural balance, and timeless appeal.
+        The RPA style is defined by strong, solid forms with subtle elegance, natural balance and enduring appeal
     </div>
 
     <div class="scroll-down" id="scrollDown">(SCROLL DOWN)</div>
